@@ -86,8 +86,8 @@ public class ButtonEventBase extends JFrame {
 		add(jpBase);
 		setVisible(true);
 	}
-
-	public boolean switchFlag(boolean flag) {
+//너무어렵당 ㅎㅎ
+	public boolean switchFlag(boolean flag) { 
 		return !flag;
 	}
 }
