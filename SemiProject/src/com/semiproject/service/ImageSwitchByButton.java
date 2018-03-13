@@ -41,7 +41,6 @@ public class ImageSwitchByButton extends JFrame {
 
 		// 이미지 지정을 위한 라벨 객체 생성 및 할당
 		JLabel jl1 = new JLabel(new ImageIcon(path1));
-		JLabel jl2 = new JLabel(new ImageIcon(path2));
 		jp1.add(jl1); // 이미지 1 추가
 		/* 버튼 생성 및 할당 */
 		JButton jb = new JButton("이미지 변환!");
@@ -57,8 +56,13 @@ public class ImageSwitchByButton extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				flag = switchFlag(flag);
-				jl1.setIcon(new ImageIcon("images_2.jpg"));
-				jp2.add(jb);
+				if(flag){
+					jl1.setIcon(new ImageIcon(path2));
+					jp2.add(jb);
+				}else{
+					jl1.setIcon(new ImageIcon(path1));
+					jp2.add(jb);
+				}
 			}
 		});
 
