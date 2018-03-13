@@ -26,7 +26,7 @@ public class ImageSwitchByButton extends JFrame {
 		setSize(1000, 1000); // 프레임 크기 설정
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 동작 설정
 		setTitle("ImageSwitchExample"); // 프레임 이름 설정
-
+//서미는 토순이
 		/* 패널 객체 생성 */
 		JPanel jpBase = new JPanel();
 		JPanel jp1 = new JPanel();
