@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//dddddd
 public class ImageSwitchByButton extends JFrame {
 	private boolean flag = false;
 
