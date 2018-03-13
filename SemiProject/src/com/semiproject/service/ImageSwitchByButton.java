@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 //dddddd
 public class ImageSwitchByButton extends JFrame {
 	private boolean flag = false;
-
+//난 토순이다
 	/* 이미지경로 저장을 위한 필드 생성 */
 	private String path1 = "images_1.jpg";
 	private String path2 = "images_2.jpg";
