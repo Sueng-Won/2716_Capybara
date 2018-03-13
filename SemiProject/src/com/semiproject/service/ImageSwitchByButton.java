@@ -57,11 +57,8 @@ public class ImageSwitchByButton extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				flag = switchFlag(flag);
-				jp1.removeAll();
-				jp1.add(jl2);
+				jl1.setIcon(new ImageIcon("images_2.jpg"));
 				jp2.add(jb);
-				jp1.repaint();
-				jp1.revalidate();
 			}
 		});
 
