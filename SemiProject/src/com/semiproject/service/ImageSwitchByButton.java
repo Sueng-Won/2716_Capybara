@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//밥밥밥
+//밥밥밥 왜안돼!!!!!!!!!!!!!!!
 public class ImageSwitchByButton extends JFrame {
 	private boolean flag = false;
 //난 토순이다
