@@ -12,9 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//밥밥밥 왜안돼!!!!!!!!!!!!!!!
 public class ImageSwitchByButton extends JFrame {
 	private boolean flag = false;
-
+//난 토순이가 아니다!!!
 	/* 이미지경로 저장을 위한 필드 생성 */
 	private String path1 = "images_1.jpg";
 	private String path2 = "images_2.jpg";
@@ -25,7 +26,7 @@ public class ImageSwitchByButton extends JFrame {
 		setSize(1000, 1000); // 프레임 크기 설정
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 동작 설정
 		setTitle("ImageSwitchExample"); // 프레임 이름 설정
-
+//서미는 토순이가 아니다
 		/* 패널 객체 생성 */
 		JPanel jpBase = new JPanel();
 		JPanel jp1 = new JPanel();
@@ -57,7 +58,8 @@ public class ImageSwitchByButton extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				flag = switchFlag(flag);
-				jp1.removeAll();
+//				jp1.removeAll();
+				//dddddd
 				jp1.add(jl2);
 				jp2.add(jb);
 				jp1.repaint();
