@@ -22,7 +22,7 @@ public class ButtonEventBase extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private boolean flag = false;
-
+	//hi!
 	/* 기본생성자 */
 	public ButtonEventBase() {
 		/* 프레임 기본설정 */
