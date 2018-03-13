@@ -78,6 +78,7 @@ public class ButtonEventBase extends JFrame {
 		jpBase.add(jp1, "Center");
 		jp1.add(jp2);
 		jp1.add(jp3);
+		//안녕하세요
 
 		/* 프레임 패널 관리 */
 		emptyJp1.setPreferredSize(new Dimension(150, 300)); // 사이즈조정
@@ -86,7 +87,6 @@ public class ButtonEventBase extends JFrame {
 		add(jpBase);
 		setVisible(true);
 	}
-//너무어렵당 ㅎㅎ
 	public boolean switchFlag(boolean flag) { 
 		return !flag;
 	}
