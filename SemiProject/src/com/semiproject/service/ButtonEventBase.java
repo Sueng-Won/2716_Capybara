@@ -15,12 +15,7 @@ import javax.swing.SwingConstants;
 
 //JFrame을 상속받음
 public class ButtonEventBase extends JFrame {
-	/**
-	 * Yuventius Choi 18/03/09 14:20
-	 * 버튼을 누름으로서 JLabel의 text를 바꿈
-	 * 여러가지 응용이 가능해보임
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	private boolean flag = false;
 
 	/* 기본생성자 */
@@ -78,7 +73,6 @@ public class ButtonEventBase extends JFrame {
 		jpBase.add(jp1, "Center");
 		jp1.add(jp2);
 		jp1.add(jp3);
-		//안녕하세요
 
 		/* 프레임 패널 관리 */
 		emptyJp1.setPreferredSize(new Dimension(150, 300)); // 사이즈조정
@@ -87,7 +81,8 @@ public class ButtonEventBase extends JFrame {
 		add(jpBase);
 		setVisible(true);
 	}
-	public boolean switchFlag(boolean flag) { 
+
+	public boolean switchFlag(boolean flag) {
 		return !flag;
 	}
 }
