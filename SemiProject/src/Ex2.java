@@ -16,7 +16,7 @@ public class Ex2 extends JFrame implements KeyListener{
 	public static void main(String[] args) {
 			new Ex2();
 	}
-	
+	//dd
 	public Ex2(){
 		
 		setSize(500,300);
