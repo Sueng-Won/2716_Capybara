@@ -28,7 +28,7 @@ public class Ex2 extends JFrame implements KeyListener {
 	public void run() {
 
 		setSize(700, 400);
-		setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+		setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 		jp = new JPanel();
 		jp.setLayout(new GridLayout(3, 5, 10, 10));
 
@@ -70,15 +70,16 @@ public class Ex2 extends JFrame implements KeyListener {
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
 					count = 0;
 					count2++;
-					if (count2 >= 4) {
+					if (count2 >= 4) {			//마지막 run을 실행 시키지 않음
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 						System.exit(0);
 					}
 					run();
+					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");	//게임횟수 초기화를 위한 구문
 				}
 			} else { // 틀릴경우
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : " + life + "개]"); // title은 자동으로 바뀌지 않아서 다시 setTitle
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]"); // title은 자동으로 바뀌지 않아서 다시 setTitle
 				if (life == 0) { // 라이프가 0일 경우
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0); // 시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
@@ -101,10 +102,11 @@ public class Ex2 extends JFrame implements KeyListener {
 						System.exit(0);
 					}
 					run();
+					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				}
 			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
@@ -126,10 +128,11 @@ public class Ex2 extends JFrame implements KeyListener {
 						System.exit(0);
 					}
 					run();
+					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				}
 			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
@@ -152,10 +155,11 @@ public class Ex2 extends JFrame implements KeyListener {
 						System.exit(0);
 					}
 					run();
+					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				}
 			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
 				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
