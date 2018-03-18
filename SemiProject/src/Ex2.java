@@ -10,24 +10,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Ex2 extends JFrame implements KeyListener {
-	String sol = null;		//문제의 랜덤 값을 스트링으로 처리
-	String[] images = { "up.PNG", "left.PNG", "down.PNG", "right.PNG" };	//방향키 이미지 경로
-	JLabel[] l_name = new JLabel[15];	//문제를 저장할 배열
-	static Ex2 ex2 = new Ex2();	//자신의 객체 선언
-	static int life = 3;	//라이프
-	JPanel jp;		//그리드레이아웃을 담을 패널
-	static int count = 0;	//입력 횟수
-	static int count2 = 1;		//게임 반복 횟수
-	
-	//실행용 메인메소드
+	String sol = null; // 문제의 랜덤 값을 스트링으로 처리
+	String[] images = { "up.PNG", "left.PNG", "down.PNG", "right.PNG" }; // 방향키 이미지 경로
+	JLabel[] l_name = new JLabel[15]; // 문제를 저장할 배열
+	static Ex2 ex2 = new Ex2(); // 자신의 객체 선언
+	static int life = 3; // 라이프
+	JPanel jp; // 그리드레이아웃을 담을 패널
+	static int count = 0; // 입력 횟수
+	static int count2 = 1; // 게임 반복 횟수
+
+	// 실행용 메인메소드
 	public static void main(String[] args) {
 		ex2.run();
 	}
-	//실행 메소드
+
+	// 실행 메소드
 	public void run() {
 
 		setSize(700, 400);
-		setTitle("리듬게임/ [남은 라이프 : "+life+"개]");
+		setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
 		jp = new JPanel();
 		jp.setLayout(new GridLayout(3, 5, 10, 10));
 
@@ -51,7 +52,8 @@ public class Ex2 extends JFrame implements KeyListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-	//키보드 이벤트
+
+	// 키보드 이벤트
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -60,25 +62,26 @@ public class Ex2 extends JFrame implements KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
 
-			if (solNum == '0') {		//맞을경우
-				l_name[count].setIcon(new ImageIcon("tiger.PNG"));
+			if (solNum == '0') { // 맞을경우
+				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
 				count++;
+
 				if (count >= 15) {
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
 					count = 0;
 					count2++;
+					if (count2 >= 4) {
+						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+						System.exit(0);
+					}
 					run();
 				}
-				if (count2 >= 4) {
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
-				}
-			} else {					//틀릴경우
+			} else { // 틀릴경우
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : "+life+"개]");		//title은 자동으로 바뀌지 않아서 다시 setTitle
-				if(life == 0 ) {		//라이프가 0일 경우
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개]"); // title은 자동으로 바뀌지 않아서 다시 setTitle
+				if (life == 0) { // 라이프가 0일 경우
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
-					System.exit(0);		//시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
+					System.exit(0); // 시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
 				}
 			}
 
@@ -86,22 +89,23 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_LEFT:
 
 			if (solNum == '1') {
-				l_name[count].setIcon(new ImageIcon("tiger.PNG"));
+				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
 				count++;
+
 				if (count >= 15) {
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
 					count = 0;
 					count2++;
+					if (count2 >= 4) {
+						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+						System.exit(0);
+					}
 					run();
-				}
-				if (count2 >= 4) {
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
 				}
 			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : "+life+"개]");
-				if(life == 0 ) {
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
 				}
@@ -110,22 +114,23 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_DOWN:
 
 			if (solNum == '2') {
-				l_name[count].setIcon(new ImageIcon("tiger.PNG"));
+				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
 				count++;
+
 				if (count >= 15) {
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
 					count = 0;
 					count2++;
+					if (count2 >= 4) {
+						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+						System.exit(0);
+					}
 					run();
 				}
-				if (count2 >= 4) {
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
-				}
-			}else {
+			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : "+life+"개]");
-				if(life == 0 ) {
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
 				}
@@ -135,24 +140,23 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_RIGHT:
 
 			if (solNum == '3') {
-				l_name[count].setIcon(new ImageIcon("tiger.PNG"));
+				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
 				count++;
 
 				if (count >= 15) {
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
 					count = 0;
 					count2++;
+					if (count2 >= 4) {
+						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+						System.exit(0);
+					}
 					run();
 				}
-				if (count2 >= 4) {
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
-				}
-			}
-			else {
+			} else {
 				life--;
-				setTitle("리듬게임/ [남은 라이프 : "+life+"개]");
-				if(life == 0 ) {
+				setTitle("리듬게임/ [남은 라이프 : " + life + "개]");
+				if (life == 0) {
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					System.exit(0);
 				}
