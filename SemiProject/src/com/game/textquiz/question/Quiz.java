@@ -272,7 +272,7 @@ public class Quiz {
 				frame2.setLayout(null);
 				frame2.setResizable(false);
 				JLabel aLabel = new JLabel();
-				answerMatch = 2;
+				answerMatch = 1;
 				if(answerMatch==answer){
 					aLabel.setText("정답입니다!!");
 					}else{
