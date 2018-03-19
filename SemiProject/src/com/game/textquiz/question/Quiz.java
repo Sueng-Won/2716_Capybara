@@ -1,5 +1,6 @@
 package com.game.textquiz.question;
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -248,28 +249,21 @@ public class Quiz {
 		
 		frame.setVisible(true);
 		
-		if(answer == 1){
-		QuizAnswer1();
-		}
-		else if(answer == 2){
-			QuizAnswer2();
-			}
-		else if(answer == 3){
-			QuizAnswer3();
-			}
-		else if(answer == 4){
-			QuizAnswer4();
-			}
+		
+		QuizAnswer();
+		
 		
 	}
 	
-	public void QuizAnswer1(){
+	public void QuizAnswer(){
 	
 	Btn.addActionListener(new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			int answerMatch = 0 ;
+			
+			
 			if(check1.isSelected()){
 				frame.setVisible(false);
 				JFrame frame2 = new JFrame("answer");
@@ -278,13 +272,19 @@ public class Quiz {
 				frame2.setLayout(null);
 				frame2.setResizable(false);
 				JLabel aLabel = new JLabel();
-				aLabel.setText("정답입니다!!");
+				answerMatch = 1;
+				if(answerMatch==answer){
+					aLabel.setText("정답입니다!!");
+					}else{
+					aLabel.setText("틀렸습니다.");
+					}
 				aLabel.setFont(f1);
 				aLabel.setBounds(55,-5,100,100);
 				frame2.add(aLabel);
 				frame2.setVisible(true);
 				
-			}else if(check2.isSelected()||check3.isSelected()||check4.isSelected()){
+				
+			}else if(check2.isSelected()){
 					frame.setVisible(false);
 					JFrame frame2 = new JFrame("Answer");
 					frame2.setBounds(300, 300, 200, 120);
@@ -292,138 +292,59 @@ public class Quiz {
 					frame2.setLayout(null);
 					frame2.setResizable(false);
 					JLabel aLabel = new JLabel();
+					answerMatch = 2;
+					if(answerMatch==answer){
+					aLabel.setText("정답입니다!!");
+					}else{
 					aLabel.setText("틀렸습니다.");
+					}
 					aLabel.setFont(f1);
 					aLabel.setBounds(55,-5,100,100);
 					frame2.add(aLabel);
 					frame2.setVisible(true);
 
-			}
 			
+		}else if(check3.isSelected()){
+			frame.setVisible(false);
+			JFrame frame2 = new JFrame("Answer");
+			frame2.setBounds(300, 300, 200, 120);
+			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame2.setLayout(null);
+			frame2.setResizable(false);
+			JLabel aLabel = new JLabel();
+			answerMatch = 3;
+			if(answerMatch==answer){
+				aLabel.setText("정답입니다!!");
+				}else{
+				aLabel.setText("틀렸습니다.");
+				}
+			aLabel.setFont(f1);
+			aLabel.setBounds(55,-5,100,100);
+			frame2.add(aLabel);
+			frame2.setVisible(true);
+			
+			
+		}else if(check4.isSelected()){
+			frame.setVisible(false);
+			JFrame frame2 = new JFrame("Answer");
+			frame2.setBounds(300, 300, 200, 120);
+			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame2.setLayout(null);
+			frame2.setResizable(false);
+			JLabel aLabel = new JLabel();
+			answerMatch = 4;
+			if(answerMatch==answer){
+				aLabel.setText("정답입니다!!");
+				}else{
+				aLabel.setText("틀렸습니다.");
+				}
+			aLabel.setFont(f1);
+			aLabel.setBounds(55,-5,100,100);
+			frame2.add(aLabel);
+			frame2.setVisible(true);
+		}
 		}
 	});
 	}
 	
-	public void QuizAnswer2(){
-		
-		Btn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if(check2.isSelected()){
-					frame.setVisible(false);
-					JFrame frame2 = new JFrame("answer");
-					frame2.setBounds(300, 300, 200, 120);
-					frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame2.setLayout(null);
-					frame2.setResizable(false);
-					JLabel aLabel = new JLabel();
-					aLabel.setText("정답입니다!!");
-					aLabel.setFont(f1);
-					aLabel.setBounds(55,-5,100,100);
-					frame2.add(aLabel);
-					frame2.setVisible(true);
-					
-				}else if(check1.isSelected()||check3.isSelected()||check4.isSelected()){
-						frame.setVisible(false);
-						JFrame frame2 = new JFrame("Answer");
-						frame2.setBounds(300, 300, 200, 120);
-						frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						frame2.setLayout(null);
-						frame2.setResizable(false);
-						JLabel aLabel = new JLabel();
-						aLabel.setText("틀렸습니다.");
-						aLabel.setFont(f1);
-						aLabel.setBounds(55,-5,100,100);
-						frame2.add(aLabel);
-						frame2.setVisible(true);
-
-				}
-				
-			}
-		});
-		}
-	
-	public void QuizAnswer3(){
-		
-		Btn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if(check3.isSelected()){
-					frame.setVisible(false);
-					JFrame frame2 = new JFrame("answer");
-					frame2.setBounds(300, 300, 200, 120);
-					frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame2.setLayout(null);
-					frame2.setResizable(false);
-					JLabel aLabel = new JLabel();
-					aLabel.setText("정답입니다!!");
-					aLabel.setFont(f1);
-					aLabel.setBounds(55,-5,100,100);
-					frame2.add(aLabel);
-					frame2.setVisible(true);
-					
-				}else if(check1.isSelected()||check2.isSelected()||check4.isSelected()){
-						frame.setVisible(false);
-						JFrame frame2 = new JFrame("Answer");
-						frame2.setBounds(300, 300, 200, 120);
-						frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						frame2.setLayout(null);
-						frame2.setResizable(false);
-						JLabel aLabel = new JLabel();
-						aLabel.setText("틀렸습니다.");
-						aLabel.setFont(f1);
-						aLabel.setBounds(55,-5,100,100);
-						frame2.add(aLabel);
-						frame2.setVisible(true);
-
-				}
-				
-			}
-		});
-		}
-
-	public void QuizAnswer4(){
-		
-		Btn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if(check4.isSelected()){
-					frame.setVisible(false);
-					JFrame frame2 = new JFrame("answer");
-					frame2.setBounds(300, 300, 200, 120);
-					frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame2.setLayout(null);
-					frame2.setResizable(false);
-					JLabel aLabel = new JLabel();
-					aLabel.setText("정답입니다!!");
-					aLabel.setFont(f1);
-					aLabel.setBounds(55,-5,100,100);
-					frame2.add(aLabel);
-					frame2.setVisible(true);
-					
-				}else if(check1.isSelected()||check2.isSelected()||check3.isSelected()){
-						frame.setVisible(false);
-						JFrame frame2 = new JFrame("Answer");
-						frame2.setBounds(300, 300, 200, 120);
-						frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-						frame2.setLayout(null);
-						frame2.setResizable(false);
-						JLabel aLabel = new JLabel();
-						aLabel.setText("틀렸습니다.");
-						aLabel.setFont(f1);
-						aLabel.setBounds(55,-5,100,100);
-						frame2.add(aLabel);
-						frame2.setVisible(true);
-
-				}
-				
-			}
-		});
-		}
 }
