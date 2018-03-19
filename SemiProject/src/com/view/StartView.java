@@ -41,17 +41,18 @@ public class StartView {
 		@Override
 		public void run() {
 			//랜덤으로 숫자 받기
-//			int num = (int) (Math.random() * 10) + 1;
-//	    	//7일때 팝업창 띄우기
-//			if (num == 7) {
+			int num = (int) (Math.random() * 10) + 1;
+	    	//7일때 팝업창 띄우기
+			if (num == 7) {
 				int ratio = (int) (Math.random() * 40) + 10; // 10초에서 50초 사이 중 하나
 				try {
 					Thread.sleep(ratio * 1000); 
 					JOptionPane.showMessageDialog(null, "훈련보상비 지급일!");
+					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
-//}
+}
