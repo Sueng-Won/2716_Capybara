@@ -1,4 +1,4 @@
-package com.event;
+package com.global.event;
 
 import javax.swing.JOptionPane;
 

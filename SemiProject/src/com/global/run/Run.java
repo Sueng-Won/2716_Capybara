@@ -1,6 +1,6 @@
-package com.run;
+package com.global.run;
 
-import com.login.LoginView;
+import com.global.login.LoginView;
 
 public class Run {
 

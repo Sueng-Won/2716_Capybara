@@ -1,4 +1,4 @@
-package com.login;
+package com.global.login;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import com.view.StartView;
+import com.global.view.StartView;
 
 public class LoginView {
 	public void mainLogin() {
