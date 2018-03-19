@@ -1,3 +1,4 @@
+package com.game.rhythm;
 
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
