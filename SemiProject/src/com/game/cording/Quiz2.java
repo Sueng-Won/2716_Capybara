@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,13 +26,25 @@ public class Quiz2 {
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setFont(font);
 		jTextArea.setEditable(false);
-		jTextArea.setText("**Enter the Correct code in the Blank**\n\n" + " public void Dan(){\n"
-				+ "\tint[][] intArr = new int[10][10];\n" + "\tfor (int i = 2; i < intArr.length; i++) {\n"
-				+ "\t\tfor (int j = 1; j < ________________; j++) {\n" + "\t\t\tintArr[i][j] = i * j;\n"
-				+ "\t\t\tSystem.out.print(i + \"*\" + j + \"=\" + intArr[i][j] + \"\\t\");\n" + "\t\t\tif (j == 9){\n"
-				+ "\t\t\tSystem.out.println(\"\");\n" + "\t\t\t}\n" + "\t\t}\n" + "\t}\n" + "}"
 
-		);
+		File file = new File("C:\\Users\\윤상원\\IdeaProjects\\MiniProject", "Quiz2.txt");
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+			String ls = System.getProperty("line.separator");
+
+			while ((line = reader.readLine()) != null){
+					stringBuilder.append(line);
+					stringBuilder.append(ls);
+
+				jTextArea.setText(stringBuilder.toString());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		JTextArea jTextArea1 = new JTextArea();
 		jTextArea1.setBounds(0, 420, 680, 200);
@@ -45,7 +58,7 @@ public class Quiz2 {
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (jTextArea1.getText().trim().equals("intArr[i].length")) {
+				if (jTextArea1.getText().trim().equals("intArr[i].length;")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					Quiz3 q3 =new Quiz3();

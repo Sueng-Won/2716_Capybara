@@ -1,9 +1,12 @@
 package com.game.cording;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,13 +29,26 @@ public class Quiz1 {
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setFont(font);
 		jTextArea.setEditable(false);
-		jTextArea.setText("**Enter the Correct code in the Blank**\n\n" + "public class Main {\n" + "\n"
-				+ "    public static void main(String[] args) {\n" + "        JFrame frame = new JFrame(\"Test\");\n"
-				+ "        frame.setBounds(200, 200, 300, 300);\n" + "        frame.setVisible(true);\n"
-				+ "        _____.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);\n" + "\n"
-				+ "        JButton jButton = new JButton(\"ok!\");\n" + "        frame.add(jButton, \"South\");\n"
-				+ "\n" + "        JTextArea jTextArea = new JTextArea();\n" + "        jTextArea.setText(\"\");\n"
-				+ "        frame.add(jTextArea, \"Center\");\n" + "\n" + "\n" + "    }\n" + "}");
+
+		//문제 읽어올 경로 
+		File file = new File("C:\\\\Users\\\\윤상원\\\\IdeaProjects\\\\MiniProject", "Quiz1.txt");
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+			String ls = System.getProperty("line.separator");
+
+			while ((line = reader.readLine()) != null){
+				stringBuilder.append(line);
+				stringBuilder.append(ls);
+				jTextArea.setText(stringBuilder.toString());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 
 		JTextArea jTextArea1 = new JTextArea();
 		jTextArea1.setBounds(0, 420, 680, 200);
@@ -44,7 +60,7 @@ public class Quiz1 {
 		frame.add(jTextArea, "Center");
 
 		jButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (jTextArea1.getText().trim().equals("frame")) {
@@ -55,9 +71,11 @@ public class Quiz1 {
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}
-				
+
 			}
 		});
 		frame.setVisible(true);
 	}
 }
+
+

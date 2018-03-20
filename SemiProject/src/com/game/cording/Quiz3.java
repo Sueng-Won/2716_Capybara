@@ -3,6 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,12 +27,25 @@ public class Quiz3 {
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setFont(font);
 		jTextArea.setEditable(false);
-		jTextArea.setText("**Enter the Correct code in the Blank**\n\n" + 
-		"배열 array에 담긴 모든 값을 더하는 프로그램을 완성하시오 .\n\n"+" public static void main(String[]args){\n"
-				+ "     int[][ arr = {10,20,30,40,50};\n" + "     int sum=0;\n"
-				+ "     for (int i = 0; i < arr.length; i++) {\n" + "     ____________________\n"
-				+ "     }\n" 	+ "     System.out.println(\"sum=\"+sum);\n" + "   }\n" + " }\n" 
-		);
+
+		File file = new File("C:\\Users\\윤상원\\IdeaProjects\\MiniProject", "Quiz3.txt");
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+			String ls = System.getProperty("line.separator");
+
+			while ((line = reader.readLine()) != null){
+				stringBuilder.append(line);
+				stringBuilder.append(ls);
+
+				jTextArea.setText(stringBuilder.toString());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		JTextArea jTextArea1 = new JTextArea();
 		jTextArea1.setBounds(0, 420, 680, 200);
@@ -47,7 +64,7 @@ public class Quiz3 {
 					frame.setVisible(false);
 					Quiz4 q4 =new Quiz4();
 					q4.Quiz4();
-				} 
+				}
 				else if(jTextArea1.getText().trim().equals("sum=sum+arr[i];")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
@@ -63,3 +80,4 @@ public class Quiz3 {
 
 	}
 }
+
