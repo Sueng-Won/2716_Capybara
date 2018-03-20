@@ -34,7 +34,7 @@ public class Ex2 extends JFrame implements KeyListener {
 	JLabel timeLabel;
 	JLabel lifeLabel1, lifeLabel2, lifeLabel3;//생명 하트 1,2,3
 	JProgressBar timeP;
-	Image dieImage;
+	Image dieImage; //생명 줄어들때 대체 이미지(바탕색)
 
 	// 실행용 메인메소드
 	public static void main(String[] args) {
