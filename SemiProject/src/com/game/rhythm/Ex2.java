@@ -51,14 +51,14 @@ public class Ex2 extends JFrame implements KeyListener {
 		bar = new JPanel(new GridLayout(1,2,1,1));
 		barbase = new  JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-//		barbase.add(timeLabel = new JLabel("남은 시간 : "+time+" | "));
+
 		bar.add(timeP = new JProgressBar());
 		timeP.setMinimum(0);
 		timeP.setMaximum(20);
 		timeP.setValue(time);
 		timeP.setForeground(Color.DARK_GRAY);
 		timeP.setBorderPainted(false);
-//		barbase.add(new JLabel("|"));
+
 		bar.add(lifePanel = new JPanel());
 		barbase.add(bar);
 		
@@ -74,7 +74,6 @@ public class Ex2 extends JFrame implements KeyListener {
 		lifeLabel2.setIcon(new ImageIcon(lifeImage));
 		lifeLabel3.setIcon(new ImageIcon(lifeImage));
 
-//		lifePanel.add(lifeLabel1 = new JLabel("남은 라이프 : " + life + "개"));
 
 		jp = new JPanel();
 		jp.setLayout(new GridLayout(3, 5, 10, 10));
@@ -138,7 +137,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				}
 			} else { // 틀릴경우
 				life--;
-//				lifeLabel.setText("남은 라이프 : " + life + "개");
+
 				if(life==2){
 					lifeLabel3.setIcon(new ImageIcon(dieImage));
 				}else if(life==1){
@@ -173,7 +172,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				}
 			} else {
 				life--;
-//				lifeLabel.setText("남은 라이프 : " + life + "개");
+
 				if(life==2){
 					lifeLabel3.setIcon(new ImageIcon(dieImage));
 				}else if(life==1){
@@ -207,7 +206,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				}
 			} else {
 				life--;
-//				lifeLabel.setText("남은 라이프 : " + life + "개");
+
 				if(life==2){
 					lifeLabel3.setIcon(new ImageIcon(dieImage));
 				}else if(life==1){
@@ -242,7 +241,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				}
 			} else {
 				life--;
-//				lifeLabel.setText("남은 라이프 : " + life + "개");
+
 				if(life==2){
 					lifeLabel3.setIcon(new ImageIcon(dieImage));
 				}else if(life==1){
@@ -289,13 +288,13 @@ public class Ex2 extends JFrame implements KeyListener {
 				}
 				time--;
 				if(time==0){
-//					timeLabel.setText("남은 시간 : "+time+" | ");
+
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					System.exit(0);
 					break;
 				}
-//				timeLabel.setText("남은 시간 : "+time+" | ");
+
 				timeP.setValue(time);
 			}
 
