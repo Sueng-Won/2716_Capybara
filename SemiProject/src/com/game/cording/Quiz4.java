@@ -31,7 +31,7 @@ public class Quiz4 {
 		jTextArea.setFont(font);
 		jTextArea.setEditable(false);
 
-		File file = new File("C:\\Users\\윤상원\\IdeaProjects\\MiniProject", "Quiz4.txt");
+		File file = new File("Quiz4.txt");
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));

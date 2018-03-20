@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,7 +30,7 @@ public class Quiz2 {
 		jTextArea.setFont(font);
 		jTextArea.setEditable(false);
 
-		File file = new File("C:\\Users\\윤상원\\IdeaProjects\\MiniProject", "Quiz2.txt");
+		File file = new File("Quiz2.txt");
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));

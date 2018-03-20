@@ -31,7 +31,7 @@ public class Quiz1 {
 		jTextArea.setEditable(false);
 
 		//문제 읽어올 경로 
-		File file = new File("C:\\\\Users\\\\윤상원\\\\IdeaProjects\\\\MiniProject", "Quiz1.txt");
+		File file = new File("Quiz1.txt");
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));

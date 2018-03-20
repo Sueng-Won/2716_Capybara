@@ -125,7 +125,9 @@ public class Ex2 extends JFrame implements KeyListener {
 				count++;
 
 				if (count >= 15) {
+					
 					JOptionPane.showMessageDialog(null, "남은 횟수는 " + (3 - count2) + "회 입니다.");
+					
 					count = 0;
 					count2++;
 					if (count2 >= 4) { // 마지막 run을 실행 시키지 않음
@@ -278,7 +280,6 @@ public class Ex2 extends JFrame implements KeyListener {
 	class Timer extends Thread {
 		@Override
 		public void run() {
-			time = 20;
 			while (true) {
 				try {
 					Thread.sleep(1000);
