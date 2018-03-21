@@ -73,7 +73,7 @@ public class StartView {
 		}
 	}
 	
-	class Timer extends Thread{
+	class Timer extends Thread{//타이머
 		@Override
 		public void run(){
 			while(true){
