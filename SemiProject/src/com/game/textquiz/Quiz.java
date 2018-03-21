@@ -44,13 +44,14 @@ public class Quiz {
 	public int count=0;
 	static Timer timer;
 	JProgressBar timeP;
-	static int time = 60;
+	static int time = 20;
 	JPanel bar;
 	JPanel barbase;
 	JPanel base;
+	boolean stop = false;
 	
 	
-	public void QuizMethod1(){
+	public void quizMethod1(){
 		this.labelStr = "다음 중 기본형(primitive type)이 아닌 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. int"; 
@@ -59,13 +60,14 @@ public class Quiz {
 		this.example4 = "4. boolean"; 
 		this.answer = 2 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod2(){
+	public void quizMethod2(){
 		this.labelStr = "다음 중 메소드 오버로딩에 대한 설명으로 틀린 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. 메소드의 이름이 같아야 한다."; 
@@ -74,13 +76,14 @@ public class Quiz {
 		this.example4 = "4. 동일 클래스 내에서 발생한다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod3(){
+	public void quizMethod3(){
 		this.labelStr = "타입 캐스팅의 widening conversion 순서가 아닌 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. byte -> short"; 
@@ -89,15 +92,15 @@ public class Quiz {
 		this.example4 = "4. short -> int"; 
 		this.answer = 2 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-
+		stop = false;
+		time = 20;
 		
-		QuizDisplay();
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod4(){
+	public void quizMethod4(){
 		this.labelStr = "다음 괄호 안에 들어갈 명칭으로 알맞은 것은?"; 
 		this.areaStr = "  사용할 클래스가 속한 패키지를 지정하는데 사용.\n"+
 		"  (  )문을 사용하면 클래스를 사용할 때 패키지명을 생략.\n"+
@@ -109,14 +112,14 @@ public class Quiz {
 		this.example4 = "4. import"; 
 		this.answer = 4 ;
 		this.areaNum = 1 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod5(){
+	public void quizMethod5(){
 		this.labelStr = "다음은 자바의 예외 처리에 대한 설명이다. 틀린 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. 모든 메소드 마다 예외의 유형을 정의하여야 한다."; 
@@ -125,13 +128,13 @@ public class Quiz {
 		this.example4 = "4. 지정하지 않은 예외는 디폴트 예외 처리기가 처리한다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
-	public void QuizMethod6(){
+	public void quizMethod6(){
 		this.labelStr = "다음 중 초기화에 대한 설명으로 옳지 않은 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. String 멤버변수는 “”로 자동 초기화된다."; 
@@ -140,13 +143,13 @@ public class Quiz {
 		this.example4 = "인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
-	public void QuizMethod7(){
+	public void quizMethod7(){
 		this.labelStr = "다음 중 지역변수에 대한 설명으로 옳지 않은 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. 스택(stack)영역에 생성되며 가비지 컬렉터에 의해 소멸된다."; 
@@ -155,13 +158,13 @@ public class Quiz {
 		this.example4 = "4. 자동 초기화되므로 별도의 초기화가 필요없다."; 
 		this.answer = 4 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
-	public void QuizMethod8(){
+	public void quizMethod8(){
 		this.labelStr = "자바의 상속 특징 중에서 틀린 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. 클래스의 다중 상속을 지원하지 않는다."; 
@@ -170,14 +173,14 @@ public class Quiz {
 		this.example4 = "4. 상속을 표현하는 키워드는 extends이다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod9(){
+	public void quizMethod9(){
 		this.labelStr = "다음 중 인터페이스에 대한 설명으로 옳지 않은 것은?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. 표준화를 가능하게 해준다."; 
@@ -186,14 +189,14 @@ public class Quiz {
 		this.example4 = "4. 다중상속을 가능하게 해준다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizMethod10(){
+	public void quizMethod10(){
 		this.labelStr = "0으로 나눌 때 발생하는 에러를 처리하는 예외 클래스는?"; 
 //		this.areaStr = " "; 
 		this.example1 = "1. ArithmeticException"; 
@@ -202,14 +205,14 @@ public class Quiz {
 		this.example4 = "4. NumberFormatException"; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
-//		this.time = 20;
-		
-		QuizDisplay();
+		stop = false;
+		time = 20;
+		quizDisplay();
 		
 		
 	}
 	
-	public void QuizDisplay(){
+	public void quizDisplay(){
 		
 		frame = new JFrame("Quiz");
 		frame.setBounds(500, 300, 500, 400);
@@ -278,16 +281,16 @@ public class Quiz {
 
 		bar.add(timeP = new JProgressBar());
 		timeP.setMinimum(0);  
-		timeP.setMaximum(60);
+		timeP.setMaximum(20);
 		timeP.setValue(time); 
 		timeP.setForeground(Color.DARK_GRAY); 
 		timeP.setBorderPainted(false);  
 
 		barbase.add(bar);
 
-		if (time == 60) {  
-		new Timer().start();  
-		}
+//		if (time == 60) {  
+//		new Timer().start();  
+//		}
 		
 		
 		frame.add(check1);
@@ -313,6 +316,7 @@ public class Quiz {
 				answerMatch = 1;
 				if(answerMatch==answer){
 					JOptionPane.showMessageDialog(null, "정답");
+					stop = true;
 					frame.setVisible(false);
 					if(count==5){
 					
@@ -321,6 +325,7 @@ public class Quiz {
 					randomOutput();
 					}else{
 						JOptionPane.showMessageDialog(null, "오답");
+						stop = true;
 						frame.setVisible(false);
 						if(count==5){
 							System.exit(0);
@@ -337,6 +342,7 @@ public class Quiz {
 				answerMatch = 2;
 				if(answerMatch==answer){
 					JOptionPane.showMessageDialog(null, "정답");
+					stop = true;
 					frame.setVisible(false);
 					if(count==5){
 						System.exit(0);
@@ -344,6 +350,7 @@ public class Quiz {
 					randomOutput();
 					}else{
 						JOptionPane.showMessageDialog(null, "오답");
+						stop = true;
 						frame.setVisible(false);
 						if(count==5){
 							System.exit(0);
@@ -357,6 +364,7 @@ public class Quiz {
 				answerMatch = 3;
 				if(answerMatch==answer){
 					JOptionPane.showMessageDialog(null, "정답");
+					stop = true;
 					frame.setVisible(false);
 					if(count==5){
 						System.exit(0);
@@ -364,6 +372,7 @@ public class Quiz {
 					randomOutput();
 					}else{
 						JOptionPane.showMessageDialog(null, "오답");
+						stop = true;
 						frame.setVisible(false);
 						if(count==5){
 							System.exit(0);
@@ -377,6 +386,7 @@ public class Quiz {
 			answerMatch = 4;
 			if(answerMatch==answer){
 				JOptionPane.showMessageDialog(null, "정답");
+				stop = true;
 				frame.setVisible(false);
 				if(count==5){
 					System.exit(0);
@@ -385,6 +395,7 @@ public class Quiz {
 				randomOutput();
 				}else{
 					JOptionPane.showMessageDialog(null, "오답");
+					stop = true;
 					frame.setVisible(false);
 					if(count==5){
 						System.exit(0);
@@ -404,6 +415,7 @@ public class Quiz {
 		
 		
 		if(count==0){
+			new Timer().start(); 
 		for(int i= 0;i<numArr.length;i++){
 			
 			numArr[i] = (int)(Math.random() *10) +1; 
@@ -426,34 +438,34 @@ public class Quiz {
 		if(count<5){
 			switch(numArr[count++]){
 		
-			case 1 : QuizMethod1();
+			case 1 : quizMethod1();
 			break;
 
-			case 2 : QuizMethod2();
+			case 2 : quizMethod2();
 			break;
 			
-			case 3 : QuizMethod3();
+			case 3 : quizMethod3();
 			break;
 			
-			case 4 : QuizMethod4();
+			case 4 : quizMethod4();
 			break;			
 			
-			case 5 : QuizMethod5();			
+			case 5 : quizMethod5();			
 			break;
 			
-			case 6 : QuizMethod6();
+			case 6 : quizMethod6();
 			break;
 			
-			case 7 : QuizMethod7();
+			case 7 : quizMethod7();
 			break;
 			
-			case 8 : QuizMethod8();
+			case 8 : quizMethod8();
 			break;
 			
-			case 9 : QuizMethod9();
+			case 9 : quizMethod9();
 			break;
 			
-			case 10 : QuizMethod10();
+			case 10 : quizMethod10();
 			break;
 			
 			}
@@ -470,7 +482,8 @@ public class Quiz {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				time--; 
+				time--;
+				if(stop==true){break;}
 				if (time == 0) {
 
 					timeP.setValue(time);
