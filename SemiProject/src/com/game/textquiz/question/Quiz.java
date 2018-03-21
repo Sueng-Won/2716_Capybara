@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 
 
 
-public class Quiz3 {
+public class Quiz {
 	
 	Font f1 = new Font("맑은 고딕",Font.BOLD, 13);
 	private String labelStr; 
