@@ -275,7 +275,7 @@ public class Quiz {
 			
 			
 			if(check1.isSelected()){
-				frame.setVisible(false);
+//				frame.setVisible(false);
 				frame2 = new JFrame("Answer");
 				frame2.setBounds(500, 300, 200, 140);
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -312,7 +312,7 @@ public class Quiz {
 					
 				
 			}else if(check2.isSelected()){
-				frame.setVisible(false);
+//				frame.setVisible(false);
 				frame2 = new JFrame("Answer");
 				frame2.setBounds(500, 300, 200, 140);
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -347,7 +347,7 @@ public class Quiz {
 				});
 					
 			}else if(check3.isSelected()){
-				frame.setVisible(false);
+//				frame.setVisible(false);
 				frame2 = new JFrame("Answer");
 				frame2.setBounds(500, 300, 200, 140);
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -382,7 +382,7 @@ public class Quiz {
 				});
 			
 		}else if(check4.isSelected()){
-			frame.setVisible(false);
+//			frame.setVisible(false);
 			frame2 = new JFrame("Answer");
 			frame2.setBounds(500, 300, 200, 140);
 			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
