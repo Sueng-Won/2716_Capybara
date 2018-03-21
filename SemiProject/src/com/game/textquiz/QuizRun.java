@@ -1,6 +1,5 @@
 package com.game.textquiz;
 
-import com.game.textquiz.question.Quiz;
 
 public class QuizRun {
 
