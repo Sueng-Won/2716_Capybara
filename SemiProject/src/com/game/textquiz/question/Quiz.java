@@ -1,4 +1,6 @@
 
+package com.game.textquiz.question;
+
 import java.awt.Color;
 
 
