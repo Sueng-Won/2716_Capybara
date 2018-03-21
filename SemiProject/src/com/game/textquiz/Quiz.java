@@ -1,11 +1,9 @@
 package com.game.textquiz;
 
-
 import java.awt.Color;
-
-
-
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -16,9 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+
+
 
 
 
@@ -41,7 +42,12 @@ public class Quiz {
 	JRadioButton check4;
 	int[] numArr = new int[5];
 	public int count=0;
-	JFrame frame2;
+	static Timer timer;
+	JProgressBar timeP;
+	static int time = 60;
+	JPanel bar;
+	JPanel barbase;
+	JPanel base;
 	
 	
 	public void QuizMethod1(){
@@ -53,7 +59,7 @@ public class Quiz {
 		this.example4 = "4. boolean"; 
 		this.answer = 2 ;
 		this.areaNum = 0 ;
-		
+//		this.time = 20;
 		QuizDisplay();
 		
 		
@@ -68,7 +74,7 @@ public class Quiz {
 		this.example4 = "4. 동일 클래스 내에서 발생한다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
-		
+//		this.time = 20;
 		QuizDisplay();
 		
 		
@@ -83,7 +89,8 @@ public class Quiz {
 		this.example4 = "4. short -> int"; 
 		this.answer = 2 ;
 		this.areaNum = 0 ;
-		
+//		this.time = 20;
+
 		
 		QuizDisplay();
 		
@@ -102,6 +109,7 @@ public class Quiz {
 		this.example4 = "4. import"; 
 		this.answer = 4 ;
 		this.areaNum = 1 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -117,6 +125,7 @@ public class Quiz {
 		this.example4 = "4. 지정하지 않은 예외는 디폴트 예외 처리기가 처리한다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -131,6 +140,7 @@ public class Quiz {
 		this.example4 = "인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -145,6 +155,7 @@ public class Quiz {
 		this.example4 = "4. 자동 초기화되므로 별도의 초기화가 필요없다."; 
 		this.answer = 4 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -159,6 +170,7 @@ public class Quiz {
 		this.example4 = "4. 상속을 표현하는 키워드는 extends이다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -174,6 +186,7 @@ public class Quiz {
 		this.example4 = "4. 다중상속을 가능하게 해준다."; 
 		this.answer = 3 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -189,6 +202,7 @@ public class Quiz {
 		this.example4 = "4. NumberFormatException"; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
+//		this.time = 20;
 		
 		QuizDisplay();
 		
@@ -201,7 +215,7 @@ public class Quiz {
 		frame.setBounds(500, 300, 500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setLayout(null);
+		
 		JLabel qLabel = new JLabel();
 		qLabel.setText(labelStr);
 		if(areaNum== 1){
@@ -255,15 +269,33 @@ public class Quiz {
 		
 		frame.add(qLabel);
 
+	
+		
+		bar = new JPanel(new GridLayout(1, 2, 1, 1)); 
+		
+		barbase = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		
+
+		bar.add(timeP = new JProgressBar());
+		timeP.setMinimum(0);  
+		timeP.setMaximum(60);
+		timeP.setValue(time); 
+		timeP.setForeground(Color.DARK_GRAY); 
+		timeP.setBorderPainted(false);  
+
+		barbase.add(bar);
+
+		if (time == 60) {  
+		new Timer().start();  
+		}
+		
 		
 		frame.add(check1);
 		frame.add(check2);
 		frame.add(check3);
 		frame.add(check4);
 		frame.add(Btn);
-		
-	
-		
+		frame.add(barbase);
 		
 		frame.setVisible(true);
 		
@@ -283,6 +315,7 @@ public class Quiz {
 					JOptionPane.showMessageDialog(null, "정답");
 					frame.setVisible(false);
 					if(count==5){
+					
 						System.exit(0);
 					}
 					randomOutput();
@@ -427,6 +460,30 @@ public class Quiz {
 		}
 		}
 	
+	class Timer extends Thread {
+		@Override
+		public void run() {
+			while (true) {
+				try {
+					Thread.sleep(1000); 
+					System.out.println(time);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				time--; 
+				if (time == 0) {
+
+					timeP.setValue(time);
+					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+					System.exit(0);
+					break;
+				}
+
+				timeP.setValue(time);
+			}
+
+		}
+	}
 	
 		}
 	
