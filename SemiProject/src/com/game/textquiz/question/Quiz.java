@@ -1,18 +1,24 @@
-package com.game.textquiz.question;
+
 import java.awt.Color;
+
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
-public class Quiz {
+
+
+public class Quiz3 {
 	
 	Font f1 = new Font("맑은 고딕",Font.BOLD, 13);
 	private String labelStr; 
@@ -23,12 +29,15 @@ public class Quiz {
 	private String example4; 
 	private int answer;
 	private int areaNum;
-	JFrame frame = null;
+	JFrame frame;
 	JButton Btn = new JButton("정답 확인");
-	JRadioButton check1 = null;
-	JRadioButton check2 = null;
-	JRadioButton check3 = null;
-	JRadioButton check4 = null;
+	JRadioButton check1;
+	JRadioButton check2;
+	JRadioButton check3;
+	JRadioButton check4;
+	int[] numArr = new int[5];
+	public int count=0;
+	JFrame frame2;
 	
 	
 	public void QuizMethod1(){
@@ -70,6 +79,8 @@ public class Quiz {
 		this.example4 = "4. short -> int"; 
 		this.answer = 2 ;
 		this.areaNum = 0 ;
+		
+		
 		QuizDisplay();
 		
 		
@@ -183,7 +194,7 @@ public class Quiz {
 	public void QuizDisplay(){
 		
 		frame = new JFrame("Quiz");
-		frame.setBounds(200, 200, 500, 400);
+		frame.setBounds(500, 300, 500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLayout(null);
@@ -247,15 +258,12 @@ public class Quiz {
 		frame.add(check4);
 		frame.add(Btn);
 		
+	
+		
+		
 		frame.setVisible(true);
 		
 		
-		QuizAnswer();
-		
-		
-	}
-	
-	public void QuizAnswer(){
 	
 	Btn.addActionListener(new ActionListener() {
 		
@@ -266,12 +274,16 @@ public class Quiz {
 			
 			if(check1.isSelected()){
 				frame.setVisible(false);
-				JFrame frame2 = new JFrame("answer");
-				frame2.setBounds(300, 300, 200, 120);
+				frame2 = new JFrame("Answer");
+				frame2.setBounds(500, 300, 200, 140);
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame2.setLayout(null);
 				frame2.setResizable(false);
 				JLabel aLabel = new JLabel();
+				JButton Btn2 = new JButton("확인");
+				Btn2.setBounds(55,60,75,30);
+				frame2.add(Btn2);
+				frame2.setFont(f1);
 				answerMatch = 1;
 				if(answerMatch==answer){
 					aLabel.setText("정답입니다!!");
@@ -279,59 +291,106 @@ public class Quiz {
 					aLabel.setText("틀렸습니다.");
 					}
 				aLabel.setFont(f1);
-				aLabel.setBounds(55,-5,100,100);
+				aLabel.setBounds(60,-15,100,100);
 				frame2.add(aLabel);
 				frame2.setVisible(true);
-				
+				Btn2.addMouseListener( new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == 1){
+						frame2.setVisible(false);
+						
+						randomOutput();
+					}
+					
+					
+					}
+				});
+
+					
 				
 			}else if(check2.isSelected()){
-					frame.setVisible(false);
-					JFrame frame2 = new JFrame("Answer");
-					frame2.setBounds(300, 300, 200, 120);
-					frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame2.setLayout(null);
-					frame2.setResizable(false);
-					JLabel aLabel = new JLabel();
-					answerMatch = 2;
-					if(answerMatch==answer){
+				frame.setVisible(false);
+				frame2 = new JFrame("Answer");
+				frame2.setBounds(500, 300, 200, 140);
+				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame2.setLayout(null);
+				frame2.setResizable(false);
+				JLabel aLabel = new JLabel();
+				JButton Btn2 = new JButton("확인");
+				Btn2.setBounds(55,60,75,30);
+				frame2.add(Btn2);
+				frame2.setFont(f1);
+				answerMatch = 2;
+				if(answerMatch==answer){
 					aLabel.setText("정답입니다!!");
 					}else{
 					aLabel.setText("틀렸습니다.");
 					}
-					aLabel.setFont(f1);
-					aLabel.setBounds(55,-5,100,100);
-					frame2.add(aLabel);
-					frame2.setVisible(true);
-
-			
-		}else if(check3.isSelected()){
-			frame.setVisible(false);
-			JFrame frame2 = new JFrame("Answer");
-			frame2.setBounds(300, 300, 200, 120);
-			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame2.setLayout(null);
-			frame2.setResizable(false);
-			JLabel aLabel = new JLabel();
-			answerMatch = 3;
-			if(answerMatch==answer){
-				aLabel.setText("정답입니다!!");
-				}else{
-				aLabel.setText("틀렸습니다.");
-				}
-			aLabel.setFont(f1);
-			aLabel.setBounds(55,-5,100,100);
-			frame2.add(aLabel);
-			frame2.setVisible(true);
-			
+				aLabel.setFont(f1);
+				aLabel.setBounds(60,-15,100,100);
+				frame2.add(aLabel);
+				frame2.setVisible(true);
+				Btn2.addMouseListener( new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == 1){
+						frame2.setVisible(false);
+						
+						randomOutput();
+					}
+					
+					
+					}
+				});
+					
+			}else if(check3.isSelected()){
+				frame.setVisible(false);
+				frame2 = new JFrame("Answer");
+				frame2.setBounds(500, 300, 200, 140);
+				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame2.setLayout(null);
+				frame2.setResizable(false);
+				JLabel aLabel = new JLabel();
+				JButton Btn2 = new JButton("확인");
+				Btn2.setBounds(55,60,75,30);
+				frame2.add(Btn2);
+				frame2.setFont(f1);
+				answerMatch = 3;
+				if(answerMatch==answer){
+					aLabel.setText("정답입니다!!");
+					}else{
+					aLabel.setText("틀렸습니다.");
+					}
+				aLabel.setFont(f1);
+				aLabel.setBounds(60,-15,100,100);
+				frame2.add(aLabel);
+				frame2.setVisible(true);
+				Btn2.addMouseListener( new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					if(e.getButton() == 1){
+						frame2.setVisible(false);
+						
+						randomOutput();
+					}
+					
+					
+					}
+				});
 			
 		}else if(check4.isSelected()){
 			frame.setVisible(false);
-			JFrame frame2 = new JFrame("Answer");
-			frame2.setBounds(300, 300, 200, 120);
+			frame2 = new JFrame("Answer");
+			frame2.setBounds(500, 300, 200, 140);
 			frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame2.setLayout(null);
 			frame2.setResizable(false);
 			JLabel aLabel = new JLabel();
+			JButton Btn2 = new JButton("확인");
+			Btn2.setBounds(55,60,75,30);
+			frame2.add(Btn2);
+			frame2.setFont(f1);
 			answerMatch = 4;
 			if(answerMatch==answer){
 				aLabel.setText("정답입니다!!");
@@ -339,12 +398,85 @@ public class Quiz {
 				aLabel.setText("틀렸습니다.");
 				}
 			aLabel.setFont(f1);
-			aLabel.setBounds(55,-5,100,100);
+			aLabel.setBounds(60,-15,100,100);
 			frame2.add(aLabel);
 			frame2.setVisible(true);
+			Btn2.addMouseListener( new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				if(e.getButton() == 1){
+					frame2.setVisible(false);
+					
+					randomOutput();
+				}
+				
+				
+				}
+			});
+				
+			
+			
 		}
 		}
 	});
 	}
 	
-}
+	public void randomOutput(){
+		
+		if(count==0){
+		for(int i= 0;i<numArr.length;i++){
+			
+			numArr[i] = (int)(Math.random() *10) +1; 
+			
+				for(int j = 0;j<i;j++){
+					 
+					 if(numArr[i]==numArr[j]){
+						i--;
+						break;
+					}
+		
+				}
+				
+		} 
+		}
+		
+		if(count<5){
+			switch(numArr[count++]){
+		
+			case 1 : QuizMethod1();
+			break;
+
+			case 2 : QuizMethod2();
+			break;
+			
+			case 3 : QuizMethod3();
+			break;
+			
+			case 4 : QuizMethod4();
+			break;			
+			
+			case 5 : QuizMethod5();			
+			break;
+			
+			case 6 : QuizMethod6();
+			break;
+			
+			case 7 : QuizMethod7();
+			break;
+			
+			case 8 : QuizMethod8();
+			break;
+			
+			case 9 : QuizMethod9();
+			break;
+			
+			case 10 : QuizMethod10();
+			break;
+			
+			}
+		}
+		}
+		}
+	
+	
+
