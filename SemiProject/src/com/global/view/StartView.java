@@ -5,11 +5,17 @@ import java.awt.Image;
 import javax.swing.*;
 
 public class StartView {
-
-	public void gameView() {
-
+	int time = 20;
+	int part = 1;
+	JLabel timeLabel;
+	JLabel partLabel;
+	int startIdx = 0;
+	
+	public void gameView(int startIdx) {
+		
+		this.startIdx = startIdx;
 		JFrame frame = new JFrame("카피바라 강사의 하루");
-		frame.setBounds(50, 50, 1200, 700);
+		frame.setBounds(50, 50, 1200, 750);
 		frame.setLayout(null);
 		// 파비콘 생성
 		ImageIcon icon = new ImageIcon("thumbnail.png");
@@ -28,13 +34,24 @@ public class StartView {
 
 		ImageIcon img = new ImageIcon("startBackground.png");
 		JLabel background = new JLabel(img);
-		background.setBounds(0, 0, 1200, 660);
+		background.setBounds(0, 50, 1200, 660);
 		frame.add(background);
+
+		timeLabel = new JLabel("00 : "+time);
+		timeLabel.setBounds(1000,0,200,50);
+		frame.add(timeLabel);
+		partLabel = new JLabel(part+"교시");
+		partLabel.setBounds(880,0,100,50);
+		frame.add(partLabel);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		new GlobalEventThread().start();
+		if(startIdx == 1){
+			new GlobalEventThread().start();
+			new Timer().start();
+		}
+
 	}
 
 	class GlobalEventThread extends Thread {
@@ -52,6 +69,40 @@ public class StartView {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	class Timer extends Thread{
+		@Override
+		public void run(){
+			while(true){
+			try {
+				Thread.sleep(1000);
+				time--;
+				if(time>9){
+					timeLabel.setText("00 : "+time);
+				}else if(time>0){
+					timeLabel.setText("00 : 0"+time);
+				}else{
+					timeLabel.setText("00 : 0"+time);
+					time = 20;
+					if(part==3){	
+						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+						System.exit(0);
+						break;
+					}else{
+						JOptionPane.showMessageDialog(null, part+"교시 완료!!");
+						part++;
+						partLabel.setText(part+"교시");
+						timeLabel.setText("00 : "+time);
+					}
+					
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 		}
 	}

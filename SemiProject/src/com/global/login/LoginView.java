@@ -50,7 +50,8 @@ public class LoginView {
 						frame.setVisible(false);
 						// 게임창으로 넘어가기
 						StartView sv = new StartView();
-						sv.gameView();
+						sv.gameView(1);
+
 					}
 				}	
 			}
