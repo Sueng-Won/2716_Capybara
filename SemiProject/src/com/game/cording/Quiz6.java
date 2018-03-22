@@ -3,6 +3,8 @@ package com.game.cording;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -116,7 +118,7 @@ public class Quiz6 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (quizArea.getText().trim().equals(finalAnswer.trim())) {
+				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					int rnum = (int) (Math.random() * 4) + 7;

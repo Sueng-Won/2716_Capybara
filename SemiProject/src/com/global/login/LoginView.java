@@ -1,5 +1,7 @@
 package com.global.login;
 
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +12,16 @@ import com.global.view.StartView;
 
 public class LoginView {
 	public void mainLogin() {
+//		JPanel panel = new JPanel();
+		
 		JFrame frame = new JFrame("사용자 이름 입력창");
+		Container c = frame.getContentPane();
+		
 		frame.setBounds(600, 300, 300, 300);
+		c.setBackground(new Color(233, 221, 198));
 		frame.setLayout(null);
-		// JPanel panel = new JPanel();
-		// frame.add(panel);
+//		frame.add(panel);
+		
 		JLabel nameLabel = new JLabel("이름 입력");
 		nameLabel.setBounds(40, 70, 70, 100);
 		frame.add(nameLabel);

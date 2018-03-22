@@ -13,12 +13,13 @@ import javax.swing.JOptionPane;
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
+import com.global.login.LoginView;
 
 public class StartView {
 
 	int time = 20;
 	int part = 1;
-	JButton rythmBtn, cordingBtn, textqBtn, changeBtn;
+	JButton rythmBtn, cordingBtn, textqBtn, changeBtn,startBtn;
 	int startIdx = 0;
 
 	public void gameView(int startIdx) {
@@ -62,16 +63,20 @@ public class StartView {
 		cordingBtn = new JButton();
 		textqBtn = new JButton();
 		changeBtn = new JButton();
+		startBtn = new JButton();
 
 		rythmBtn.setBounds(1020, 10, 150, 50);
 		cordingBtn.setBounds(1020, 70, 150, 50);
 		textqBtn.setBounds(1020, 130, 150, 50);
 		changeBtn.setBounds(1020, 190, 150, 50);
+		startBtn.setBounds(1020, 250, 150, 50);
 		//배경 투명
 		rythmBtn.setContentAreaFilled(false);
 		cordingBtn.setContentAreaFilled(false);
 		textqBtn.setContentAreaFilled(false);
 		changeBtn.setContentAreaFilled(false);
+		startBtn.setContentAreaFilled(false);
+		
 		//이미지 리사이징
 		Image resizedBtnRythm = imgBtnRythm.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
 		Image resizedBtnCording = imgBtnCording.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
@@ -134,6 +139,16 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
+			}
+		});
+		
+		//게임 로그인창 실행
+		startBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LoginView().mainLogin();
+				
 			}
 		});
 
