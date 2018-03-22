@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-
+//
 public class Ex2 extends JFrame implements KeyListener {
 	String sol = null; // 문제의 랜덤 값을 스트링으로 처리
 	String[] images = { "up.PNG", "left.PNG", "down.PNG", "right.PNG" }; // 방향키 이미지 경로
