@@ -2,9 +2,6 @@ package com.game.cording;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-
-import com.game.cording.Quiz1.Timer;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
