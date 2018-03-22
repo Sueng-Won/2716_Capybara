@@ -47,6 +47,7 @@ public class StartView {
 		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
+		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
 		
 		
 		
@@ -70,16 +71,19 @@ public class StartView {
 		cordingBtn.setContentAreaFilled(false);
 		textqBtn.setContentAreaFilled(false);
 		changeBtn.setContentAreaFilled(false);
+		startBtn.setContentAreaFilled(false);
 		
 		rythmBtn.setIcon(btnRythm);
 		cordingBtn.setIcon(btnCording);
 		textqBtn.setIcon(btnTextQuiz);
 		changeBtn.setIcon(btnChange);
+		startBtn.setIcon(btnStart);
 		
 		rythmBtn.setBorderPainted(false);
 		cordingBtn.setBorderPainted(false);
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
+		startBtn.setBorderPainted(false);
 
 		// rythmBtn.setIcon(new ImageIcon("Btnbase.PNG"));
 		// cordingBtn.setIcon(new ImageIcon("Btnbase.PNG"));
@@ -140,6 +144,7 @@ public class StartView {
 		frame.add(cordingBtn);
 		frame.add(textqBtn);
 		frame.add(changeBtn);
+		frame.add(startBtn);
 
 		frame.add(background);
 

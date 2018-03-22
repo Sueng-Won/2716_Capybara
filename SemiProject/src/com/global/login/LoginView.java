@@ -56,8 +56,8 @@ public class LoginView {
 						// 팝업창 닫을시 이름 입력창도 닫기
 						frame.setVisible(false);
 						// 게임창으로 넘어가기
-						StartView sv = new StartView();
-						sv.gameView(1);
+//						StartView sv = new StartView();
+//						sv.gameView(1);
 
 					}
 				}	
