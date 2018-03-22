@@ -1,0 +1,34 @@
+다음은 로또번호(중복X)를 출력하는 프로그램이다.
+빈칸에 알맞은 조건식을 작성하시오.
+
+class  Lotto  {
+        public  static  void  main(String  args[])  {
+                Random  r  =  new  Random();
+                int[]  loNum  =  new  int[6];
+                int  nextCount  =  0;
+                int  num  =  0;
+                for  (;  nextCount  <  6;)  {
+                        num  =  r.nextInt(45)  +  1;
+                        if  (nextCount  ==  0)  {
+                                loNum[nextCount]  =  num;
+                                System.out.print(loNum[nextCount]  +  "    ");
+                                nextCount++;
+                        }  else  {
+                                loNum[nextCount]  =  num;
+                                int  equalsNum  =  0;
+                                outer:
+                                  for  (int  j  =  0;  j  <  nextCount;  j++)  {
+                                        if  (______________________)  {
+                                                equalsNum++;
+                                                break  outer;
+                                        }
+                                }
+                                if  (equalsNum  ==  0)  {
+                                        System.out.print(loNum[nextCount]  +  "    ");
+                                        nextCount++;
+                                }
+                        }
+                }
+                System.out.println();
+        }
+}

@@ -28,6 +28,7 @@ public class Quiz9 {
 	JPanel bar;
 	Timer timer;
 	JTextArea answerArea;
+	JScrollPane scrollP;
 
 	public void Quiz9() {
 
@@ -65,7 +66,9 @@ public class Quiz9 {
 		quizArea.setFont(font);
 		quizArea.setEditable(false);
 		quizArea.setBackground(new Color(238, 238, 238));
-		frame.add(quizArea);
+		scrollP = new JScrollPane(quizArea);
+		scrollP.setBounds(0, 30, 700, 370);
+		frame.add(scrollP);
 
 
 		//문제 파일로 읽어오기
@@ -90,7 +93,7 @@ public class Quiz9 {
 		//답안 공간 생성
 		answerArea = new JTextArea();
 		
-		JScrollPane scrollP = new JScrollPane(answerArea);
+		scrollP = new JScrollPane(answerArea);
 		scrollP.setBounds(0, 420, 680, 180);
 
 		answerArea.setBorder(new LineBorder(Color.BLACK, 3));

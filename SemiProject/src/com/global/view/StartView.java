@@ -1,6 +1,5 @@
 package com.global.view;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,12 +12,13 @@ import javax.swing.JOptionPane;
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
+import com.global.login.LoginView;
 
 public class StartView {
 
 	int time = 20;
 	int part = 1;
-	JButton rythmBtn, cordingBtn, textqBtn, changeBtn;
+	JButton rythmBtn, cordingBtn, textqBtn, changeBtn,startBtn;
 	int startIdx = 0;
 
 	public void gameView(int startIdx) {
@@ -47,10 +47,7 @@ public class StartView {
 		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
-		Image imgBtnRythm = btnRythm.getImage();
-		Image imgBtnCording = btnCording.getImage();
-		Image imgBtnTextQuiz = btnTextQuiz.getImage();
-		Image imgBtnChange = btnChange.getImage();
+		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
 		
 		
 		
@@ -62,35 +59,31 @@ public class StartView {
 		cordingBtn = new JButton();
 		textqBtn = new JButton();
 		changeBtn = new JButton();
+		startBtn = new JButton();
 
 		rythmBtn.setBounds(1020, 10, 150, 50);
 		cordingBtn.setBounds(1020, 70, 150, 50);
 		textqBtn.setBounds(1020, 130, 150, 50);
 		changeBtn.setBounds(1020, 190, 150, 50);
+		startBtn.setBounds(1020, 250, 150, 50);
 		//배경 투명
 		rythmBtn.setContentAreaFilled(false);
 		cordingBtn.setContentAreaFilled(false);
 		textqBtn.setContentAreaFilled(false);
 		changeBtn.setContentAreaFilled(false);
-		//이미지 리사이징
-		Image resizedBtnRythm = imgBtnRythm.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
-		Image resizedBtnCording = imgBtnCording.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
-		Image resizedBtnText = imgBtnTextQuiz.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
-		Image resizedBtnChange = imgBtnChange.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon btnRythmResized = new ImageIcon(resizedBtnRythm);
-		ImageIcon btnCordingResized = new ImageIcon(resizedBtnCording);
-		ImageIcon btnTextQuizResized = new ImageIcon(resizedBtnText);
-		ImageIcon btnChangeResized = new ImageIcon(resizedBtnChange);
+		startBtn.setContentAreaFilled(false);
 		
-		rythmBtn.setIcon(btnRythmResized);
-		cordingBtn.setIcon(btnCordingResized);
-		textqBtn.setIcon(btnTextQuizResized);
-		changeBtn.setIcon(btnChangeResized);
+		rythmBtn.setIcon(btnRythm);
+		cordingBtn.setIcon(btnCording);
+		textqBtn.setIcon(btnTextQuiz);
+		changeBtn.setIcon(btnChange);
+		startBtn.setIcon(btnStart);
 		
 		rythmBtn.setBorderPainted(false);
 		cordingBtn.setBorderPainted(false);
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
+		startBtn.setBorderPainted(false);
 
 		// rythmBtn.setIcon(new ImageIcon("Btnbase.PNG"));
 		// cordingBtn.setIcon(new ImageIcon("Btnbase.PNG"));
@@ -136,11 +129,22 @@ public class StartView {
 
 			}
 		});
+		
+		//게임 로그인창 실행
+		startBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LoginView().mainLogin();
+				
+			}
+		});
 
 		frame.add(rythmBtn);
 		frame.add(cordingBtn);
 		frame.add(textqBtn);
 		frame.add(changeBtn);
+		frame.add(startBtn);
 
 		frame.add(background);
 
