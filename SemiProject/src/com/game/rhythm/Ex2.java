@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -20,7 +19,7 @@ import javax.swing.JProgressBar;
 //
 public class Ex2 extends JFrame implements KeyListener {
 	String sol = null; // 문제의 랜덤 값을 스트링으로 처리
-	String[] images = { "up.PNG", "left.PNG", "down.PNG", "right.PNG" }; // 방향키 이미지 경로
+	String[] images = { "ArrowImageFolder/up.png", "ArrowImageFolder/left.png", "ArrowImageFolder/down.png", "ArrowImageFolder/right.png" }; // 방향키 이미지 경로
 	JLabel[] l_name = new JLabel[15]; // 문제를 저장할 배열
 	static int life = 3; // 라이프
 	JPanel jp; // 그리드레이아웃을 담을 패널
