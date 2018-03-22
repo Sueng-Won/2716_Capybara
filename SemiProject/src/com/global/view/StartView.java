@@ -1,5 +1,6 @@
 package com.global.view;
 
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.*;
@@ -37,15 +38,20 @@ public class StartView {
 		background.setBounds(0, 50, 1200, 660);
 		frame.add(background);
 
+		Font font = new Font("arian", Font.BOLD, 30);
+		
 		timeLabel = new JLabel("00 : "+time);
-		timeLabel.setBounds(1000,0,200,50);
+		timeLabel.setBounds(1080,0,200,50);
 		frame.add(timeLabel);
 		partLabel = new JLabel(part+"교시");
-		partLabel.setBounds(880,0,100,50);
+		partLabel.setBounds(980,0,100,50);
 		frame.add(partLabel);
+		
+		timeLabel.setFont(font);
+		partLabel.setFont(font);
 
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		if(startIdx == 1){
 			new GlobalEventThread().start();
