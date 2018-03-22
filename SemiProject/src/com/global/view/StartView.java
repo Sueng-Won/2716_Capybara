@@ -1,5 +1,6 @@
 package com.global.view;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
@@ -25,7 +27,7 @@ public class StartView {
 
 		this.startIdx = startIdx;
 		JFrame frame = new JFrame("카피바라 강사의 하루");
-		frame.setBounds(50, 50, 1200, 700);
+		frame.setBounds(50, 50, 1220, 700);
 		frame.setLayout(null);
 		// 파비콘 생성
 		ImageIcon icon = new ImageIcon("thumbnail.png");
@@ -42,7 +44,7 @@ public class StartView {
 		// redBar.setBounds(30, 480, 700, 30);
 		// frame.add(redBar);
 
-		ImageIcon img = new ImageIcon("startBackground.png");
+//		ImageIcon img = new ImageIcon("startBackground.png");
 		ImageIcon btnRythm = new ImageIcon("ButtonImageFolder/RythmButton.png");
 		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
@@ -52,8 +54,17 @@ public class StartView {
 		
 		
 		
-		JLabel background = new JLabel(img);
-		background.setBounds(0, 0, 1200, 660);
+		ImageIcon img = new ImageIcon("startBackground.png");
+		//이름없는생성자로 배경화면삽ㅇ딥
+		JPanel background = new JPanel() {
+            public void paintComponent(Graphics g) {
+                g.drawImage(img.getImage(), 0, 0, null);
+                setOpaque(false);
+                super.paintComponent(g);
+            }
+        };
+        background.setLayout(null);
+        background.setBounds(0, 0, 1200, 700);
 
 		rythmBtn = new JButton();
 		cordingBtn = new JButton();
@@ -139,12 +150,23 @@ public class StartView {
 				
 			}
 		});
-
-		frame.add(rythmBtn);
-		frame.add(cordingBtn);
-		frame.add(textqBtn);
-		frame.add(changeBtn);
-		frame.add(startBtn);
+//백그라운드 배경패널에 버튼삽입
+		background.add(rythmBtn);
+		background.add(cordingBtn);
+		background.add(textqBtn);
+		background.add(changeBtn);
+		background.add(startBtn);
+		
+		//Vo 데이타를 배경패널에 입력
+		StudentVo sv = new StudentVo();
+		background.add(sv.setConcentrationStu1());
+		background.add(sv.setConcentrationStu2());
+		background.add(sv.setConcentrationStu3());
+		background.add(sv.setConcentrationStu4());
+		background.add(sv.setConcentrationStu5());
+		background.add(sv.setStress());
+		background.add(sv.setAchievementLabel());
+		background.add(sv.setAchivementCount());
 
 		frame.add(background);
 
