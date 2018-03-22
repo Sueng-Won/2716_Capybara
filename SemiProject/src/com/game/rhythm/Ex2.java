@@ -122,6 +122,9 @@ public class Ex2 extends JFrame implements KeyListener {
 			}
 			
 		});
+
+		setDefaultCloseOperation(Ex2.DISPOSE_ON_CLOSE);
+
 	}
 
 	// 키보드 이벤트
