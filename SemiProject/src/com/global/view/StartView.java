@@ -2,21 +2,27 @@ package com.global.view;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class StartView {
+import com.game.cording.Main;
+import com.game.cording.Quiz1;
+import com.game.rhythm.Ex2;
+import com.game.textquiz.Quiz;
+
+public class StartView{
 	int time = 20;
 	int part = 1;
-	JLabel timeLabel;
-	JLabel partLabel;
+	JButton rythmBtn, cordingBtn, textqBtn, changeBtn;
 	int startIdx = 0;
 	
-	public void gameView(int startIdx) {
+	public void gameView(int startIdx){
 		
 		this.startIdx = startIdx;
 		JFrame frame = new JFrame("카피바라 강사의 하루");
-		frame.setBounds(50, 50, 1200, 750);
+		frame.setBounds(50, 50, 1200, 700);
 		frame.setLayout(null);
 		// 파비콘 생성
 		ImageIcon icon = new ImageIcon("thumbnail.png");
@@ -35,27 +41,80 @@ public class StartView {
 
 		ImageIcon img = new ImageIcon("startBackground.png");
 		JLabel background = new JLabel(img);
-		background.setBounds(0, 50, 1200, 660);
+		background.setBounds(0, 0, 1200, 660);
+		
+		rythmBtn = new JButton("리듬게임");
+		cordingBtn = new JButton("코딩게임");
+		textqBtn = new JButton("이론게임");
+		changeBtn = new JButton("자리바꾸기");
+		
+		rythmBtn.setBounds(1020,10,150,50);
+		cordingBtn.setBounds(1020,70,150,50);
+		textqBtn.setBounds(1020,130,150,50);
+		changeBtn.setBounds(1020,190,150,50);
+		
+		rythmBtn.setBorderPainted(false);
+		cordingBtn.setBorderPainted(false);
+		textqBtn.setBorderPainted(false);
+		changeBtn.setBorderPainted(false);
+		
+//		rythmBtn.setIcon(new ImageIcon("Btnbase.PNG"));
+//		cordingBtn.setIcon(new ImageIcon("Btnbase.PNG"));
+//		textqBtn.setIcon(new ImageIcon("Btnbase.PNG"));
+//		changeBtn.setIcon(new ImageIcon("Btnbase.PNG"));
+		
+		//리듬게임 실행
+		rythmBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new Ex2().gameRun();
+			}
+		});
+		
+		//코딩게임 실행
+		cordingBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new Quiz1().Quiz1();
+			}
+		});
+		
+		//이론게임 실행
+		textqBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new Quiz().randomOutput();
+			}
+		});
+		
+		//자리바꾸기
+		changeBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		frame.add(rythmBtn);
+		frame.add(cordingBtn);
+		frame.add(textqBtn);
+		frame.add(changeBtn);
+
 		frame.add(background);
-
-		Font font = new Font("arian", Font.BOLD, 30);
 		
-		timeLabel = new JLabel("00 : "+time);
-		timeLabel.setBounds(1080,0,200,50);
-		frame.add(timeLabel);
-		partLabel = new JLabel(part+"교시");
-		partLabel.setBounds(980,0,100,50);
-		frame.add(partLabel);
-		
-		timeLabel.setFont(font);
-		partLabel.setFont(font);
-
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		if(startIdx == 1){
 			new GlobalEventThread().start();
-			new Timer().start();
 		}
 
 	}
@@ -78,38 +137,6 @@ public class StartView {
 			}
 		}
 	}
+
 	
-	class Timer extends Thread{//타이머
-		@Override
-		public void run(){
-			while(true){
-			try {
-				Thread.sleep(1000);
-				time--;
-				if(time>9){
-					timeLabel.setText("00 : "+time);
-				}else if(time>0){
-					timeLabel.setText("00 : 0"+time);
-				}else{
-					timeLabel.setText("00 : 0"+time);
-					time = 20;
-					if(part==3){	
-						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-						System.exit(0);
-						break;
-					}else{
-						JOptionPane.showMessageDialog(null, part+"교시 완료!!");
-						part++;
-						partLabel.setText(part+"교시");
-						timeLabel.setText("00 : "+time);
-					}
-					
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-		}
-	}
 }
