@@ -31,7 +31,7 @@ public class LoginView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UserInfo info = new UserInfo();
+//				UserInfo info = new UserInfo();
 				String name = userName.getText();
 				// 버튼 클릭시 팝업창 뜨게 하기
 				if (e.getSource() == startBtn) {
@@ -43,7 +43,7 @@ public class LoginView {
 						//올바르게 이름 입력시 뜨는 팝업창
 						JOptionPane.showMessageDialog(null, name + "님 게임을 시작하겠습니다.");
 						//이름 입력시 사용자 정보파일에 이름 입력
-						info.inputUser(name);
+//						info.inputUser(name);
 						//실행창에 사용자 이름 출력
 						//System.out.println(name);
 						// 팝업창 닫을시 이름 입력창도 닫기

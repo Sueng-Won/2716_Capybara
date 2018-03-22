@@ -13,7 +13,9 @@ import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
 
+
 public class StartView {
+
 	int time = 20;
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn;
@@ -140,3 +142,4 @@ public class StartView {
 	}
 
 }
+
