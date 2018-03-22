@@ -7,6 +7,10 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,6 +37,7 @@ public class Ex2 extends JFrame implements KeyListener {
 	Image dieImage;
 	JLabel[] lifeLabel = new JLabel[3];
 	Timer timer = new Timer();
+	int stopidx=0;
 	
 	public Ex2(int life, int count, int count2, int time){
 		this.life = life;
@@ -102,9 +107,21 @@ public class Ex2 extends JFrame implements KeyListener {
 				timer.start();
 		}
 
+		setDefaultCloseOperation(Ex2.DISPOSE_ON_CLOSE);
 
-		setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-
+		addWindowListener(new WindowAdapter() {
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				stopidx = -1;
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				
+			}
+			
+		});
 	}
 
 	// 키보드 이벤트
@@ -317,7 +334,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					dispose();
 					break;
-				}else if(count2 >= 4){
+				}else if(count2 >= 4||stopidx==-1){
 					break;
 				}
 				timeP.setValue(time);
