@@ -40,7 +40,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		ex2.gameRun();
 	}
 
-	// 실행 메소드
+	// 실행 메소드//
 	public void gameRun() {
 
 		setSize(700, 400);
