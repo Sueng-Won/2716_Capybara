@@ -18,29 +18,29 @@ import javax.swing.JTextArea;
 public class Quiz {
 
 	Font f1 = new Font("맑은 고딕", Font.BOLD, 13);
-	private String labelStr;
-	private String areaStr;
-	private String example1;
+	private String labelStr;  // 문제
+	private String areaStr;    // 설명문제 텍스트박스에 적을 내용
+	private String example1;  // example1~4번까지 문제 적는 라벨
 	private String example2;
 	private String example3;
 	private String example4;
-	private int answer;
-	private int areaNum;
+	private int answer;  // 정답 번호
+	private int areaNum;  // areaNum = 1 일 때 quizMethod3 텍스트박스 실행됨
 	JFrame frame;
 	JButton Btn = new JButton("정답 확인");
-	JRadioButton check1;
+	JRadioButton check1;  
 	JRadioButton check2;
 	JRadioButton check3;
 	JRadioButton check4;
 	int[] numArr = new int[5];
-	public int count = 0;
+	public int count = 0;  // 문제 실행 횟수
 	static Timer timer;
 	JProgressBar timeP;
 	static int time = 20;
 	JPanel bar;
 	JPanel barbase;
 	JPanel base;
-	boolean stop = false;
+	boolean stop = false;   // 타이머 스위치
 
 	public void quizMethod1() {
 		this.labelStr = "다음 중 기본형(primitive type)이 아닌 것은?";
@@ -51,9 +51,9 @@ public class Quiz {
 		this.example4 = "4. boolean";
 		this.answer = 2;
 		this.areaNum = 0;
-		stop = false;
+		stop = false;  
 		time = 20;
-		quizDisplay();
+		quizDisplay();   // quizDisplay로 이동하여 frame 출력
 
 	}
 
@@ -171,7 +171,7 @@ public class Quiz {
 		this.example2 = "2. 서로 관계없는 클래스들에게 관계를 맺어줄수 있다.";
 		this.example3 = "3. 패키지간의 연결을 도와준다.";
 		this.example4 = "4. 다중상속을 가능하게 해준다.";
-		this.answer = 3;
+		this.answer = 3; 
 		this.areaNum = 0;
 		stop = false;
 		time = 20;
@@ -191,7 +191,7 @@ public class Quiz {
 		stop = false;
 		time = 20;
 		quizDisplay();
-
+		
 	}
 
 	public void quizDisplay() {
@@ -203,13 +203,13 @@ public class Quiz {
 
 		JLabel qLabel = new JLabel();
 		qLabel.setText(labelStr);
-		if (areaNum == 1) {
+		if (areaNum == 1) {                 // quizMethod 에서 areaNum이 1일때 문제 라벨 위치 조절
 			qLabel.setBounds(30, 10, 350, 50);
 		} else {
 			qLabel.setBounds(30, 70, 350, 50);
 		}
 
-		if (areaNum == 1) {
+		if (areaNum == 1) {                // quizMethod 에서 areaNum이 1일때 텍스트박스 실행됨
 			JTextArea textArea = new JTextArea(30, 50);
 			textArea.setText(areaStr);
 			textArea.setEditable(false);
@@ -276,96 +276,108 @@ public class Quiz {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int answerMatch = 0;
-				JLabel messageLabel1 = new JLabel("정답입니다.");
+				
+				JLabel messageLabel1 = new JLabel("정답입니다.");   // AnswerMessage 화면에 표시될 내용
 				JLabel messageLabel2 = new JLabel("틀렸습니다.");
 				messageLabel1.setFont(f1);
 				messageLabel2.setFont(f1);
 
 				if (check1.isSelected()) {
 
-					answerMatch = 1;
+					
 
-					if (answerMatch == answer) {
+					if (answer==1) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-
-					} else {
+						answer = 0; 					
+												 
+//						answer = 0 으로 설정하고, 오답 메세지를 answer가 0이 아닐때만 실행되게 하여 AnswerMessage 추가 실행 방지
+						
+					} else if(answer!=0) { 
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
+						
 					}
-
+					
 					frame.setVisible(false);
-
 					randomOutput();
+					
 
 				} else if (check2.isSelected()) {
 
-					answerMatch = 2;
+					
 
-					if (answerMatch == answer) {
+					if (answer==2) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-
-					} else {
+						answer = 0;
+					} else if(answer!=0) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-
+						
 					}
-
+					
 					frame.setVisible(false);
-
 					randomOutput();
+					
 
 				} else if (check3.isSelected()) {
 
-					answerMatch = 3;
+					
 
-					if (answerMatch == answer) {
+					if (answer==3) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-
-					} else {
-						stop = true;
+						answer = 0;
+					} else if(answer!=0) {
+						stop = true; 
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
+						
 					}
-
+					
 					frame.setVisible(false);
-
 					randomOutput();
+					
 
 				} else if (check4.isSelected()) {
 
-					answerMatch = 4;
+					
 
-					if (answerMatch == answer) {
+					if (answer==4) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-
-					} else {
+						answer = 0;
+					} else if(answer!=0) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
+						
 					}
-
+					
 					frame.setVisible(false);
-
 					randomOutput();
+					
 
 				}
+				
 			}
+			
 		});
-
+		
 	}
 
 	public void randomOutput() {
 
-		new Timer().start();
-		// if(count==0){
-		// new Timer().start();
+		
+		new Timer().start();  // randomOutput() 실행시 마다 타이머 start
+		
+		
+		if(count==0){   
+			// 처음 randomOutput() 실행시 랜덤 번호 5개 저장
+	
 		for (int i = 0; i < numArr.length; i++) {
 
 			numArr[i] = (int) (Math.random() * 10) + 1;
@@ -376,15 +388,14 @@ public class Quiz {
 					i--;
 					break;
 				}
-
-			}
-
-			// }
+				}
+				}
 		}
-
+		//  numArr 배열에 기록된 랜덤 번호 5회 실행
 		if (count < 5) {
+			
 			switch (numArr[count++]) {
-
+			
 			case 1:
 				quizMethod1();
 				break;
@@ -440,7 +451,7 @@ public class Quiz {
 					e.printStackTrace();
 				}
 				time--;
-				if (stop == true) {
+				if (stop == true) {      //  true시 스레드 종료
 					break;
 				}
 				if (time == 0) {
