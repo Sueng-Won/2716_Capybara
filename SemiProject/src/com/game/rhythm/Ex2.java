@@ -40,6 +40,7 @@ public class Ex2 extends JFrame implements KeyListener {
 //		ex2.gameRun();
 //	}
 
+	
 	// 실행 메소드//
 	public void gameRun() {
 
@@ -101,7 +102,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				timer.start();
 		}
 
-		setDefaultCloseOperation(new Ex2().DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
 
 	}
 
@@ -310,7 +311,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //					System.exit(0);
-					new Ex2().dispose();
+					ex2.dispose();
 					break;
 				}
 				timeP.setValue(time);
