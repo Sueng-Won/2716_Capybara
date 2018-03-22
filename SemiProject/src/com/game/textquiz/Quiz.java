@@ -138,8 +138,8 @@ public class Quiz {
 //		this.areaStr = " "; 
 		this.example1 = "1. String 멤버변수는 “”로 자동 초기화된다."; 
 		this.example2 = "2. 지역변수는 반드시 초기화해야 한다."; 
-		this.example3 = "생성자보다 초기화 블럭이 먼저 수행된다."; 
-		this.example4 = "인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
+		this.example3 = "3. 생성자보다 초기화 블럭이 먼저 수행된다."; 
+		this.example4 = "4. 인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
 		stop = false;
