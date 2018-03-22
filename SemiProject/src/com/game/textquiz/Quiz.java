@@ -1,5 +1,4 @@
 package com.game.textquiz;
-
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -23,7 +22,7 @@ import javax.swing.JTextArea;
 
 
 
-public class Quiz {
+public class Quiz07 {
 	
 	Font f1 = new Font("맑은 고딕",Font.BOLD, 13);
 	private String labelStr; 
@@ -285,7 +284,7 @@ public class Quiz {
 		timeP.setValue(time); 
 		timeP.setForeground(Color.DARK_GRAY); 
 		timeP.setBorderPainted(false);  
-
+		
 		barbase.add(bar);
 
 //		if (time == 60) {  
@@ -309,100 +308,93 @@ public class Quiz {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int answerMatch = 0 ;
-			
+			JLabel messageLabel1 = new JLabel("정답입니다.");
+			JLabel messageLabel2 = new JLabel("틀렸습니다.");
+			messageLabel1.setFont(f1);
+			messageLabel2.setFont(f1);
 			
 			if(check1.isSelected()){
 				
 				answerMatch = 1;
+				
 				if(answerMatch==answer){
-					JOptionPane.showMessageDialog(null, "정답");
-					stop = true;
-					frame.setVisible(false);
-					if(count==5){
 					
-						System.exit(0);
-					}
-					randomOutput();
+					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);
+					
 					}else{
-						JOptionPane.showMessageDialog(null, "오답");
-						stop = true;
-						frame.setVisible(false);
-						if(count==5){
-							System.exit(0);
-						}
-						randomOutput();
+						
+						JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);
 					}
 				
-				
+				stop = true;
+				frame.setVisible(false);
+				if(count==5){
+					System.exit(0);
+				}
+				randomOutput();
 
 					
 				
 			}else if(check2.isSelected()){
 				
 				answerMatch = 2;
-				if(answerMatch==answer){
-					JOptionPane.showMessageDialog(null, "정답");
-					stop = true;
-					frame.setVisible(false);
-					if(count==5){
-						System.exit(0);
-					}
-					randomOutput();
-					}else{
-						JOptionPane.showMessageDialog(null, "오답");
-						stop = true;
-						frame.setVisible(false);
-						if(count==5){
-							System.exit(0);
-						}
-						randomOutput();
-					}
 				
+				if(answerMatch==answer){
 					
-			}else if(check3.isSelected()){
-
-				answerMatch = 3;
-				if(answerMatch==answer){
-					JOptionPane.showMessageDialog(null, "정답");
-					stop = true;
-					frame.setVisible(false);
-					if(count==5){
-						System.exit(0);
-					}
-					randomOutput();
-					}else{
-						JOptionPane.showMessageDialog(null, "오답");
-						stop = true;
-						frame.setVisible(false);
-						if(count==5){
-							System.exit(0);
-						}
-						randomOutput();
+					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);					
+					
+				}else{
+					
+					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);					
 					}
 				
-			
-		}else if(check4.isSelected()){
-			
-			answerMatch = 4;
-			if(answerMatch==answer){
-				JOptionPane.showMessageDialog(null, "정답");
 				stop = true;
 				frame.setVisible(false);
 				if(count==5){
 					System.exit(0);
 				}
-				
 				randomOutput();
-				}else{
-					JOptionPane.showMessageDialog(null, "오답");
-					stop = true;
-					frame.setVisible(false);
-					if(count==5){
-						System.exit(0);
-					}
-					randomOutput();
-				}
 				
+					
+			}else if(check3.isSelected()){
+
+				answerMatch = 3;
+				
+				if(answerMatch==answer){
+					
+					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);					
+					
+				}else{
+					
+					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);					
+					}
+				
+				stop = true;
+				frame.setVisible(false);
+				if(count==5){
+					System.exit(0);
+				}
+				randomOutput();
+			
+			}else if(check4.isSelected()){
+			
+				answerMatch = 4;
+				
+				if(answerMatch==answer){
+					
+				JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);				
+				
+				}else{
+					
+					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);				
+				}
+
+				stop = true;
+				frame.setVisible(false);
+				if(count==5){
+				System.exit(0);
+				}
+				randomOutput();
 			
 		}
 		}
