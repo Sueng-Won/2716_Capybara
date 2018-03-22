@@ -1,5 +1,6 @@
 package com.global.view;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,7 +13,6 @@ import javax.swing.JOptionPane;
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
-
 
 public class StartView {
 
@@ -43,19 +43,50 @@ public class StartView {
 		// frame.add(redBar);
 
 		ImageIcon img = new ImageIcon("startBackground.png");
+		ImageIcon btnRythm = new ImageIcon("ButtonImageFolder/RythmButton.png");
+		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
+		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
+		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
+		Image imgBtnRythm = btnRythm.getImage();
+		Image imgBtnCording = btnCording.getImage();
+		Image imgBtnTextQuiz = btnTextQuiz.getImage();
+		Image imgBtnChange = btnChange.getImage();
+		
+		
+		
+		
 		JLabel background = new JLabel(img);
 		background.setBounds(0, 0, 1200, 660);
 
-		rythmBtn = new JButton("리듬게임");
-		cordingBtn = new JButton("코딩게임");
-		textqBtn = new JButton("이론게임");
-		changeBtn = new JButton("자리바꾸기");
+		rythmBtn = new JButton();
+		cordingBtn = new JButton();
+		textqBtn = new JButton();
+		changeBtn = new JButton();
 
 		rythmBtn.setBounds(1020, 10, 150, 50);
 		cordingBtn.setBounds(1020, 70, 150, 50);
 		textqBtn.setBounds(1020, 130, 150, 50);
 		changeBtn.setBounds(1020, 190, 150, 50);
-
+		//배경 투명
+		rythmBtn.setContentAreaFilled(false);
+		cordingBtn.setContentAreaFilled(false);
+		textqBtn.setContentAreaFilled(false);
+		changeBtn.setContentAreaFilled(false);
+		//이미지 리사이징
+		Image resizedBtnRythm = imgBtnRythm.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
+		Image resizedBtnCording = imgBtnCording.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
+		Image resizedBtnText = imgBtnTextQuiz.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
+		Image resizedBtnChange = imgBtnChange.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon btnRythmResized = new ImageIcon(resizedBtnRythm);
+		ImageIcon btnCordingResized = new ImageIcon(resizedBtnCording);
+		ImageIcon btnTextQuizResized = new ImageIcon(resizedBtnText);
+		ImageIcon btnChangeResized = new ImageIcon(resizedBtnChange);
+		
+		rythmBtn.setIcon(btnRythmResized);
+		cordingBtn.setIcon(btnCordingResized);
+		textqBtn.setIcon(btnTextQuizResized);
+		changeBtn.setIcon(btnChangeResized);
+		
 		rythmBtn.setBorderPainted(false);
 		cordingBtn.setBorderPainted(false);
 		textqBtn.setBorderPainted(false);
@@ -142,4 +173,3 @@ public class StartView {
 	}
 
 }
-
