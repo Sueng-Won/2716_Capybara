@@ -18,7 +18,6 @@ public class Ex2 extends JFrame implements KeyListener {
 	String sol = null; // 문제의 랜덤 값을 스트링으로 처리
 	String[] images = { "up.PNG", "left.PNG", "down.PNG", "right.PNG" }; // 방향키 이미지 경로
 	JLabel[] l_name = new JLabel[15]; // 문제를 저장할 배열
-	static Ex2 ex2 = new Ex2(); // 자신의 객체 선언
 	static int life = 3; // 라이프
 	JPanel jp; // 그리드레이아웃을 담을 패널
 	JPanel base;//가장 아래 베이스 패널-보더레이아웃
@@ -34,12 +33,13 @@ public class Ex2 extends JFrame implements KeyListener {
 	Image dieImage;
 	JLabel[] lifeLabel = new JLabel[3];
 	Timer timer = new Timer();
-
-	// 실행용 메인메소드
-//	public static void main(String[] args) {
-//		ex2.gameRun();
-//	}
-
+	
+	public Ex2(int life, int count, int count2, int time){
+		this.life = life;
+		this.count = count;
+		this.count2 = count2;
+		this.time = time;
+	}
 	
 	// 실행 메소드//
 	public void gameRun() {
@@ -102,6 +102,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				timer.start();
 		}
 
+
 		setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
 
 	}
@@ -129,10 +130,11 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {			//마지막 run을 실행 시키지 않음
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
-						this.dispose();
-					}
-					gameRun();
-					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");	//게임횟수 초기화를 위한 구문
+						dispose();
+					}else{
+						gameRun();
+						setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+						}	//게임횟수 초기화를 위한 구문
 
 				}
 			} else { // 틀릴경우
@@ -148,7 +150,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0); // 시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
-					this.dispose();
+					dispose();
 				}
 			}
 
@@ -169,10 +171,11 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
-						this.dispose();
-					}
-					gameRun();
-					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+						dispose();
+					}else{
+						gameRun();
+						setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+						}
 
 				}
 			} else {
@@ -189,7 +192,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0);
-					this.dispose();
+					dispose();
 				}
 			}
 			break;
@@ -209,10 +212,11 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
-						this.dispose();
-					}
-					gameRun();
-					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+						dispose();
+					}else{
+						gameRun();
+						setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+						}
 				}
 			} else {
 				life--;
@@ -227,7 +231,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0);
-					this.dispose();
+					dispose();
 				}
 			}
 
@@ -248,10 +252,11 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
-						this.dispose();
-					}
+						dispose();
+					}else{
 					gameRun();
 					setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+					}
 
 				}
 			} else {
@@ -265,7 +270,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				if (life == 0) {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
-					this.dispose();
+					dispose();
 				}
 			}
 			break;
@@ -310,8 +315,9 @@ public class Ex2 extends JFrame implements KeyListener {
 				if(time==0){
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-//					System.exit(0);
-					ex2.dispose();
+					dispose();
+					break;
+				}else if(count2 >= 4){
 					break;
 				}
 				timeP.setValue(time);

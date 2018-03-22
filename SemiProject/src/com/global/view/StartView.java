@@ -69,7 +69,7 @@ public class StartView{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Ex2().gameRun();
+				new Ex2(3,0,1,20).gameRun();
 			}
 		});
 		
