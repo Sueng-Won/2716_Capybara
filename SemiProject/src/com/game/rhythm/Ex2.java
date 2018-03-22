@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -103,7 +104,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		}
 
 
-		setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(Ex2.DISPOSE_ON_CLOSE);
 
 	}
 
