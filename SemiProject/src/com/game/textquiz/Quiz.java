@@ -1,5 +1,6 @@
 package com.game.textquiz;
 import java.awt.Color;
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -138,8 +139,8 @@ public class Quiz {
 //		this.areaStr = " "; 
 		this.example1 = "1. String 멤버변수는 “”로 자동 초기화된다."; 
 		this.example2 = "2. 지역변수는 반드시 초기화해야 한다."; 
-		this.example3 = "3. 생성자보다 초기화 블럭이 먼저 수행된다."; 
-		this.example4 = "4. 인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
+		this.example3 = "생성자보다 초기화 블럭이 먼저 수행된다."; 
+		this.example4 = "인스턴스변수보다 클래스변수가 먼저 초기화된다."; 
 		this.answer = 1 ;
 		this.areaNum = 0 ;
 		stop = false;
@@ -273,9 +274,9 @@ public class Quiz {
 
 	
 		
-		bar = new JPanel(new GridLayout(1, 2, 1, 1)); 
-		
-		barbase = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		bar = new JPanel();
+		bar.setLayout(null);
+		bar.setBounds(0, 0, 500, 25);
 		
 
 		bar.add(timeP = new JProgressBar());
@@ -284,8 +285,8 @@ public class Quiz {
 		timeP.setValue(time); 
 		timeP.setForeground(Color.DARK_GRAY); 
 		timeP.setBorderPainted(false);  
+		timeP.setBounds(0, 0, 500, 25);
 		
-		barbase.add(bar);
 
 //		if (time == 60) {  
 //		new Timer().start();  
@@ -297,7 +298,7 @@ public class Quiz {
 		frame.add(check3);
 		frame.add(check4);
 		frame.add(Btn);
-		frame.add(barbase);
+		frame.add(bar);
 		
 		frame.setVisible(true);
 		
@@ -318,19 +319,17 @@ public class Quiz {
 				answerMatch = 1;
 				
 				if(answerMatch==answer){
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);
 					
 					}else{
-						
+						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);
 					}
 				
-				stop = true;
+				
 				frame.setVisible(false);
-				if(count==5){
-					System.exit(0);
-				}
+				
 				randomOutput();
 
 					
@@ -340,19 +339,18 @@ public class Quiz {
 				answerMatch = 2;
 				
 				if(answerMatch==answer){
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);					
 					
 				}else{
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);					
-					}
-				
-				stop = true;
-				frame.setVisible(false);
-				if(count==5){
-					System.exit(0);
+					
 				}
+				
+				
+				frame.setVisible(false);
+				
 				randomOutput();
 				
 					
@@ -361,19 +359,17 @@ public class Quiz {
 				answerMatch = 3;
 				
 				if(answerMatch==answer){
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);					
 					
 				}else{
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);					
 					}
 				
-				stop = true;
+				
 				frame.setVisible(false);
-				if(count==5){
-					System.exit(0);
-				}
+				
 				randomOutput();
 			
 			}else if(check4.isSelected()){
@@ -381,19 +377,17 @@ public class Quiz {
 				answerMatch = 4;
 				
 				if(answerMatch==answer){
-					
+					stop = true;
 				JOptionPane.showMessageDialog(null, messageLabel1,"AnswerMessage",JOptionPane.INFORMATION_MESSAGE);				
 				
 				}else{
-					
+					stop = true;
 					JOptionPane.showMessageDialog(null, messageLabel2,"AnswerMessage",JOptionPane.ERROR_MESSAGE);				
 				}
 
-				stop = true;
+				
 				frame.setVisible(false);
-				if(count==5){
-				System.exit(0);
-				}
+				
 				randomOutput();
 			
 		}
@@ -405,9 +399,9 @@ public class Quiz {
 	public void randomOutput(){
 		
 		
-		
-		if(count==0){
-			new Timer().start(); 
+		new Timer().start(); 
+//		if(count==0){
+//			new Timer().start(); 
 		for(int i= 0;i<numArr.length;i++){
 			
 			numArr[i] = (int)(Math.random() *10) +1; 
@@ -422,7 +416,7 @@ public class Quiz {
 				}
 				
 				
-		} 
+//		} 
 		}
 		
 
@@ -480,7 +474,7 @@ public class Quiz {
 
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
+					frame.dispose();
 					break;
 				}
 
@@ -491,6 +485,3 @@ public class Quiz {
 	}
 	
 		}
-	
-	
-
