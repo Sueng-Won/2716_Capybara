@@ -5,7 +5,7 @@ public class QuizRun {
 
 	public static void main(String[] args) {
 		Quiz quiz = new Quiz();
-		quiz.QuizMethod4();
+		quiz.quizMethod4();
 
 	}
 
