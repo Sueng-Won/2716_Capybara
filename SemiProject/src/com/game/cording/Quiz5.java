@@ -21,9 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
-import com.game.cording.Quiz1.Timer;
-
-public class Quiz2 {
+public class Quiz5 {
 	static int time = 60;
 	JProgressBar timeP; // 타이머 바
 	JFrame frame;
@@ -31,10 +29,10 @@ public class Quiz2 {
 	Timer timer;
 	JTextArea answerArea;
 
-	public void Quiz2() {
+	public void Quiz5() {
 
 		//문제창 기본 프레임
-		frame = new JFrame("Quiz2");
+		frame = new JFrame("Quiz5");
 		frame.setBounds(200, 200, 700, 700);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(null);
@@ -71,7 +69,7 @@ public class Quiz2 {
 
 
 		//문제 파일로 읽어오기
-		File file = new File("Quiz2.txt");
+		File file = new File("Quiz5.txt");
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -105,21 +103,13 @@ public class Quiz2 {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (answerArea.getText().trim().equals("intArr[i].length;")) {
+				if (answerArea.getText().trim().equals("break outer;")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					//랜덤으로 다음문제 제출
-					int rnum = (int) (Math.random() * 8) + 3;
-					if (rnum == 3) {
-						Quiz3 q3 = new Quiz3();
-						q3.Quiz3();
-					} else if (rnum == 4) {
-						Quiz4 q4 = new Quiz4();
-						q4.Quiz4();
-					} else if (rnum == 5) {
-						Quiz5 q5 = new Quiz5();
-						q5.Quiz5();
-					} else if (rnum == 6) {
+					int rnum = (int) (Math.random() * 5) + 6;
+			
+					if (rnum == 6) {
 						Quiz6 q6 = new Quiz6();
 						q6.Quiz6();
 					} else if (rnum == 7) {
@@ -143,8 +133,7 @@ public class Quiz2 {
 		});
 		frame.setVisible(true);
 		//타이머 바 호출
-
-		timer = new Timer();
+		timer =new Timer();
 		timer.start();
 
 	}
@@ -160,12 +149,12 @@ public class Quiz2 {
 				}
 				time--;
 				
-				if(answerArea.getText().trim().equals("intArr[i].length;")){
+				if (answerArea.getText().trim().equals("break outer;")){
 					break;
 				}
 				//0초일때 게임 종료
 				if (time == 0) {
-				//	timeP.setValue(time);
+					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					System.exit(0);
 					break;
