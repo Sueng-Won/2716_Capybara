@@ -4,10 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,6 +28,7 @@ public class StartView {
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
 	int startIdx = 0;
 	int count=0;
+	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4;
 
 	public void gameView(int startIdx) {
 
@@ -67,6 +72,31 @@ public class StartView {
 				startBtn.setVisible(false);
 			}
 		});
+		
+		ImageIcon bubblerhythm = new ImageIcon("SpeechBubble/SpeechBubbleRhythm.png");
+		bubbleLabel1 = new JLabel();
+		bubbleLabel1.setIcon(bubblerhythm);
+		bubbleLabel1.setBounds(600,20,400,400);
+		bubbleLabel1.setVisible(false);
+		
+		ImageIcon bubblecording = new ImageIcon("SpeechBubble/SpeechBubbleCording.png");
+		bubbleLabel2 = new JLabel();
+		bubbleLabel2.setIcon(bubblecording);
+		bubbleLabel2.setBounds(600,20,400,400);
+		bubbleLabel2.setVisible(false);
+		
+		ImageIcon bubbleTextq = new ImageIcon("SpeechBubble/SpeechBubbleTextQuiz.png");
+		bubbleLabel3 = new JLabel();
+		bubbleLabel3.setIcon(bubbleTextq);
+		bubbleLabel3.setBounds(600,20,400,400);
+		bubbleLabel3.setVisible(false);
+		
+		ImageIcon bubblechange = new ImageIcon("SpeechBubble/SpeechBubbleChange.png");
+		bubbleLabel4 = new JLabel();
+		bubbleLabel4.setIcon(bubblechange);
+		bubbleLabel4.setBounds(600,20,400,400);
+		bubbleLabel4.setVisible(false);
+	
 
 		// 학생 각 수치 구현
 
@@ -138,6 +168,23 @@ public class StartView {
 				endGame();
 			}
 		});
+		
+		//리듬게임 설명 말풍선
+		rythmBtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel1.setVisible(false);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel1.setVisible(true);
+			}
+
+		});
 
 		// 코딩게임 실행
 		cordingBtn.addActionListener(new ActionListener() {
@@ -149,6 +196,24 @@ public class StartView {
 				count++;
 				endGame();
 			}
+		});
+		
+		//코딩게임  설명 말풍선
+		cordingBtn.addMouseListener(new MouseAdapter() {
+
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel2.setVisible(false);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel2.setVisible(true);
+			}
+
 		});
 
 		// 이론게임 실행
@@ -162,6 +227,23 @@ public class StartView {
 				endGame();
 			}
 		});
+		
+		//이론게임  설명 말풍선
+		textqBtn.addMouseListener(new MouseAdapter() {
+		
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel3.setVisible(false);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel3.setVisible(true);
+			}
+
+		});
 
 		// 자리바꾸기
 		changeBtn.addActionListener(new ActionListener() {
@@ -173,6 +255,24 @@ public class StartView {
 				endGame();
 			}
 		});
+		
+		// 자리바꾸기 설명 말풍선
+		changeBtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel4.setVisible(false);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				bubbleLabel4.setVisible(true);
+			}
+
+		});
+		
 
 
 		// 백그라운드 배경패널에 버튼삽입
@@ -181,6 +281,12 @@ public class StartView {
 		background.add(textqBtn);
 		background.add(changeBtn);
 		background.add(startBtn);
+		
+		//말풍선
+		background.add(bubbleLabel1);
+		background.add(bubbleLabel2);
+		background.add(bubbleLabel3);
+		background.add(bubbleLabel4);
 
 		// Vo 데이타를 배경패널에 입력
 		StudentVo sv = new StudentVo();
