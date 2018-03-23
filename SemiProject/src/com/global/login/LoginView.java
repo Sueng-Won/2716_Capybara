@@ -13,28 +13,40 @@ import javax.swing.*;
 import com.global.view.StartView;
 
 public class LoginView {
+	JPanel startView;
+	JButton startBtn;
+	public LoginView(){
+	}
 	
+	public LoginView(JPanel startView) {
+		this();
+		this.startView = startView;
+	}
 	public void mainLogin() {
 //		JPanel panel = new JPanel();
 		
 		JFrame frame = new JFrame("사용자 이름 입력창");
 		Container c = frame.getContentPane();
 		
-		frame.setBounds(600, 300, 300, 300);
+		frame.setBounds(600, 300, 300, 200);
 		c.setBackground(new Color(233, 221, 198));
 		frame.setLayout(null);
 //		frame.add(panel);
 		
 		JLabel nameLabel = new JLabel("이름 입력");
-		nameLabel.setBounds(40, 70, 70, 100);
+		nameLabel.setBounds(40, 20, 70, 100);
 		frame.add(nameLabel);
 
 		TextField userName = new TextField(10);
-		userName.setBounds(115, 105, 130, 30);
+		userName.setBounds(115, 55, 130, 30);
 		frame.add(userName);
 
-		JButton startBtn = new JButton("게임 시작");
-		startBtn.setBounds(95, 180, 100, 30);
+		JButton startBtn = new JButton();
+		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
+		startBtn.setBounds(95, 100, 100, 30);
+		startBtn.setContentAreaFilled(false);
+		startBtn.setIcon(btnStart);
+		startBtn.setBorderPainted(false);
 		frame.add(startBtn);
 
 		startBtn.addActionListener(new ActionListener() {
@@ -68,7 +80,7 @@ public class LoginView {
 						// 팝업창 닫을시 이름 입력창도 닫기
 						frame.setVisible(false);
 						// 게임창으로 넘어가기
-//						StartView sv = new StartView();
+						startView.setVisible(false);
 //						sv.gameView(1);
 
 					}

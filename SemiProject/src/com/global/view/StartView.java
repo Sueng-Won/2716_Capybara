@@ -62,8 +62,8 @@ public class StartView {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new LoginView().mainLogin();
-				startView.setVisible(false);
+				new LoginView(startView).mainLogin();
+		//		startView.setVisible(false);
 				startBtn.setVisible(false);
 			}
 		});
