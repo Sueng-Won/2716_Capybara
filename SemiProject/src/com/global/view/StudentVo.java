@@ -2,8 +2,11 @@ package com.global.view;
 
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.UIManager;
 
 public class StudentVo{
 	private JProgressBar concentrationStu[] = new JProgressBar[5];
@@ -13,36 +16,45 @@ public class StudentVo{
 	private int achievement=25555000;
 	
 	public StudentVo(){
+		//테두리디자인
+	    UIManager.put("ProgressBar.border", BorderFactory.createLineBorder(new Color(251,174,23), 3));
 		//프로그레스바 설정 집중력
 		concentrationStu[0] = new JProgressBar(0,100); 
 		concentrationStu[0].setStringPainted(true);
-		concentrationStu[0].setBounds(50, 500, 200, 40);
-		concentrationStu[0].setBackground(Color.BLUE);
+		concentrationStu[0].setBounds(20, 500, 200, 40);
+		concentrationStu[0].setBackground(new Color(255,0,0,0));
+		concentrationStu[0].setForeground(new Color(251,174,23));
 		
 		concentrationStu[1] = new JProgressBar(0,100); 
 		concentrationStu[1].setStringPainted(true);
-		concentrationStu[1].setBounds(290, 500, 190, 40);
-		concentrationStu[1].setBackground(Color.BLUE);
+		concentrationStu[1].setBounds(260, 500, 200, 40);
+		concentrationStu[1].setBackground(new Color(255,0,0,0));
+		concentrationStu[1].setForeground(new Color(251,174,23));
 		
 		concentrationStu[2] = new JProgressBar(0,100); 
 		concentrationStu[2].setStringPainted(true);
-		concentrationStu[2].setBounds(520, 500, 200, 40);
-		concentrationStu[2].setBackground(Color.BLUE);
+		concentrationStu[2].setBounds(500, 500, 200, 40);
+		concentrationStu[2].setBackground(new Color(255,0,0,0));
+		concentrationStu[2].setForeground(new Color(251,174,23));
 		
 		concentrationStu[3] = new JProgressBar(0,100);
 		concentrationStu[3].setStringPainted(true);
-		concentrationStu[3].setBounds(760, 500, 200, 40);
-		concentrationStu[3].setBackground(Color.BLUE);
+		concentrationStu[3].setBounds(740, 500, 200, 40);
+		concentrationStu[3].setBackground(new Color(255,0,0,0));
+		concentrationStu[3].setForeground(new Color(251,174,23));
 		
 		concentrationStu[4] = new JProgressBar(0,100); 
 		concentrationStu[4].setStringPainted(true);
-		concentrationStu[4].setBounds(1020, 500, 180, 40);
-		concentrationStu[4].setBackground(Color.BLUE);
+		concentrationStu[4].setBounds(980, 500, 200, 40);
+		concentrationStu[4].setBackground(new Color(255,0,0,0));
+		concentrationStu[4].setForeground(new Color(251,174,23));
 		
 		//프로그레스바 설정 스트레스
+		UIManager.put("ProgressBar.border", BorderFactory.createLineBorder(new Color(232,74,95), 3));
 		stress = new JProgressBar(0,100); 
 		stress.setBounds(0, 550, 1200, 50);
-		stress.setBackground(Color.PINK);
+		stress.setBackground(new Color(255,0,0,0));
+		stress.setForeground(new Color(232,74,95));
 		stress.setStringPainted(true);
 		
 		//라벨 설정 성취도글자
@@ -80,9 +92,15 @@ public class StudentVo{
 	public JLabel setAchivementCount(){
 		return achivementCount;
 	}
-	
+	public void setAchievement(int achievement){
+		this.achievement = achievement;
+	}
+	public int getAchievement(int achievement){
+		return this.achievement;
+	}
+
 	public int getAchievement(){
 		return achievement;
 	}
-	
 }
+
