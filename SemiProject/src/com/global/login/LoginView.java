@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.*;
 
@@ -40,17 +42,25 @@ public class LoginView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 //				UserInfo info = new UserInfo();
+				DataIo data = new DataIo();
 				String name = userName.getText();
+				int idx = data.check(name);
+				
 				// 버튼 클릭시 팝업창 뜨게 하기
 				if (e.getSource() == startBtn) {
 					if (name ==null || name.trim().length() == 0) {
 						//이름 공백일 시 뜨는 팝업창
 						//trim() : 문자 양 옆의 공백 제거 
 						JOptionPane.showMessageDialog(null, "이름을 입력해주세요.");
-					} else {
+					} else if(idx == -1){
+						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다. 새로 입력해주세요.");
+						
+					}else {
 						//올바르게 이름 입력시 뜨는 팝업창
+						
 						JOptionPane.showMessageDialog(null, name + "님 게임을 시작하겠습니다.");
-						new DataIo().saveId(name);
+						
+						data.saveId(name);
 						//이름 입력시 사용자 정보파일에 이름 입력
 //						info.inputUser(name);
 						//실행창에 사용자 이름 출력
