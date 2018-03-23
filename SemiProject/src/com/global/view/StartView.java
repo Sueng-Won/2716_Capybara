@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
+import com.global.login.DataIo;
 import com.global.login.LoginView;
 
 public class StartView {
@@ -22,6 +23,7 @@ public class StartView {
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
 	int startIdx = 0;
+	int count=0;
 
 	public void gameView(int startIdx) {
 
@@ -63,7 +65,6 @@ public class StartView {
 				new LoginView().mainLogin();
 				startView.setVisible(false);
 				startBtn.setVisible(false);
-
 			}
 		});
 
@@ -125,11 +126,6 @@ public class StartView {
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
 
-		// rythmBtn.setIcon(new ImageIcon("Btnbase.PNG"));
-		// cordingBtn.setIcon(new ImageIcon("Btnbase.PNG"));
-		// textqBtn.setIcon(new ImageIcon("Btnbase.PNG"));
-		// changeBtn.setIcon(new ImageIcon("Btnbase.PNG"));
-
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
 
@@ -137,6 +133,8 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				new Ex2(3, 0, 1, 20).gameRun();
+				count++;
+				endGame();
 			}
 		});
 
@@ -147,6 +145,8 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				new Quiz1().Quiz1();
+				count++;
+				endGame();
 			}
 		});
 
@@ -157,6 +157,8 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				new Quiz().randomOutput();
+				count++;
+				endGame();
 			}
 		});
 
@@ -166,7 +168,8 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				count++;
+				endGame();
 			}
 		});
 
@@ -199,8 +202,18 @@ public class StartView {
 		if (startIdx == 1) {
 			new GlobalEventThread().start();
 		}
-
+		
+		
 	}
+	
+	public void endGame(){
+		if(count==5){
+			count=0;
+			new DataIo().saveAchievement(new StudentVo().getAchievement());
+		}
+	}
+
+	
 
 	class GlobalEventThread extends Thread {
 		@Override

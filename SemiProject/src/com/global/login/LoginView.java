@@ -11,6 +11,7 @@ import javax.swing.*;
 import com.global.view.StartView;
 
 public class LoginView {
+	
 	public void mainLogin() {
 //		JPanel panel = new JPanel();
 		
@@ -49,6 +50,7 @@ public class LoginView {
 					} else {
 						//올바르게 이름 입력시 뜨는 팝업창
 						JOptionPane.showMessageDialog(null, name + "님 게임을 시작하겠습니다.");
+						new DataIo().saveId(name);
 						//이름 입력시 사용자 정보파일에 이름 입력
 //						info.inputUser(name);
 						//실행창에 사용자 이름 출력

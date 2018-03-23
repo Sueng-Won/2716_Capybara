@@ -81,4 +81,8 @@ public class StudentVo{
 		return achivementCount;
 	}
 	
+	public int getAchievement(){
+		return achievement;
+	}
+	
 }
