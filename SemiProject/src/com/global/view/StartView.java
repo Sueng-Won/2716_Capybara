@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,7 +27,8 @@ public class StartView {
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
 	int startIdx = 0;
 	int count=0;
-	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4;
+	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, 
+	capybaraLabel, capybaraLabelWithQ, capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS;
 
 	public void gameView(int startIdx) {
 
@@ -72,6 +72,35 @@ public class StartView {
 				startBtn.setVisible(false);
 			}
 		});
+		ImageIcon capybara = new ImageIcon("CapyBara/CapyBara.png");
+		capybaraLabel = new JLabel();
+		capybaraLabel.setIcon(capybara);
+		capybaraLabel.setBounds(200,20,400,400);
+		capybaraLabel.setVisible(true);
+		
+		ImageIcon capybaraWithQ = new ImageIcon("CapyBara/CapyBaraWithQuestion.png");
+		capybaraLabelWithQ = new JLabel();
+		capybaraLabelWithQ.setIcon(capybaraWithQ);
+		capybaraLabelWithQ.setBounds(200,20,400,400);
+		capybaraLabelWithQ.setVisible(false);
+		
+		ImageIcon capybaraWithN = new ImageIcon("CapyBara/CapyBaraWithNotice.png");
+		capybaraLabelWithN = new JLabel();
+		capybaraLabelWithN.setIcon(capybaraWithN);
+		capybaraLabelWithN.setBounds(200,20,400,400);
+		capybaraLabelWithN.setVisible(false);
+		
+		ImageIcon capybaraWithD = new ImageIcon("CapyBara/CapyBaraWithDot.png");
+		capybaraLabelWithD = new JLabel();
+		capybaraLabelWithD.setIcon(capybaraWithD);
+		capybaraLabelWithD.setBounds(200,20,400,400);
+		capybaraLabelWithD.setVisible(false);
+		
+		ImageIcon capybaraWithS = new ImageIcon("CapyBara/CapyBaraWithSweat.png");
+		capybaraLabelWithS = new JLabel();
+		capybaraLabelWithS.setIcon(capybaraWithS);
+		capybaraLabelWithS.setBounds(200,20,400,400);
+		capybaraLabelWithS.setVisible(false);
 		
 		ImageIcon bubblerhythm = new ImageIcon("SpeechBubble/SpeechBubbleRhythm.png");
 		bubbleLabel1 = new JLabel();
@@ -175,12 +204,14 @@ public class StartView {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithN.setVisible(false);
 				bubbleLabel1.setVisible(false);
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithN.setVisible(true);
 				bubbleLabel1.setVisible(true);
 			}
 
@@ -205,12 +236,14 @@ public class StartView {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithQ.setVisible(false);
 				bubbleLabel2.setVisible(false);
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithQ.setVisible(true);
 				bubbleLabel2.setVisible(true);
 			}
 
@@ -234,12 +267,14 @@ public class StartView {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithD.setVisible(false);
 				bubbleLabel3.setVisible(false);
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithD.setVisible(true);
 				bubbleLabel3.setVisible(true);
 			}
 
@@ -262,12 +297,14 @@ public class StartView {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithS.setVisible(false);
 				bubbleLabel4.setVisible(false);
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
+				capybaraLabelWithS.setVisible(true);
 				bubbleLabel4.setVisible(true);
 			}
 
@@ -281,6 +318,12 @@ public class StartView {
 		background.add(textqBtn);
 		background.add(changeBtn);
 		background.add(startBtn);
+		// 카피바라
+		background.add(capybaraLabel);
+		background.add(capybaraLabelWithQ);
+		background.add(capybaraLabelWithN);
+		background.add(capybaraLabelWithD);
+		background.add(capybaraLabelWithS);
 		
 		//말풍선
 		background.add(bubbleLabel1);
