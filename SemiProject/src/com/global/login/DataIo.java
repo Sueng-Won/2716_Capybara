@@ -4,9 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Properties;
-import java.util.Set;
 
 public class DataIo {
 	static String id;
@@ -23,9 +21,9 @@ public class DataIo {
 		String score = String.valueOf(achievement);
 
 		try {
+			prop.setProperty(id, score);
 			prop.storeToXML(new FileOutputStream("data.xml"), "score");
 			System.out.println(this.id+", "+score);
-			prop.setProperty(id, score);
 			prop.load(new FileReader("data.xml"));
 			System.out.println(prop);
 		} catch (FileNotFoundException e) {
