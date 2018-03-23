@@ -1,5 +1,6 @@
 package com.global.view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -93,9 +93,10 @@ public class StartView {
 				super.paintComponent(g);
 			}
 		};
+		background.setBackground(new Color(233,221,198));
 		background.setLayout(null);
 		background.setBounds(0, 0, 1200, 700);
-
+		
 		rythmBtn = new JButton();
 		cordingBtn = new JButton();
 		textqBtn = new JButton();
