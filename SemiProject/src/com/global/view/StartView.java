@@ -167,6 +167,8 @@ public class StartView {
 		background.add(sv.setStress());
 		background.add(sv.setAchievementLabel());
 		background.add(sv.setAchivementCount());
+		sv.setConcentrationStu1().setValue(22); // 테스트 벨류셋
+		System.out.println("성취도:"+sv.setAchivementCount().getText()); 
 
 		frame.add(background);
 
