@@ -20,7 +20,7 @@ public class StartView {
 
 	int time = 20;
 	int part = 1;
-	JButton rythmBtn, cordingBtn, textqBtn, changeBtn,startBtn;
+	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
 	int startIdx = 0;
 
 	public void gameView(int startIdx) {
@@ -33,6 +33,39 @@ public class StartView {
 		ImageIcon icon = new ImageIcon("thumbnail.png");
 		frame.setIconImage(icon.getImage());
 		// 게임 기본화면 구현
+		
+		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
+		startBtn = new JButton();
+		startBtn.setBounds(1020, 500, 100, 50);
+		startBtn.setContentAreaFilled(false);
+		startBtn.setIcon(btnStart);
+		startBtn.setBorderPainted(false);
+	
+		
+
+		ImageIcon startImg = new ImageIcon("startview.png");
+		JPanel startView = new JPanel() {
+			public void paintComponent(Graphics g) {
+				g.drawImage(startImg.getImage(), 0, 0, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		startView.setLayout(null);
+		startView.setBounds(0, 0, 1220, 700);
+		frame.add(startView);
+		startView.add(startBtn);
+
+		startBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new LoginView().mainLogin();
+				startView.setVisible(false);
+				startBtn.setVisible(false);
+
+			}
+		});
 
 		// 학생 각 수치 구현
 
@@ -44,27 +77,23 @@ public class StartView {
 		// redBar.setBounds(30, 480, 700, 30);
 		// frame.add(redBar);
 
-//		ImageIcon img = new ImageIcon("startBackground.png");
+		// ImageIcon img = new ImageIcon("startBackground.png");
 		ImageIcon btnRythm = new ImageIcon("ButtonImageFolder/RythmButton.png");
 		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
-		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
-		
-		
-		
-		
+
 		ImageIcon img = new ImageIcon("startBackground.png");
-		//이름없는생성자로 배경화면삽ㅇ딥
+		// 이름없는생성자로 배경화면삽ㅇ딥
 		JPanel background = new JPanel() {
-            public void paintComponent(Graphics g) {
-                g.drawImage(img.getImage(), 0, 0, null);
-                setOpaque(false);
-                super.paintComponent(g);
-            }
-        };
-        background.setLayout(null);
-        background.setBounds(0, 0, 1200, 700);
+			public void paintComponent(Graphics g) {
+				g.drawImage(img.getImage(), 0, 0, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		background.setLayout(null);
+		background.setBounds(0, 0, 1200, 700);
 
 		rythmBtn = new JButton();
 		cordingBtn = new JButton();
@@ -76,20 +105,20 @@ public class StartView {
 		cordingBtn.setBounds(1020, 70, 150, 50);
 		textqBtn.setBounds(1020, 130, 150, 50);
 		changeBtn.setBounds(1020, 190, 150, 50);
-		startBtn.setBounds(1020, 250, 150, 50);
-		//배경 투명
+
+		// 배경 투명
 		rythmBtn.setContentAreaFilled(false);
 		cordingBtn.setContentAreaFilled(false);
 		textqBtn.setContentAreaFilled(false);
 		changeBtn.setContentAreaFilled(false);
 		startBtn.setContentAreaFilled(false);
-		
+
 		rythmBtn.setIcon(btnRythm);
 		cordingBtn.setIcon(btnCording);
 		textqBtn.setIcon(btnTextQuiz);
 		changeBtn.setIcon(btnChange);
 		startBtn.setIcon(btnStart);
-		
+
 		rythmBtn.setBorderPainted(false);
 		cordingBtn.setBorderPainted(false);
 		textqBtn.setBorderPainted(false);
@@ -140,24 +169,16 @@ public class StartView {
 
 			}
 		});
-		
-		//게임 로그인창 실행
-		startBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new LoginView().mainLogin();
-				
-			}
-		});
-//백그라운드 배경패널에 버튼삽입
+
+
+		// 백그라운드 배경패널에 버튼삽입
 		background.add(rythmBtn);
 		background.add(cordingBtn);
 		background.add(textqBtn);
 		background.add(changeBtn);
 		background.add(startBtn);
-		
-		//Vo 데이타를 배경패널에 입력
+
+		// Vo 데이타를 배경패널에 입력
 		StudentVo sv = new StudentVo();
 		background.add(sv.setConcentrationStu1());
 		background.add(sv.setConcentrationStu2());
@@ -168,7 +189,7 @@ public class StartView {
 		background.add(sv.setAchievementLabel());
 		background.add(sv.setAchivementCount());
 		sv.setConcentrationStu1().setValue(22); // 테스트 벨류셋
-		System.out.println("성취도:"+sv.setAchivementCount().getText()); 
+		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
 
@@ -188,7 +209,8 @@ public class StartView {
 			int num = (int) (Math.random() * 10) + 1;
 			// 7일때 팝업창 띄우기
 			if (num == 7) {
-				int ratio = (int) (Math.random() * 40) + 10; // 10초에서 50초 사이 중 하나
+				int ratio = (int) (Math.random() * 40) + 10; // 10초에서 50초 사이 중
+																// 하나
 				try {
 					Thread.sleep(ratio * 1000);
 					JOptionPane.showMessageDialog(null, "훈련보상비 지급일!");
