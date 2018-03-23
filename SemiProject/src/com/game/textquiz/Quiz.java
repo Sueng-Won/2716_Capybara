@@ -1,5 +1,6 @@
 package com.game.textquiz;
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
+
 public class Quiz {
 
 	Font f1 = new Font("맑은 고딕", Font.BOLD, 13);
@@ -28,11 +30,11 @@ public class Quiz {
 	private int areaNum;  // areaNum = 1 일 때 quizMethod3 텍스트박스 실행됨
 	JFrame frame;
 	JButton Btn = new JButton("정답 확인");
-	JRadioButton check1;  
+	JRadioButton check1;   // 정답 체크 버튼
 	JRadioButton check2;
 	JRadioButton check3;
 	JRadioButton check4;
-	int[] numArr = new int[5];
+	int[] numArr = new int[5];  // 문제 번호 5개 저장할 배열
 	public int count = 0;  // 문제 실행 횟수
 	static Timer timer;
 	JProgressBar timeP;
@@ -197,10 +199,10 @@ public class Quiz {
 	public void quizDisplay() {
 
 		frame = new JFrame("Quiz");
-		frame.setBounds(500, 300, 500, 400);
+		frame.setBounds(700, 350, 500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-
+		frame.setLayout(null);
 		JLabel qLabel = new JLabel();
 		qLabel.setText(labelStr);
 		if (areaNum == 1) {                 // quizMethod 에서 areaNum이 1일때 문제 라벨 위치 조절
@@ -227,7 +229,7 @@ public class Quiz {
 		check3.setBounds(30, 220, 450, 30);
 
 		check4 = new JRadioButton(example4);
-		check4.setBounds(30, 250, 400, 30);
+		check4.setBounds(30, 250, 450, 30);
 
 		Btn.setBounds(100, 300, 100, 30);
 
@@ -249,7 +251,7 @@ public class Quiz {
 
 		bar = new JPanel();
 		bar.setLayout(null);
-		bar.setBounds(0, 0, 500, 25);
+		bar.setBounds(0, 0, 500, 20);
 
 		bar.add(timeP = new JProgressBar());
 		timeP.setMinimum(0);
@@ -257,12 +259,19 @@ public class Quiz {
 		timeP.setValue(time);
 		timeP.setForeground(Color.DARK_GRAY);
 		timeP.setBorderPainted(false);
-		timeP.setBounds(0, 0, 500, 25);
+		timeP.setBounds(0, 0, 500, 20);
 
 		// if (time == 60) {
 		// new Timer().start();
 		// }
-
+		
+		frame.getContentPane().setBackground(new Color(233, 221, 198));
+		check1.setBackground(new Color(233, 221, 198));
+		check2.setBackground(new Color(233, 221, 198));
+		check3.setBackground(new Color(233, 221, 198));
+		check4.setBackground(new Color(233, 221, 198));
+		timeP.setBackground(new Color(233, 221, 198));
+		
 		frame.add(check1);
 		frame.add(check2);
 		frame.add(check3);
@@ -297,9 +306,9 @@ public class Quiz {
 					} else if(answer!=0) { 
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						
+						answer = 0;
 					}
-					
+					stop = true;
 					frame.setVisible(false);
 					randomOutput();
 					
@@ -316,9 +325,9 @@ public class Quiz {
 					} else if(answer!=0) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						
+						answer = 0;
 					}
-					
+					stop = true;
 					frame.setVisible(false);
 					randomOutput();
 					
@@ -335,9 +344,9 @@ public class Quiz {
 					} else if(answer!=0) {
 						stop = true; 
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						
+						answer = 0;
 					}
-					
+					stop = true;
 					frame.setVisible(false);
 					randomOutput();
 					
@@ -354,9 +363,9 @@ public class Quiz {
 					} else if(answer!=0) {
 						stop = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						
+						answer = 0;
 					}
-					
+					stop = true;
 					frame.setVisible(false);
 					randomOutput();
 					
@@ -371,13 +380,15 @@ public class Quiz {
 
 	public void randomOutput() {
 
-		
-		new Timer().start();  // randomOutput() 실행시 마다 타이머 start
-		
+	
+		  // randomOutput() 실행시 마다 타이머 start
+		new Timer().start();
 		
 		if(count==0){   
 			// 처음 randomOutput() 실행시 랜덤 번호 5개 저장
-	
+			
+			
+			
 		for (int i = 0; i < numArr.length; i++) {
 
 			numArr[i] = (int) (Math.random() * 10) + 1;
@@ -438,6 +449,7 @@ public class Quiz {
 
 			}
 		}
+
 	}
 
 	class Timer extends Thread {
@@ -447,13 +459,17 @@ public class Quiz {
 				try {
 					Thread.sleep(1000);
 					System.out.println(time);
+					
+					if (stop == true) {      //  true시 스레드 종료
+						break;
+						}
+					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				time--;
-				if (stop == true) {      //  true시 스레드 종료
-					break;
-				}
+				
+				
 				if (time == 0) {
 
 					timeP.setValue(time);
