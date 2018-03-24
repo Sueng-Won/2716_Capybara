@@ -31,6 +31,7 @@ public class StartView {
 	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, 
 	capybaraLabel, capybaraLabelWithQ, capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS,
 	student1Label, student2Label, student3Label, student4Label, student5Label;
+	int overCnt=0;//집중력 0인 학생 수 
 
 	public void gameView(int startIdx) {
 
@@ -165,6 +166,7 @@ public class StartView {
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
 
 		ImageIcon img = new ImageIcon("Start/startBackground.png");
+		
 		// 이름없는생성자로 배경화면삽입
 		JPanel background = new JPanel() {
 			public void paintComponent(Graphics g) {
@@ -206,6 +208,24 @@ public class StartView {
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
+		
+		
+		// Vo 데이타를 배경패널에 입력
+				StudentVo sv = new StudentVo();
+				background.add(sv.setConcentrationStu1());
+				background.add(sv.setConcentrationStu2());
+				background.add(sv.setConcentrationStu3());
+				background.add(sv.setConcentrationStu4());
+				background.add(sv.setConcentrationStu5());
+				background.add(sv.setStress());
+				background.add(sv.setAchievementLabel());
+				background.add(sv.setAchivementCount());
+			//	sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
+			//	sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
+			//	sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
+				
+		
+		
 
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
@@ -244,7 +264,7 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-		new Main().main(null);
+				new Main().main(null);
 				count++;
 				endGame();
 			}
@@ -317,6 +337,11 @@ public class StartView {
 				student5Label.setBounds(location[4], 450,50,50);
 				count++;
 				endGame();
+				
+				sv.stressV(100);
+				System.out.println(sv.getStress());
+				
+				
 			}
 		});
 		
@@ -338,8 +363,6 @@ public class StartView {
 			}
 
 		});
-		
-
 
 		// 백그라운드 배경패널에 버튼삽입
 		background.add(rythmBtn);
@@ -366,21 +389,46 @@ public class StartView {
 		background.add(student3Label);
 		background.add(student4Label);
 		background.add(student5Label);
+		
+		JPanel gameOver = new JPanel() {
+			public void paintComponent(Graphics g) {
+				g.drawImage(img.getImage(), 0, 0, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		gameOver.setBackground(new Color(233, 221, 198));
+		gameOver.setLayout(null);
+		gameOver.setBounds(0, 0, 1200, 700);
+		
+		ImageIcon gameoverImg = new ImageIcon("gameover.png");
+		JLabel overIcon = new JLabel();
+		overIcon.setBounds(400, 400, 500, 300);
+		overIcon.setIcon(gameoverImg);
 
-		// Vo 데이타를 배경패널에 입력
-		StudentVo sv = new StudentVo();
-		background.add(sv.setConcentrationStu1());
-		background.add(sv.setConcentrationStu2());
-		background.add(sv.setConcentrationStu3());
-		background.add(sv.setConcentrationStu4());
-		background.add(sv.setConcentrationStu5());
-		background.add(sv.setStress());
-		background.add(sv.setAchievementLabel());
-		background.add(sv.setAchivementCount());
-		sv.setConcentrationStu1().setValue(22); // 테스트 벨류셋
+		//집중도가 100일때 over학생 수 카운트 ++
+		if(sv.setConcentrationStu1().getValue()>=100) {
+			overCnt++;
+		}
+		if(sv.setConcentrationStu2().getValue()>=100) {
+			overCnt++;
+		}
+		if(sv.setConcentrationStu3().getValue()>=100) {
+			overCnt++;
+		}
+		if(sv.setConcentrationStu4().getValue()>=100) {
+			overCnt++;
+		}
+		if(sv.setConcentrationStu5().getValue()>=100) {
+			overCnt++;
+		}
+	
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
+		frame.add(gameOver);
+		
+	
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -389,6 +437,15 @@ public class StartView {
 			new GlobalEventThread().start();
 		}
 		
+
+					
+		//피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
+			if(sv.getStress()==100||overCnt>=3) {
+				
+				JOptionPane.showMessageDialog(null, "GameOver!");
+				background.setVisible(false);
+		}
+			
 		
 	}
 	

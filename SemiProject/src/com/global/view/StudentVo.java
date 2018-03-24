@@ -24,6 +24,7 @@ public class StudentVo{
 		concentrationStu[0].setBounds(20, 500, 200, 40);
 		concentrationStu[0].setBackground(new Color(255,0,0,0));
 		concentrationStu[0].setForeground(new Color(251,174,23));
+
 		
 		concentrationStu[1] = new JProgressBar(0,100); 
 		concentrationStu[1].setStringPainted(true);
@@ -56,6 +57,9 @@ public class StudentVo{
 		stress.setBackground(new Color(255,0,0,0));
 		stress.setForeground(new Color(232,74,95));
 		stress.setStringPainted(true);
+		stress.setValue(50); //피로도 50으로 테스트값
+	
+		
 		
 		//라벨 설정 성취도글자
 		achievementLabel = new JLabel("성취도: "); 
@@ -83,8 +87,15 @@ public class StudentVo{
 	public JProgressBar setConcentrationStu5(){
 		return concentrationStu[4];
 	}
-	public JProgressBar setStress(){
+	
+	public void stressV(int stress){
+		this.stress.setValue(stress);
+	}
+	public JProgressBar setStress() {
 		return stress;
+	}
+	public int getStress() {
+		return stress.getValue();
 	}
 	public JLabel setAchievementLabel(){
 		return achievementLabel;
