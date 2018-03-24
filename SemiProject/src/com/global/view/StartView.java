@@ -398,6 +398,7 @@ public class StartView {
 			new DataIo().saveAchievement(new StudentVo().getAchievement());
 			JOptionPane.showMessageDialog(null, "하루가 무사히 끝났습니다!");
 			//여기다가 점수판 실행시킬 것
+			new DataIo().scoreboard();
 		}
 	}
 

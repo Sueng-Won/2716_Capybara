@@ -1,5 +1,7 @@
 package com.global.login;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +19,9 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class DataIo {
 	static String id;
@@ -82,8 +86,35 @@ public class DataIo {
 	public void scoreboard() {
 		JFrame scoreboard = new JFrame("점수판");
 		scoreboard.setBounds(600, 200, 430, 700);
-		scoreboard.setLayout(new GridLayout(5, 1));
-
+		scoreboard.setLayout(new GridLayout(6, 3));
+		scoreboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JLabel desc1 = new JLabel("순위");
+		JLabel desc2 = new JLabel("아이디");
+		JLabel desc3 = new JLabel("점수");
+		
+		desc1.setHorizontalAlignment(JLabel.CENTER);
+		desc2.setHorizontalAlignment(JLabel.CENTER);
+		desc3.setHorizontalAlignment(JLabel.CENTER);
+		
+		desc1.setFont(new Font("돋움",Font.BOLD,25));
+		desc2.setFont(new Font("돋움",Font.BOLD,25));
+		desc3.setFont(new Font("돋움",Font.BOLD,25));
+		
+		desc1.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		desc2.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		desc3.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		
+		desc1.setBackground(new Color(251,174,23));
+		desc2.setBackground(new Color(251,174,23));
+		desc3.setBackground(new Color(251,174,23));
+		
+		desc1.setOpaque(true);
+		desc2.setOpaque(true);
+		desc3.setOpaque(true);
+		
+		scoreboard.add(desc1);
+		scoreboard.add(desc2);
+		scoreboard.add(desc3);
 		Properties readProp = new Properties();
 		try {
 			readProp.loadFromXML(new FileInputStream("data.xml"));
@@ -96,10 +127,41 @@ public class DataIo {
 			
 			Iterator<String> iter = sort(idSort).iterator();
 			
-			while(iter.hasNext()) {
-	            String temp = (String) iter.next();
-	            System.out.println(temp + " = " + idSort.get(temp));
-	        }
+//			while(iter.hasNext()) {
+//	            String temp = (String) iter.next();
+//	            System.out.println(temp + " = " + idSort.get(temp));
+//	        }
+			for(int i = 0; i<5; i++) {
+				String temp = (String) iter.next();
+				JLabel tempLabel1 = new JLabel(String.valueOf(i+1));
+				JLabel tempLabel2 = new JLabel(temp);
+				JLabel tempLabel3 = new JLabel(idSort.get(temp));
+				
+				tempLabel1.setHorizontalAlignment(JLabel.CENTER);
+				tempLabel2.setHorizontalAlignment(JLabel.CENTER);
+				tempLabel3.setHorizontalAlignment(JLabel.CENTER);
+				
+				tempLabel1.setFont(new Font("돋움",Font.PLAIN,20));
+				tempLabel2.setFont(new Font("돋움",Font.PLAIN,20));
+				tempLabel3.setFont(new Font("돋움",Font.PLAIN,20));
+				
+				tempLabel1.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				tempLabel2.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				tempLabel3.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				
+				tempLabel1.setBackground(new Color(233,221,198));
+				tempLabel2.setBackground(new Color(233,221,198));
+				tempLabel3.setBackground(new Color(233,221,198));
+				
+				tempLabel1.setOpaque(true);
+				tempLabel2.setOpaque(true);
+				tempLabel3.setOpaque(true);
+				
+				scoreboard.add(tempLabel1);
+				scoreboard.add(tempLabel2);
+				scoreboard.add(tempLabel3);
+			}
+			scoreboard.setVisible(true);
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
