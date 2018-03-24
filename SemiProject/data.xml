@@ -2,21 +2,21 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>score</comment>
-<entry key="123">25555000</entry>
-<entry key="r">25555000</entry>
-<entry key="1234">25555000</entry>
-<entry key="efe">25555000</entry>
-<entry key="asdfas">25555000</entry>
-<entry key="aaa">25555000</entry>
-<entry key="12345">25555000</entry>
-<entry key="wve">25555000</entry>
-<entry key="zxcz">25555000</entry>
-<entry key="asda">25555000</entry>
-<entry key="asdfaszx">25555000</entry>
-<entry key="ccc">25555000</entry>
-<entry key="wdc">25555000</entry>
-<entry key="gege">25555000</entry>
-<entry key="dfd">25555000</entry>
-<entry key="bbb">25555000</entry>
-<entry key="rgr">25555000</entry>
+<entry key="123">2000</entry>
+<entry key="r">6000</entry>
+<entry key="1234">1000</entry>
+<entry key="efe">2000</entry>
+<entry key="asdfas">1500</entry>
+<entry key="aaa">4500</entry>
+<entry key="12345">5000</entry>
+<entry key="wve">2000</entry>
+<entry key="zxcz">3000</entry>
+<entry key="asda">500</entry>
+<entry key="asdfaszx">500</entry>
+<entry key="ccc">4000</entry>
+<entry key="wdc">4000</entry>
+<entry key="gege">3000</entry>
+<entry key="dfd">3000</entry>
+<entry key="bbb">2000</entry>
+<entry key="rgr">2000</entry>
 </properties>
