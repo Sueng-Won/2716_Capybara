@@ -338,10 +338,14 @@ public class StartView {
 				count++;
 				endGame();
 				
-				sv.stressV(100);
-				System.out.println(sv.getStress());
+//				sv.stressV(100);
 				
-				
+				//피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
+//				if(sv.getStress()==100||overCnt>=3) {
+//					
+//					JOptionPane.showMessageDialog(null, "GameOver!");
+//					background.setVisible(false);
+//				}
 			}
 		});
 		
@@ -439,12 +443,7 @@ public class StartView {
 		
 
 					
-		//피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
-			if(sv.getStress()==100||overCnt>=3) {
-				
-				JOptionPane.showMessageDialog(null, "GameOver!");
-				background.setVisible(false);
-		}
+		
 			
 		
 	}
