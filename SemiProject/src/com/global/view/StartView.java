@@ -38,7 +38,7 @@ public class StartView {
 		frame.setBounds(50, 50, 1220, 700);
 		frame.setLayout(null);
 		// 파비콘 생성
-		ImageIcon icon = new ImageIcon("thumbnail.png");
+		ImageIcon icon = new ImageIcon("Start/thumbnail.png");
 		frame.setIconImage(icon.getImage());
 		// 게임 기본화면 구현
 		
@@ -51,7 +51,7 @@ public class StartView {
 	
 		
 
-		ImageIcon startImg = new ImageIcon("startview.png");
+		ImageIcon startImg = new ImageIcon("Start/startview.png");
 		JPanel startView = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(startImg.getImage(), 0, 0, null);
@@ -128,24 +128,14 @@ public class StartView {
 		bubbleLabel4.setVisible(false);
 	
 
-		// 학생 각 수치 구현
-
-		// 먼저 마우스이벤트 통해 마우스 찍은부분 좌표 알아낸다음, 그 좌표를 setbounds에 넣어
-		// 수치 그림 알맞게 삽입, 수치는 게임이나 이벤트 결과에 따라 조절. 수치 그림 10 단위로 쪼개어 캡쳐하여
-		// 덮어쓰는식으로 사용....근데 사진위에 왜 덮어쓰기가 안될까
-		// ImageIcon redImg = new ImageIcon("피로도_1.png");
-		// JLabel redBar = new JLabel(redImg);
-		// redBar.setBounds(30, 480, 700, 30);
-		// frame.add(redBar);
-
 		// ImageIcon img = new ImageIcon("startBackground.png");
 		ImageIcon btnRythm = new ImageIcon("ButtonImageFolder/RythmButton.png");
 		ImageIcon btnCording = new ImageIcon("ButtonImageFolder/CordingButton.png");
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
 
-		ImageIcon img = new ImageIcon("startBackground.png");
-		// 이름없는생성자로 배경화면삽ㅇ딥
+		ImageIcon img = new ImageIcon("Start/startBackground.png");
+		// 이름없는생성자로 배경화면삽입
 		JPanel background = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(img.getImage(), 0, 0, null);

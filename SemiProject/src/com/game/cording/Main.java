@@ -25,8 +25,7 @@ public class Main {
 		
 	}
 	public void random() {
-			Quiz1 q1 = new Quiz1();
-		q1.quiz1();
+	
 	}
 
 
