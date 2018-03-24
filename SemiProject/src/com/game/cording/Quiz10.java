@@ -7,11 +7,14 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +32,7 @@ public class Quiz10 {
 	JPanel bar, quiz10; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
+	int stopidx=0;
 
 	public void quiz10() {
 		//문제 기본 프레임
@@ -38,6 +42,17 @@ public class Quiz10 {
 		CardLayout card = new CardLayout();
 		frame.setLayout(card);
 		Font font = new Font("arian", Font.BOLD, 15);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				stopidx = -1;
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				
+			}
+		});
 
 		//문제 10번 패널
 		quiz10 = new JPanel();
@@ -103,7 +118,9 @@ public class Quiz10 {
 		quiz10.add(scrollP);
 
 		// 정답버튼 생성
-		JButton answerBtn = new JButton("OK!");
+		JButton answerBtn = new JButton();
+		ImageIcon btnImg = new ImageIcon("CordingQuiz/OkayButton.png");
+		answerBtn.setIcon(btnImg);
 		answerBtn.setBounds(290, 605, 100, 50);
 		quiz10.add(answerBtn);
 		
@@ -151,6 +168,8 @@ public class Quiz10 {
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					System.exit(0);
+					break;
+				}else if(stopidx==-1) {
 					break;
 				}
 
