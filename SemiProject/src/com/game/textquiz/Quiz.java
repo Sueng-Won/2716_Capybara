@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -200,7 +202,22 @@ public class Quiz {
 
 		frame = new JFrame("Quiz");
 		frame.setBounds(700, 350, 500, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+				frame.addWindowListener(new WindowAdapter() {
+					
+					@Override
+					public void windowClosing(WindowEvent e) {
+						stop = true;
+					}
+					
+					@Override
+					public void windowClosed(WindowEvent e) {
+						stop = true;
+					}
+				
+				});
+				
 		frame.setResizable(false);
 		frame.setLayout(null);
 		JLabel qLabel = new JLabel();
