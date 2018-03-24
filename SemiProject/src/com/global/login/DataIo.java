@@ -1,19 +1,27 @@
 package com.global.login;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class DataIo {
 	static String id;
@@ -78,64 +86,82 @@ public class DataIo {
 	public void scoreboard() {
 		JFrame scoreboard = new JFrame("점수판");
 		scoreboard.setBounds(600, 200, 430, 700);
-		scoreboard.setLayout(new GridLayout(5, 1));
-
+		scoreboard.setLayout(new GridLayout(6, 3));
+		scoreboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JLabel desc1 = new JLabel("순위");
+		JLabel desc2 = new JLabel("아이디");
+		JLabel desc3 = new JLabel("점수");
+		
+		desc1.setHorizontalAlignment(JLabel.CENTER);
+		desc2.setHorizontalAlignment(JLabel.CENTER);
+		desc3.setHorizontalAlignment(JLabel.CENTER);
+		
+		desc1.setFont(new Font("돋움",Font.BOLD,25));
+		desc2.setFont(new Font("돋움",Font.BOLD,25));
+		desc3.setFont(new Font("돋움",Font.BOLD,25));
+		
+		desc1.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		desc2.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		desc3.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+		
+		desc1.setBackground(new Color(251,174,23));
+		desc2.setBackground(new Color(251,174,23));
+		desc3.setBackground(new Color(251,174,23));
+		
+		desc1.setOpaque(true);
+		desc2.setOpaque(true);
+		desc3.setOpaque(true);
+		
+		scoreboard.add(desc1);
+		scoreboard.add(desc2);
+		scoreboard.add(desc3);
 		Properties readProp = new Properties();
 		try {
 			readProp.loadFromXML(new FileInputStream("data.xml"));
-			String copyArr[] = new String[readProp.size()];
-			int count = 0;
-			for (String key : readProp.stringPropertyNames()) {
-				String value = readProp.getProperty(key);
-				copyArr[count++] = value + "/" + key + "/";
-				System.out.println(copyArr[count - 1]);
+			Map<String, String> idSort = new TreeMap<String,String>();
+
+			for (String name : readProp.stringPropertyNames()) {
+				idSort.put(name, readProp.getProperty(name));
 			}
-			System.out.println("----------------------");
-			Arrays.sort(copyArr);
-			Collections.reverse(Arrays.asList(copyArr));
-			String copyStr = "";
-			for (String str : copyArr) {
-				copyStr += str;
-			}
-			System.out.println(copyStr);
-			String[] result = new String[readProp.size() * 2];
-			result = copyStr.split("/");
-			int check = 1;
-			for (int i = 0; i<result.length;i++) {
+			
+			
+			Iterator<String> iter = sort(idSort).iterator();
+			
+//			while(iter.hasNext()) {
+//	            String temp = (String) iter.next();
+//	            System.out.println(temp + " = " + idSort.get(temp));
+//	        }
+			for(int i = 0; i<5; i++) {
+				String temp = (String) iter.next();
+				JLabel tempLabel1 = new JLabel(String.valueOf(i+1));
+				JLabel tempLabel2 = new JLabel(temp);
+				JLabel tempLabel3 = new JLabel(idSort.get(temp));
 				
-				System.out.print(result[i]+ " ");
-				if(check%2==0) {
-					System.out.println();
-				}
-				check++;
+				tempLabel1.setHorizontalAlignment(JLabel.CENTER);
+				tempLabel2.setHorizontalAlignment(JLabel.CENTER);
+				tempLabel3.setHorizontalAlignment(JLabel.CENTER);
+				
+				tempLabel1.setFont(new Font("돋움",Font.PLAIN,20));
+				tempLabel2.setFont(new Font("돋움",Font.PLAIN,20));
+				tempLabel3.setFont(new Font("돋움",Font.PLAIN,20));
+				
+				tempLabel1.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				tempLabel2.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				tempLabel3.setBorder(BorderFactory.createLineBorder(new Color(60,30,30)));
+				
+				tempLabel1.setBackground(new Color(233,221,198));
+				tempLabel2.setBackground(new Color(233,221,198));
+				tempLabel3.setBackground(new Color(233,221,198));
+				
+				tempLabel1.setOpaque(true);
+				tempLabel2.setOpaque(true);
+				tempLabel3.setOpaque(true);
+				
+				scoreboard.add(tempLabel1);
+				scoreboard.add(tempLabel2);
+				scoreboard.add(tempLabel3);
 			}
-			// Map mapReverse = new TreeMap(Collections.reverseOrder());
-			//
-			//
-			// Set<Object> keySet = readProp.keySet();
-			// Iterator<Object> iterator = keySet.iterator();
-			// List<Object> keyList = new ArrayList<Object>();
-			//
-			//
-			// while(iterator.hasNext()){
-			// String key = (String)iterator.next();
-			// mapReverse.put(readProp.getProperty(key), key);
-			// keyList.add(readProp.getProperty(key));
-			// }
-			// Collections.reverse(keyList);
-			// System.out.println(mapReverse);
-			// System.out.println(keyList);
-			//
-			//
-			// for(int i=0; i<5; i++){
-			// String score = (String) keyList.get(i);
-			// String id = (String) mapReverse.get(keyList.get(i));
-			// scoreboard.add(new JLabel(i+1+"등!!"+" "+id+" "+score)).setFont(new
-			// Font("맑은고딕", Font.BOLD, 30));
-			// }
-			//
-			//
-			// scoreboard.setVisible(true);
+			scoreboard.setVisible(true);
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -143,5 +169,18 @@ public class DataIo {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<String> sort(Map<String, String> map) {
+		List<String> list = new ArrayList<String>();
+		list.addAll(map.keySet());
+		Collections.sort(list, new Comparator<String>() {
+			public int compare(String o1, String o2) {
+				int v1 = Integer.parseInt(map.get(o1));
+				int v2 = Integer.parseInt(map.get(o2));
+				return ((Comparable<Integer>) v2).compareTo(v1);
+			}
+		});
+		return list;
 	}
 }

@@ -2,9 +2,19 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>score</comment>
+<<<<<<< HEAD
 <entry key="aaa">25555000</entry>
+=======
+>>>>>>> refs/remotes/origin/master
 <entry key="asda">25555000</entry>
+<<<<<<< HEAD
+=======
+<entry key="123">25555000</entry>
+<entry key="gege">4500000</entry>
+<entry key="1234">25555000</entry>
+>>>>>>> refs/remotes/origin/master
 <entry key="ccc">25555000</entry>
+<<<<<<< HEAD
 <entry key="dfd">25555000</entry>
 <entry key="bbb">25555000</entry>
 <entry key="efe">25555000</entry>
@@ -22,4 +32,19 @@
 <entry key="efw">25555000</entry>
 <entry key="12345">25555000</entry>
 <entry key="rgr">25555000</entry>
+=======
+<entry key="sadsasd">25555000</entry>
+<entry key="efe">25555000</entry>
+<entry key="12345">56000</entry>
+<entry key="bbb">56000</entry>
+<entry key="r">25555000</entry>
+<entry key="aaa">25555000</entry>
+<entry key="zxcz">25555000</entry>
+<entry key="asdfas">25555000</entry>
+<entry key="rgr">80000</entry>
+<entry key="asdfaszx">25555000</entry>
+<entry key="wdc">25555000</entry>
+<entry key="wve">25555000</entry>
+<entry key="dfd">4500000</entry>
+>>>>>>> refs/remotes/origin/master
 </properties>
