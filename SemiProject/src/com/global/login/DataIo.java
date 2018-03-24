@@ -19,7 +19,6 @@ import java.util.TreeMap;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class DataIo {
 	static String id;
@@ -83,7 +82,7 @@ public class DataIo {
 	}
 	public void scoreboard(){
 		JFrame scoreboard = new JFrame("점수판");
-		scoreboard.setBounds(600, 200, 400, 700);
+		scoreboard.setBounds(600, 200, 430, 700);
 		scoreboard.setLayout(new GridLayout(5,1));
 		
 		
@@ -108,10 +107,7 @@ public class DataIo {
 			System.out.println(keyList);
 	
 			
-			for(int i=0; i<keyList.size(); i++){
-				if(i>5){
-					break;
-				}
+			for(int i=0; i<5; i++){
 				String score = (String) keyList.get(i);
 				String id = (String) mapReverse.get(keyList.get(i));
 				scoreboard.add(new JLabel(i+1+"등!!"+"       "+id+"            "+score)).setFont(new Font("맑은고딕", Font.BOLD, 30));
