@@ -51,7 +51,7 @@ public class StartView {
 	
 		
 
-		ImageIcon startImg = new ImageIcon("Start/startview.png");
+		ImageIcon startImg = new ImageIcon("Start/StartView.png");
 		JPanel startView = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(startImg.getImage(), 0, 0, null);
@@ -384,9 +384,11 @@ public class StartView {
 	}
 	
 	public void endGame(){
-		if(count==5){
+		if(count==6){
 			count=0;
 			new DataIo().saveAchievement(new StudentVo().getAchievement());
+			JOptionPane.showMessageDialog(null, "하루가 무사히 끝났습니다!");
+			//여기다가 점수판 실행시킬 것
 		}
 	}
 
