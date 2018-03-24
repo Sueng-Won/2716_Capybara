@@ -3,6 +3,8 @@ package com.game.cording;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +20,7 @@ public class Quiz1 {
 	JPanel bar, quiz1; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
+	int stopidx=0;
 
 	public void quiz1() {
 		//문제 기본 프레임
@@ -27,6 +30,19 @@ public class Quiz1 {
 		CardLayout card = new CardLayout();
 		frame.setLayout(card);
 		Font font = new Font("arian", Font.BOLD, 15);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				stopidx = -1;
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				
+			}
+		});
+		
+		
 
 		//문제 1번 패널
 		quiz1 = new JPanel();
@@ -88,7 +104,9 @@ public class Quiz1 {
 		quiz1.add(textArea);
 
 		// 정답버튼 생성
-		JButton answerBtn = new JButton("OK!");
+		JButton answerBtn = new JButton();
+		ImageIcon btnImg = new ImageIcon("CordingQuiz/OkayButton.png");
+		answerBtn.setIcon(btnImg);
 		answerBtn.setBounds(290, 605, 100, 50);
 		quiz1.add(answerBtn);
 		
@@ -132,10 +150,12 @@ public class Quiz1 {
 					break;
 				}
 
-				else if (time == 0) {
+				if (time == 0) {
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					System.exit(0);
+					break;
+				}else if(stopidx==-1) {
 					break;
 				}
 

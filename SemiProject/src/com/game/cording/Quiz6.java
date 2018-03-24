@@ -8,6 +8,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -22,6 +24,7 @@ public class Quiz6 {
 	JTextArea answerArea;
 	JTextArea quizArea;
 	String finalAnswer;
+	int stopidx=0;
 
 	public void quiz6() {
 
@@ -31,6 +34,17 @@ public class Quiz6 {
 		CardLayout card = new CardLayout();
 		Font font = new Font("arian", Font.BOLD, 15);
 		frame.setLayout(card);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				stopidx = -1;
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				
+			}
+		});
 		
 		//문제 6번 패널
 		quiz6 = new JPanel();
@@ -63,9 +77,11 @@ public class Quiz6 {
 		quiz6.add(bar);
 
 		//정답버튼 생성
-		JButton jButton = new JButton("OK!");
-		jButton.setBounds(290, 605, 100, 50);
-		quiz6.add(jButton);
+		JButton answerBtn = new JButton();
+		ImageIcon btnImg = new ImageIcon("CordingQuiz/OkayButton.png");
+		answerBtn.setIcon(btnImg);
+		answerBtn.setBounds(290, 605, 100, 50);
+		quiz6.add(answerBtn);
 
 		
 		
@@ -125,7 +141,7 @@ public class Quiz6 {
 		
 		frame.setVisible(true);
 
-		jButton.addActionListener(new ActionListener() {
+		answerBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -165,6 +181,8 @@ public class Quiz6 {
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 					System.exit(0);
+					break;
+				}else if(stopidx==-1) {
 					break;
 				}
 
