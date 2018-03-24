@@ -124,13 +124,8 @@ public class DataIo {
 				idSort.put(name, readProp.getProperty(name));
 			}
 			
-			
 			Iterator<String> iter = sort(idSort).iterator();
 			
-//			while(iter.hasNext()) {
-//	            String temp = (String) iter.next();
-//	            System.out.println(temp + " = " + idSort.get(temp));
-//	        }
 			for(int i = 0; i<5; i++) {
 				String temp = (String) iter.next();
 				JLabel tempLabel1 = new JLabel(String.valueOf(i+1));
