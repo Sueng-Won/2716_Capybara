@@ -6,12 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.swing.JFrame;
 
@@ -83,59 +87,19 @@ public class DataIo {
 		Properties readProp = new Properties();
 		try {
 			readProp.loadFromXML(new FileInputStream("data.xml"));
-			String copyArr[] = new String[readProp.size()];
-			int count = 0;
-			for (String key : readProp.stringPropertyNames()) {
-				String value = readProp.getProperty(key);
-				copyArr[count++] = value + "/" + key + "/";
-				System.out.println(copyArr[count - 1]);
+			Map<String, String> idSort = new TreeMap<String,String>();
+
+			for (String name : readProp.stringPropertyNames()) {
+				idSort.put(name, readProp.getProperty(name));
 			}
-			System.out.println("----------------------");
-			Arrays.sort(copyArr);
-			Collections.reverse(Arrays.asList(copyArr));
-			String copyStr = "";
-			for (String str : copyArr) {
-				copyStr += str;
-			}
-			System.out.println(copyStr);
-			String[] result = new String[readProp.size() * 2];
-			result = copyStr.split("/");
-			int check = 1;
-			for (int i = 0; i<result.length;i++) {
-				
-				System.out.print(result[i]+ " ");
-				if(check%2==0) {
-					System.out.println();
-				}
-				check++;
-			}
-			// Map mapReverse = new TreeMap(Collections.reverseOrder());
-			//
-			//
-			// Set<Object> keySet = readProp.keySet();
-			// Iterator<Object> iterator = keySet.iterator();
-			// List<Object> keyList = new ArrayList<Object>();
-			//
-			//
-			// while(iterator.hasNext()){
-			// String key = (String)iterator.next();
-			// mapReverse.put(readProp.getProperty(key), key);
-			// keyList.add(readProp.getProperty(key));
-			// }
-			// Collections.reverse(keyList);
-			// System.out.println(mapReverse);
-			// System.out.println(keyList);
-			//
-			//
-			// for(int i=0; i<5; i++){
-			// String score = (String) keyList.get(i);
-			// String id = (String) mapReverse.get(keyList.get(i));
-			// scoreboard.add(new JLabel(i+1+"등!!"+" "+id+" "+score)).setFont(new
-			// Font("맑은고딕", Font.BOLD, 30));
-			// }
-			//
-			//
-			// scoreboard.setVisible(true);
+			
+			
+			Iterator<String> iter = sort(idSort).iterator();
+			
+			while(iter.hasNext()) {
+	            String temp = (String) iter.next();
+	            System.out.println(temp + " = " + idSort.get(temp));
+	        }
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -143,5 +107,18 @@ public class DataIo {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<String> sort(Map<String, String> map) {
+		List<String> list = new ArrayList<String>();
+		list.addAll(map.keySet());
+		Collections.sort(list, new Comparator<String>() {
+			public int compare(String o1, String o2) {
+				int v1 = Integer.parseInt(map.get(o1));
+				int v2 = Integer.parseInt(map.get(o2));
+				return ((Comparable<Integer>) v2).compareTo(v1);
+			}
+		});
+		return list;
 	}
 }
