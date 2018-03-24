@@ -4,7 +4,6 @@ package com.game.cording;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import com.game.cording.Quiz6.Timer;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,20 +17,35 @@ public class Quiz7 {
 	static int time = 60;
 	JProgressBar timeP; // 타이머 바
 	JFrame frame;
-	JPanel bar;
+	JPanel bar,quiz7; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
+	JTextArea quizArea;
 	String finalAnswer;
-	
-	
-	public void Quiz7() {
+
+	public void quiz7() {
 
 		JFrame frame = new JFrame("Quiz7");
 		frame.setBounds(200, 200, 700, 700);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		CardLayout card = new CardLayout();
 		Font font = new Font("arian", Font.BOLD, 15);
-		frame.setLayout(null);
+		frame.setLayout(card);
 		
+		//문제 6번 패널
+		quiz7 = new JPanel();
+		quiz7.setBackground(new Color(233, 221, 198));
+		quiz7.setLayout(null);
+		
+		//퀴즈띄울 공간 생성
+		quizArea = new JTextArea();
+		quizArea.setFont(font);
+		quizArea.setEditable(false);
+		quizArea.setBounds(0, 30, 700, 370);
+		quizArea.setBackground(new Color(233, 221, 198));
+		
+		quiz7.add(quizArea);
+
 		// 타이머 바 넣을 공간 생성
 		bar = new JPanel();
 		bar.setLayout(null);
@@ -45,49 +59,44 @@ public class Quiz7 {
 		timeP.setForeground(Color.DARK_GRAY);
 		timeP.setBorderPainted(false);
 		timeP.setBounds(0, 0, 700, 30);
-		//바에 타이머바 삽입
-		frame.add(bar);
 
-		//정답 버튼 생성
-		JButton jButton = new JButton("Check the answer!");
+		quiz7.add(bar);
+
+		//정답버튼 생성
+		JButton jButton = new JButton("OK!");
 		jButton.setBounds(290, 605, 100, 50);
-		frame.add(jButton);
+		quiz7.add(jButton);
 
-		//퀴즈 띄울 공간 생성
-		JTextArea quizArea = new JTextArea();
-		quizArea.setFont(font);
-		quizArea.setEditable(false);
-		quizArea.setBounds(0, 30, 700, 370);
-		quizArea.setBackground(new Color(238, 238, 238));
-		frame.add(quizArea);
-
-		//퀴즈 읽어오는 경로
-		File file = new File("Quiz7.txt");
+		
+		
+		//문제 읽어오는 경로
+		File file = new File("CordingQuiz/Quiz7.txt");
 		String ls = "\n";
-
+		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
-			
-			while ((line = reader.readLine()) != null){
+
+			while ((line = reader.readLine()) != null) {
 				stringBuilder.append(line);
 				stringBuilder.append(ls);
 				quizArea.setText(stringBuilder.toString());
 			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		//답안 읽어오는 경로
-		File file2 = new File("Q7Answer.txt");
+		File file2 = new File("CordingQuiz/Q7Answer.txt");
 		String answer = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file2));
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
 
-			while ((line = reader.readLine()) != null){
+			while ((line = reader.readLine()) != null) {
 				stringBuilder.append(line);
 				stringBuilder.append(ls);
 				answer = stringBuilder.toString();
@@ -97,8 +106,10 @@ public class Quiz7 {
 			e.printStackTrace();
 		}
 
-		String finalAnswer = answer;
+		finalAnswer = answer;
 
+		//답안 공간 생성
+		answerArea = new JTextArea();
 		
 		//스크롤 추가
 		JScrollPane scrollP = new JScrollPane(answerArea);
@@ -108,37 +119,31 @@ public class Quiz7 {
 		answerArea.setFont(font);
 		answerArea.setLineWrap(true);
 
-		frame.add(scrollP);
+		quiz7.add(scrollP);
+		
+		frame.add(quiz7);
+		
 		frame.setVisible(true);
 
 		jButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
-					int rnum = (int)(Math.random() * 3) + 8;
-					if (rnum == 8){
-						Quiz8 q8 = new Quiz8();
-						q8.Quiz8();
-					}else if (rnum == 9){
-						Quiz9 q9 = new Quiz9();
-						q9.Quiz9();
-					}else if (rnum == 10){
-						Quiz10 q10 = new Quiz10();
-						q10.Quiz10();
-					}
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}
 
 			}
 		});
-		frame.setVisible(true);
-		timer = new Timer();
+		timer= new Timer();
 		timer.start();
+
 	}
+
 	class Timer extends Thread {
 		@Override
 		public void run() {
@@ -149,10 +154,10 @@ public class Quiz7 {
 					e.printStackTrace();
 				}
 				time--;
-				if(answerArea.getText().trim().equals(finalAnswer.trim())){
+				// 0초일때 게임 종료
+				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					break;
 				}
-				// 0초일때 게임 종료
 				if (time == 0) {
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");

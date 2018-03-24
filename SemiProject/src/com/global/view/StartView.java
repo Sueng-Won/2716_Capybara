@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.game.cording.Main;
 import com.game.cording.Quiz1;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
@@ -223,7 +224,7 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Quiz1().Quiz1();
+				new Main().random();
 				count++;
 				endGame();
 			}

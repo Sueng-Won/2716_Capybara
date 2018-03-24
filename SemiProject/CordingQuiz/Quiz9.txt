@@ -1,0 +1,46 @@
+다음은 사용자로부터 숫자(num)를 입력받아
+num * num 크기의 마방진을 만드는 코드이다.
+다음 빈칸에 알맞은 코드를 작성하시오.
+
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+
+        int[][] magicSquare = new int[N][N];
+
+        int x = 0, y = N/2;
+        magicSquare[x][y] = 1;
+
+        for(int i = 1; i < N*N; ++i)
+        {
+            if(______________){
+                x++;
+                if(x == N)
+                    x = 0;
+                magicSquare[x][y] = i+1;
+            }else{
+                x--;
+                if(x == -1)
+                    x = N-1;
+
+                y--;
+                if(y == -1)
+                    y = N-1;
+
+                magicSquare[x][y] = i+1;
+            }
+
+        }
+
+        for(int i = 0 ; i < N; ++i)
+        {
+            for(int j = 0 ; j < N; ++j)
+                System.out.print(magicSquare[i][j] + " " );
+            System.out.println();
+        }
+
+
+    }
+}

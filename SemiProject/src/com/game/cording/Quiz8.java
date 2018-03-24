@@ -1,7 +1,10 @@
 package com.game.cording;
 
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,19 +17,34 @@ public class Quiz8 {
 	static int time = 60;
 	JProgressBar timeP; // 타이머 바
 	JFrame frame;
-	JPanel bar;
+	JPanel bar,quiz8; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
 	JTextArea quizArea;
 	String finalAnswer;
 
-	public void Quiz8() {
+	public void quiz8() {
 
 		JFrame frame = new JFrame("Quiz8");
 		frame.setBounds(200, 200, 700, 700);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		CardLayout card = new CardLayout();
 		Font font = new Font("arian", Font.BOLD, 15);
-		frame.setLayout(null);
+		frame.setLayout(card);
+		
+		//문제 8번 패널
+		quiz8 = new JPanel();
+		quiz8.setBackground(new Color(233, 221, 198));
+		quiz8.setLayout(null);
+		
+		//퀴즈띄울 공간 생성
+		quizArea = new JTextArea();
+		quizArea.setFont(font);
+		quizArea.setEditable(false);
+		quizArea.setBounds(0, 30, 700, 370);
+		quizArea.setBackground(new Color(233, 221, 198));
+		
+		quiz8.add(quizArea);
 
 		// 타이머 바 넣을 공간 생성
 		bar = new JPanel();
@@ -42,23 +60,17 @@ public class Quiz8 {
 		timeP.setBorderPainted(false);
 		timeP.setBounds(0, 0, 700, 30);
 
-		frame.add(bar);
+		quiz8.add(bar);
 
 		//정답버튼 생성
 		JButton jButton = new JButton("OK!");
 		jButton.setBounds(290, 605, 100, 50);
-		frame.add(jButton);
+		quiz8.add(jButton);
 
-		//퀴즈띄울 공간 생성
-		quizArea = new JTextArea();
-		quizArea.setFont(font);
-		quizArea.setEditable(false);
-		quizArea.setBounds(0, 30, 700, 370);
-		quizArea.setBackground(new Color(238, 238, 238));
-		frame.add(quizArea);
+		
 		
 		//문제 읽어오는 경로
-		File file = new File("Quiz8.txt");
+		File file = new File("CordingQuiz/Quiz8.txt");
 		String ls = "\n";
 		
 		try {
@@ -77,7 +89,7 @@ public class Quiz8 {
 		}
 
 		//답안 읽어오는 경로
-		File file2 = new File("Q8Answer.txt");
+		File file2 = new File("CordingQuiz/Q8Answer.txt");
 		String answer = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file2));
@@ -107,7 +119,10 @@ public class Quiz8 {
 		answerArea.setFont(font);
 		answerArea.setLineWrap(true);
 
-		frame.add(scrollP);
+		quiz8.add(scrollP);
+		
+		frame.add(quiz8);
+		
 		frame.setVisible(true);
 
 		jButton.addActionListener(new ActionListener() {
@@ -115,17 +130,9 @@ public class Quiz8 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (quizArea.getText().trim().equals(finalAnswer.trim())) {
+				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
-					int rnum = (int) (Math.random() * 2) + 9;
-					if (rnum == 9) {
-						Quiz9 q9 = new Quiz9();
-						q9.Quiz9();
-					} else if (rnum == 10) {
-						Quiz10 q10 = new Quiz10();
-						q10.Quiz10();
-					}
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

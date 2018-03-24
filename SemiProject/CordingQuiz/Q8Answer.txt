@@ -1,0 +1,28 @@
+int[] numArr = new int[10];
+        int min = 0;
+        int temp = 0;
+
+        for (int i = 0 ; i < numArr.length ; i++) {
+            numArr[i] = (int)(Math.random() * 100) + 51;
+            for (int j = 0 ; j < i ; j++) {
+                if (numArr[j] == numArr[i]) {
+                    i--;
+                    break;
+                }
+            }
+        }
+        System.out.print("Result : ");
+        for (int i = 0 ; i < numArr.length ; i++) {
+            min = i;
+            for (int j = i + 1 ; j < numArr.length ; j++) {
+                if (numArr[min] > numArr[j]) {
+                    min = j;
+                }
+            }
+            temp = numArr[i];
+            numArr[i] = numArr[min];
+            numArr[min] = temp;
+        }
+        for (int i = 0 ; i < numArr.length ; i++) {
+            System.out.print(numArr[i] + "\t");
+        }
