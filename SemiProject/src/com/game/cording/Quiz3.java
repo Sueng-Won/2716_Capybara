@@ -113,6 +113,8 @@ public class Quiz3 {
 				if (answerArea.getText().trim().equals("sum += arr[i];")||answerArea.getText().trim().equals("sum = sum + arr[i];")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

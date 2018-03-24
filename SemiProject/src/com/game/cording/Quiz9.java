@@ -117,6 +117,9 @@ public class Quiz9 {
 				if (answerArea.getText().trim().equals("(i+1)%N == 1")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

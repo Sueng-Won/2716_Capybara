@@ -133,6 +133,9 @@ public class Quiz7 {
 				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

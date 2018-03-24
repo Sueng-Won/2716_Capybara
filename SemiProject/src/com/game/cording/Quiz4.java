@@ -113,6 +113,9 @@ public class Quiz4 {
 				if (answerArea.getText().trim().equals("java.util.Scanner sc = new java.util.Scanner(System.in);")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

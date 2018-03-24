@@ -110,9 +110,12 @@ public class Quiz5 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (answerArea.getText().trim().equals("break outer")) {
+				if (answerArea.getText().trim().equals("break outer;")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

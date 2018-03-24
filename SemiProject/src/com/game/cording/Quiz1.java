@@ -1,10 +1,6 @@
 package com.game.cording;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -12,14 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class Quiz1 {
@@ -113,6 +102,8 @@ public class Quiz1 {
 				if (answerArea.getText().trim().equals("frame")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");

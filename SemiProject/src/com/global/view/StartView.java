@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import com.game.cording.Main;
 import com.game.cording.Quiz1;
+import com.game.cording.QuizManager;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
 import com.global.login.DataIo;
@@ -214,7 +215,7 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Main().random();
+		new Main().main(null);
 				count++;
 				endGame();
 			}

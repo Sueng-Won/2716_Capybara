@@ -30,6 +30,7 @@ public class Quiz2 {
 	Timer timer;
 	JTextArea answerArea;
 
+
 	public void quiz2() {
 		//문제 기본 프레임
 		JFrame frame = new JFrame("Quiz2");
@@ -113,6 +114,8 @@ public class Quiz2 {
 				if (answerArea.getText().trim().equals("intArr[i].length;")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}

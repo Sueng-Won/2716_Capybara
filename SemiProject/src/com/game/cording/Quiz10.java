@@ -117,6 +117,9 @@ public class Quiz10 {
 				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
