@@ -15,8 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.game.cording.Main;
-import com.game.cording.Quiz1;
-import com.game.cording.QuizManager;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
 import com.global.login.DataIo;
@@ -30,7 +28,8 @@ public class StartView {
 	int startIdx = 0;
 	int count=0;
 	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, 
-	capybaraLabel, capybaraLabelWithQ, capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS;
+	capybaraLabel, capybaraLabelWithQ, capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS,
+	student1Label, student2Label, student3Label, student4Label, student5Label;
 
 	public void gameView(int startIdx) {
 
@@ -127,7 +126,36 @@ public class StartView {
 		bubbleLabel4.setIcon(bubblechange);
 		bubbleLabel4.setBounds(600,20,400,400);
 		bubbleLabel4.setVisible(false);
-	
+		
+		ImageIcon student1 = new ImageIcon("AnimalFolder/Horse.png");
+		student1Label = new JLabel();
+		student1Label.setIcon(student1);
+		student1Label.setBounds(20,450,50,50);
+		student1Label.setVisible(true);
+		
+		ImageIcon student2 = new ImageIcon("AnimalFolder/Panda.png");
+		student2Label = new JLabel();
+		student2Label.setIcon(student2);
+		student2Label.setBounds(260,450,50,50);
+		student2Label.setVisible(true);
+		
+		ImageIcon student3 = new ImageIcon("AnimalFolder/Penguin.png");
+		student3Label = new JLabel();
+		student3Label.setIcon(student3);
+		student3Label.setBounds(500,450,50,50);
+		student3Label.setVisible(true);
+		
+		ImageIcon student4 = new ImageIcon("AnimalFolder/PolarBear.png");
+		student4Label = new JLabel();
+		student4Label.setIcon(student4);
+		student4Label.setBounds(740,450,50,50);
+		student4Label.setVisible(true);
+		
+		ImageIcon student5 = new ImageIcon("AnimalFolder/Racoons.png");
+		student5Label = new JLabel();
+		student5Label.setIcon(student5);
+		student5Label.setBounds(980,450,50,50);
+		student5Label.setVisible(true);
 
 		// ImageIcon img = new ImageIcon("startBackground.png");
 		ImageIcon btnRythm = new ImageIcon("ButtonImageFolder/RythmButton.png");
@@ -322,6 +350,13 @@ public class StartView {
 		background.add(bubbleLabel2);
 		background.add(bubbleLabel3);
 		background.add(bubbleLabel4);
+		
+		//학생
+		background.add(student1Label);
+		background.add(student2Label);
+		background.add(student3Label);
+		background.add(student4Label);
+		background.add(student5Label);
 
 		// Vo 데이타를 배경패널에 입력
 		StudentVo sv = new StudentVo();
