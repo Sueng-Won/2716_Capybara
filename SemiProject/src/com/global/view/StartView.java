@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.game.change.Change;
 import com.game.cording.Main;
 import com.game.rhythm.Ex2;
 import com.game.textquiz.Quiz;
@@ -306,6 +307,14 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Change c = new Change();
+				int[] location = new int[5];
+				location = c.changeLocationX();
+				student1Label.setBounds(location[0], 450,50,50);
+				student2Label.setBounds(location[1], 450,50,50);
+				student3Label.setBounds(location[2], 450,50,50);
+				student4Label.setBounds(location[3], 450,50,50);
+				student5Label.setBounds(location[4], 450,50,50);
 				count++;
 				endGame();
 			}
