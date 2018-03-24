@@ -1,6 +1,7 @@
 package com.global.view;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ import javax.swing.JPanel;
 import com.game.change.Change;
 import com.game.cording.Main;
 import com.game.rhythm.Ex2;
-import com.game.textquiz.Quiz;
+import com.game.textquiz.MainFrame;
 import com.global.login.DataIo;
 import com.global.login.LoginView;
 
@@ -296,7 +297,7 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Quiz().randomOutput();
+				new MainFrame();
 				count++;
 				endGame();
 			}
