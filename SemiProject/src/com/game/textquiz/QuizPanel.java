@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 public class QuizPanel  extends JPanel {
 	
 	int count =0;
-	int quizNum = 0;
 	int[] numArr = new int[5];
 	
 //  카드레이아웃 패널
@@ -54,46 +53,46 @@ public class QuizPanel  extends JPanel {
 		
 	public void changePanel(){
 		
+		
 		if(count==5){
 			F.dispose();
 			}
 		else{
-		quizNum = numArr[count++];  
+			switch (numArr[count++]) {
+			
+			case 1:
+				add(new Quiz01(this));
+				break;
+			case 2:
+				add(new Quiz02(this));
+				break;
+			case 3:
+				add(new Quiz03(this));
+				break;
+			case 4:
+				add(new Quiz04(this));
+				break;
+			case 5:
+				add(new Quiz05(this));
+				break;
+			case 6:
+				add(new Quiz06(this));
+				break;
+			case 7:
+				add(new Quiz07(this));
+				break;
+			case 8:
+				add(new Quiz08(this));
+				break;
+			case 9:
+				add(new Quiz09(this));
+				break;
+			case 10:
+				add(new Quiz10(this));
+				break;
+
+			}
 		}
-		
-		
-		//changePanel()을 불러올 때마다 quizNum 숫자와 같은 패널 전환
-		
-		if(quizNum==1){
-			add(new Quiz01(this));
-			}
-			if(quizNum==2){
-			add(new Quiz02(this));
-			}
-			if(quizNum==3){
-			add(new Quiz03(this));
-			}
-			if(quizNum==4){
-			add(new Quiz04(this));
-			}
-			if(quizNum==5){
-			add(new Quiz05(this));
-			}
-			if(quizNum==6){
-			add(new Quiz06(this));
-			}
-			if(quizNum==7){
-			add(new Quiz07(this));
-			}
-			if(quizNum==8){
-			add(new Quiz08(this));
-			}
-			if(quizNum==9){
-			add(new Quiz09(this));
-			}
-			if(quizNum==10){
-			add(new Quiz10(this));
-			}
 		
 		
 		
