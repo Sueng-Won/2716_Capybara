@@ -67,8 +67,8 @@ public class Ex2 extends JFrame implements KeyListener {
 		lifePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 		
-		Image lifeImage = new ImageIcon("lifeImage.PNG").getImage().getScaledInstance(20, 20, 0);
-		dieImage = new ImageIcon("baseImg.PNG").getImage().getScaledInstance(20, 20, 0);
+		Image lifeImage = new ImageIcon("RhythmHeart/Heart.png").getImage().getScaledInstance(20, 20, 0);
+		dieImage = new ImageIcon("RhythmHeart/NoHeart.png").getImage().getScaledInstance(20, 20, 0);
 
 		
 		for(int i = 0; i<life; i++){
