@@ -50,6 +50,7 @@ public class Ex2 extends JFrame implements KeyListener {
 
 		setSize(700, 400);
 		setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : "+count2+"번]");
+		setBackground(new Color(233,221,198));
 		
 		base = new JPanel(new BorderLayout());
 		bar = new JPanel(new GridLayout(1,2,1,1));
@@ -59,12 +60,13 @@ public class Ex2 extends JFrame implements KeyListener {
 		timeP.setMinimum(0);
 		timeP.setMaximum(80);
 		timeP.setValue(time);
-		timeP.setForeground(Color.DARK_GRAY);
+		timeP.setForeground(new Color(60,30,30));
 		timeP.setBorderPainted(false);
 		bar.add(lifePanel = new JPanel());
 		barbase.add(bar);
 		
 		lifePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
 
 		
 		Image lifeImage = new ImageIcon("RhythmHeart/Heart.png").getImage().getScaledInstance(20, 20, 0);
@@ -78,8 +80,6 @@ public class Ex2 extends JFrame implements KeyListener {
 
 		jp = new JPanel();
 		jp.setLayout(new GridLayout(3, 5, 10, 10));
-		
-
 
 		int num = 0;
 		int ranNum = 0;
@@ -136,7 +136,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_UP:
 
 			if (solNum == '0') { // 맞을경우
-				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
+				l_name[count].setIcon(new ImageIcon("CapyBara/OkaySign.png"));
 				count++;
 
 				if (count >= 15) {
@@ -177,7 +177,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_LEFT:
 
 			if (solNum == '1') {
-				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
+				l_name[count].setIcon(new ImageIcon("CapyBara/OkaySign.png"));
 				count++;
 
 				if (count >= 15) {
@@ -218,7 +218,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_DOWN:
 
 			if (solNum == '2') {
-				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
+				l_name[count].setIcon(new ImageIcon("CapyBara/OkaySign.png"));
 				count++;
 				
 				if (count >= 15) {
@@ -258,7 +258,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		case KeyEvent.VK_RIGHT:
 
 			if (solNum == '3') {
-				l_name[count].setIcon(new ImageIcon("Capybara.jpg"));
+				l_name[count].setIcon(new ImageIcon("CapyBara/OkaySign.png"));
 				count++;
 
 				if (count >= 15) {
