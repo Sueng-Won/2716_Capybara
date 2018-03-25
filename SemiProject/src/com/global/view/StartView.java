@@ -224,7 +224,7 @@ public class StartView {
 		// sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
-
+		
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
 
@@ -424,7 +424,7 @@ public class StartView {
 		if (sv.getConcentrationStu5().getValue() >= 100) {
 			overCnt++;
 		}
-
+		
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
@@ -436,6 +436,17 @@ public class StartView {
 		if (startIdx == 1) {
 			new GlobalEventThread().start();
 		}
+		new Thread() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(true) {
+					background.validate();
+					background.revalidate();
+					background.repaint();
+				}
+			}
+		}.start();
 	}
 	//값전달
 	public int[] setValue() {
@@ -488,5 +499,4 @@ public class StartView {
 			}
 		}
 	}
-
 }
