@@ -336,6 +336,7 @@ public class StartView {
 				student3Label.setBounds(location[2], 450, 50, 50);
 				student4Label.setBounds(location[3], 450, 50, 50);
 				student5Label.setBounds(location[4], 450, 50, 50);
+				sv.randomLocation(location);
 				count++;
 				endGame();
 

@@ -127,5 +127,11 @@ public class StudentVo{
 		this.stress.setValue(this.stress.getValue()+value[5]);
 		this.achievement += value[6];
 	}
+	
+	public void randomLocation(int[] location) {
+		for(int i = 0 ;i<concentrationStu.length;i++) {
+			this.concentrationStu[i].setBounds(location[i], 500, 200, 40);
+		}
+	}
 }
 
