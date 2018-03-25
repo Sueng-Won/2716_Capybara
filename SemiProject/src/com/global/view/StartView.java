@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -47,7 +49,7 @@ public class StartView {
 		ImageIcon icon = new ImageIcon("Start/thumbnail.png");
 		frame.setIconImage(icon.getImage());
 		// 게임 기본화면 구현
-
+		//dasdfasdfasdf
 		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
 		startBtn = new JButton();
 		startBtn.setBounds(1020, 500, 100, 50);
@@ -231,9 +233,20 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+					int[] value = {0,0,0,0,0,0,0};
+					for(int num : value) {
+						bw.write(String.valueOf(num));
+						bw.newLine();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				new Ex2(3, 0, 1, 20, 0).gameRun();
 				count++;
 				sv.addValueAll(setValue());
+				background.validate();
 				endGame();
 			}
 		});
@@ -447,6 +460,7 @@ public class StartView {
 			while((line = br.readLine())!=null) {
 				tempStr[count] = line;
 				value[count] = Integer.parseInt(tempStr[count]);
+				System.out.println(value[count]);
 				count++;
 			}
 		} catch (FileNotFoundException e) {
@@ -460,6 +474,7 @@ public class StartView {
 	}
 
 	public void endGame() {
+		
 		if (count == 6) {
 			count = 0;
 			new DataIo().saveAchievement(new StudentVo().getAchievement());

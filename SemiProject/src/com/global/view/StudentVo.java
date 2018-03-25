@@ -57,7 +57,6 @@ public class StudentVo{
 		stress.setBackground(new Color(255,0,0,0));
 		stress.setForeground(new Color(232,74,95));
 		stress.setStringPainted(true);
-		stress.setValue(0);
 	
 		
 		

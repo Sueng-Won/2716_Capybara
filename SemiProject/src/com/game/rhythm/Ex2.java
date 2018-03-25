@@ -123,7 +123,6 @@ public class Ex2 extends JFrame implements KeyListener {
 			
 			@Override
 			public void windowClosed(WindowEvent e) {
-				
 			}
 			
 		});
@@ -456,6 +455,7 @@ public class Ex2 extends JFrame implements KeyListener {
 				if(time==0){
 					timeP.setValue(time);
 					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+					
 					dispose();
 					break;
 				}else if(count2 >= 4||stopidx==-1){
