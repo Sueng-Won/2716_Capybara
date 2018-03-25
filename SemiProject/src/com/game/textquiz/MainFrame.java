@@ -1,11 +1,14 @@
 package com.game.textquiz;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -15,6 +18,7 @@ import javax.swing.JProgressBar;
 
 public class MainFrame extends JFrame{
 	
+	Font f1 = new Font("맑은 고딕", Font.BOLD, 13);
 	static Timer timer;
 	JProgressBar timeP;
 	public static int time = 20;
@@ -22,7 +26,7 @@ public class MainFrame extends JFrame{
 	JPanel barbase;
 	JPanel base;
 	private boolean stop = false; // 타이머 스위치
-	
+	QuizPanel qp = new QuizPanel(this);
 	
 	
 	
@@ -67,7 +71,7 @@ public class MainFrame extends JFrame{
     	timeP.setBackground(new Color(233, 221, 198));
     	
     	getContentPane().add(bar);
-        getContentPane().add(new QuizPanel(this),"Center");
+        getContentPane().add(qp,"Center");
 
         
        
@@ -96,18 +100,23 @@ public class MainFrame extends JFrame{
 				
 				
 				if (time == 0) {
-	
+					JLabel messageLabel = new JLabel("시간초과!!");
+					messageLabel.setFont(f1);
+					
 					timeP.setValue(time);
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					dispose();
-					break;
+					JOptionPane.showMessageDialog(null, messageLabel, "TimeOver",
+							JOptionPane.INFORMATION_MESSAGE);
+					nextPanel();
+					
+				
 				}
-	
 				timeP.setValue(time);
 			}
 	
 		}
 	}
-	
-	
-}
+	public void nextPanel(){
+		qp.changePanel();
+		
+	}
+	}
