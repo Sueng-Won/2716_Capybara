@@ -38,7 +38,7 @@ public class StartView {
 			capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS, student1Label, student2Label, student3Label,
 			student4Label, student5Label;
 	int overCnt = 0;// 집중력 0인 학생 수
-
+	JFrame frame = new JFrame("카피바라 강사의 하루");
 	ImageIcon img = new ImageIcon("Start/startBackground.png");
 
 	// 이름없는생성자로 배경화면삽입
@@ -55,7 +55,6 @@ public class StartView {
 	public void gameView(int startIdx) {
 
 		this.startIdx = startIdx;
-		JFrame frame = new JFrame("카피바라 강사의 하루");
 		frame.setBounds(50, 50, 1220, 700);
 		frame.setLayout(null);
 		// 파비콘 생성
@@ -369,35 +368,53 @@ public class StartView {
 			}
 
 		});
-		//편법 ^오^
-		background.addMouseListener(new MouseAdapter() {
+		// 편법 ^오^
+		frame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				try(BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
 					int check = 0;
 					int checkSum = 0;
 					int[] valueArr = new int[7];
-					while((temp = br.readLine())!=null) {
+					while ((temp = br.readLine()) != null) {
 						tempStr[check++] = temp;
 					}
-					for(int i = 0; i<7;i++) {
+					for (int i = 0; i < 7; i++) {
 						valueArr[i] = Integer.parseInt(tempStr[i]);
-						checkSum+=valueArr[i];
+						checkSum += valueArr[i];
 					}
-					if(checkSum != 0) {
+					if (checkSum != 0) {
 						sv.addValueAll(valueArr);
 						background.validate();
 						background.revalidate();
 						background.repaint();
-						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
-							for(int i = 0 ; i<7;i++) {
+						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+							for (int i = 0; i < 7; i++) {
 								bw.write("0");
 								bw.newLine();
 							}
 						}
+
 					}
+					// 집중도가 100일때 over학생 수 카운트 ++
+					if (sv.getConcentrationStu1().getValue() <= 0) {
+						overCnt++;
+					}
+					if (sv.getConcentrationStu2().getValue() <= 0) {
+						overCnt++;
+					}
+					if (sv.getConcentrationStu3().getValue() <= 0) {
+						overCnt++;
+					}
+					if (sv.getConcentrationStu4().getValue() <= 0) {
+						overCnt++;
+					}
+					if (sv.getConcentrationStu5().getValue() <= 0) {
+						overCnt++;
+					}
+					endGame();
 				} catch (FileNotFoundException fnfe) {
 					// TODO Auto-generated catch block
 					fnfe.printStackTrace();
@@ -434,43 +451,9 @@ public class StartView {
 		background.add(student4Label);
 		background.add(student5Label);
 
-		JPanel gameOver = new JPanel() {
-			public void paintComponent(Graphics g) {
-				g.drawImage(img.getImage(), 0, 0, null);
-				setOpaque(false);
-				super.paintComponent(g);
-			}
-		};
-		gameOver.setBackground(new Color(233, 221, 198));
-		gameOver.setLayout(null);
-		gameOver.setBounds(0, 0, 1200, 700);
-
-		ImageIcon gameoverImg = new ImageIcon("gameover.png");
-		JLabel overIcon = new JLabel();
-		overIcon.setBounds(400, 400, 500, 300);
-		overIcon.setIcon(gameoverImg);
-
-		// 집중도가 100일때 over학생 수 카운트 ++
-		if (sv.getConcentrationStu1().getValue() >= 100) {
-			overCnt++;
-		}
-		if (sv.getConcentrationStu2().getValue() >= 100) {
-			overCnt++;
-		}
-		if (sv.getConcentrationStu3().getValue() >= 100) {
-			overCnt++;
-		}
-		if (sv.getConcentrationStu4().getValue() >= 100) {
-			overCnt++;
-		}
-		if (sv.getConcentrationStu5().getValue() >= 100) {
-			overCnt++;
-		}
-
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
-		frame.add(gameOver);
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -479,8 +462,8 @@ public class StartView {
 			new GlobalEventThread().start();
 		}
 
-		
 	}
+
 	public void endGame() {
 		if (count == 6) {
 			count = 0;
@@ -489,8 +472,29 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
+		if (overCnt >= 3) {
+			overCnt = 0;
+			JPanel gameOver = new JPanel() {
+				public void paintComponent(Graphics g) {
+					g.drawImage(img.getImage(), 0, 0, null);
+					setOpaque(false);
+					super.paintComponent(g);
+				}
+			};
+			gameOver.setBackground(new Color(233, 221, 198));
+			gameOver.setLayout(null);
+			gameOver.setBounds(0, 0, 1220, 700);
+
+			ImageIcon gameoverImg = new ImageIcon("Start/GameOver.png");
+			JLabel overIcon = new JLabel();
+			overIcon.setBounds(0, 0, 1220, 700);
+			overIcon.setIcon(gameoverImg);
+			gameOver.add(overIcon);
+			frame.add(gameOver);
+			background.setVisible(false);
+		}
 	}
-	
+
 	class GlobalEventThread extends Thread {
 		@Override
 		public void run() {
