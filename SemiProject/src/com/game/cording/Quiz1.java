@@ -24,7 +24,7 @@ public class Quiz1 {
 
 	public void quiz1() {
 		//문제 기본 프레임
-		JFrame frame = new JFrame("Quiz1");
+		frame = new JFrame("Quiz1");
 		frame.setBounds(200, 200, 700, 700);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		CardLayout card = new CardLayout();
@@ -152,8 +152,11 @@ public class Quiz1 {
 
 				if (time == 0) {
 					timeP.setValue(time);
-					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					System.exit(0);
+//					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+//					System.exit(0);
+					QuizManager quizManager = new QuizManager();
+					quizManager.QuizManager();
+					frame.setVisible(false);
 					break;
 				}else if(stopidx==-1) {
 					break;
