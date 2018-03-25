@@ -399,10 +399,10 @@ public class StartView {
 					}
 				} catch (FileNotFoundException fnfe) {
 					// TODO Auto-generated catch block
-					System.out.println("프로그래스바 초기화 완료");
+					fnfe.printStackTrace();
 				} catch (IOException ioe) {
 					// TODO Auto-generated catch block
-					System.out.println("프로그래스바 초기화 완료");
+					ioe.printStackTrace();
 				}
 			}
 		});
