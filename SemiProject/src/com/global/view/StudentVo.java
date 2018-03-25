@@ -13,7 +13,7 @@ public class StudentVo{
 	private JProgressBar stress;
 	private JLabel achievementLabel;
 	private JLabel achivementCount;
-	private int achievement=25555000;
+	private int achievement=0;
 	
 	public StudentVo(){
 		//테두리디자인
@@ -57,7 +57,7 @@ public class StudentVo{
 		stress.setBackground(new Color(255,0,0,0));
 		stress.setForeground(new Color(232,74,95));
 		stress.setStringPainted(true);
-		stress.setValue(50); //피로도 50으로 테스트값
+		stress.setValue(0);
 	
 		
 		
@@ -72,19 +72,19 @@ public class StudentVo{
 		achivementCount.setFont(new Font("맑은고딕", Font.BOLD, 30));
 		
 	}
-	public JProgressBar setConcentrationStu1(){
+	public JProgressBar getConcentrationStu1(){
 		return concentrationStu[0];
 	}
-	public JProgressBar setConcentrationStu2(){
+	public JProgressBar getConcentrationStu2(){
 		return concentrationStu[1];
 	}
-	public JProgressBar setConcentrationStu3(){
+	public JProgressBar getConcentrationStu3(){
 		return concentrationStu[2];
 	}
-	public JProgressBar setConcentrationStu4(){
+	public JProgressBar getConcentrationStu4(){
 		return concentrationStu[3];
 	}
-	public JProgressBar setConcentrationStu5(){
+	public JProgressBar getConcentrationStu5(){
 		return concentrationStu[4];
 	}
 	
@@ -112,6 +112,16 @@ public class StudentVo{
 
 	public int getAchievement(){
 		return achievement;
+	}
+	
+	public void addValueAll(int[] value) {
+		this.concentrationStu[0].setValue(this.concentrationStu[0].getValue()+value[0]);
+		this.concentrationStu[1].setValue(this.concentrationStu[1].getValue()+value[1]);
+		this.concentrationStu[2].setValue(this.concentrationStu[2].getValue()+value[2]);
+		this.concentrationStu[3].setValue(this.concentrationStu[3].getValue()+value[3]);
+		this.concentrationStu[4].setValue(this.concentrationStu[4].getValue()+value[4]);
+		this.stress.setValue(this.stress.getValue()+value[5]);
+		this.achievement += value[6];
 	}
 }
 

@@ -9,6 +9,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -37,12 +40,15 @@ public class Ex2 extends JFrame implements KeyListener {
 	JLabel[] lifeLabel = new JLabel[3];
 	Timer timer = new Timer();
 	int stopidx=0;
+	int[] value = {0,0,0,0,0,0,0};	//값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
+	static int count3 = 0;		//배열 인덱스 접근용 변수
 	
-	public Ex2(int life, int count, int count2, int time){
+	public Ex2(int life, int count, int count2, int time, int count3){
 		this.life = life;
 		this.count = count;
 		this.count2 = count2;
 		this.time = time;
+		this.count3 = count3;
 	}
 	
 	// 실행 메소드//
@@ -123,7 +129,7 @@ public class Ex2 extends JFrame implements KeyListener {
 		});
 
 		setDefaultCloseOperation(Ex2.DISPOSE_ON_CLOSE);
-
+		
 	}
 
 	// 키보드 이벤트
@@ -149,6 +155,22 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {			//마지막 run을 실행 시키지 않음
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
+						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
+							value[5] = -30;
+							value[6] = 0;
+							for(int num : value) {
+								bw.write(String.valueOf(num));
+								bw.newLine();
+							}
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 					}else{
 						gameRun();
@@ -169,6 +191,18 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0); // 시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
+					for(int i = count3; i<5; i++) {
+						value[i] = 0;
+					}
+					try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+						for(int num : value) {
+							bw.write(String.valueOf(num));
+							bw.newLine();
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			}
@@ -190,6 +224,22 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
+						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
+							value[5] = -30;
+							value[6] = 0;
+							for(int num : value) {
+								bw.write(String.valueOf(num));
+								bw.newLine();
+							}
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 					}else{
 						gameRun();
@@ -211,6 +261,18 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0);
+					for(int i = count3; i<5; i++) {
+						value[i] = 0;
+					}
+					try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+						for(int num : value) {
+							bw.write(String.valueOf(num));
+							bw.newLine();
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			}
@@ -231,6 +293,22 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
+						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
+							value[5] = -30;
+							value[6] = 0;
+							for(int num : value) {
+								bw.write(String.valueOf(num));
+								bw.newLine();
+							}
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 					}else{
 						gameRun();
@@ -250,6 +328,18 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 //					System.exit(0);
+					for(int i = count3; i<5; i++) {
+						value[i] = 0;
+					}
+					try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+						for(int num : value) {
+							bw.write(String.valueOf(num));
+							bw.newLine();
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			}
@@ -271,6 +361,22 @@ public class Ex2 extends JFrame implements KeyListener {
 					if (count2 >= 4) {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 //						System.exit(0);
+						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
+							value[5] = -30;
+							value[6] = 0;
+							for(int num : value) {
+								bw.write(String.valueOf(num));
+								bw.newLine();
+							}
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						dispose();
 					}else{
 					gameRun();
@@ -289,6 +395,18 @@ public class Ex2 extends JFrame implements KeyListener {
 				if (life == 0) {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
+					for(int i = count3; i<5; i++) {
+						value[i] = 0;
+					}
+					try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+						for(int num : value) {
+							bw.write(String.valueOf(num));
+							bw.newLine();
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					dispose();
 				}
 			}
@@ -311,6 +429,10 @@ public class Ex2 extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int[] valueReturn() {
+		return value;
 	}
 	
 	class Timer extends Thread{

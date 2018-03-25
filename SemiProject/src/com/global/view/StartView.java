@@ -1,12 +1,15 @@
 package com.global.view;
 
 import java.awt.Color;
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,11 +31,11 @@ public class StartView {
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
 	int startIdx = 0;
-	int count=0;
-	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, 
-	capybaraLabel, capybaraLabelWithQ, capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS,
-	student1Label, student2Label, student3Label, student4Label, student5Label;
-	int overCnt=0;//집중력 0인 학생 수 
+	int count = 0;
+	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, capybaraLabel, capybaraLabelWithQ,
+			capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS, student1Label, student2Label, student3Label,
+			student4Label, student5Label;
+	int overCnt = 0;// 집중력 0인 학생 수
 
 	public void gameView(int startIdx) {
 
@@ -44,15 +47,13 @@ public class StartView {
 		ImageIcon icon = new ImageIcon("Start/thumbnail.png");
 		frame.setIconImage(icon.getImage());
 		// 게임 기본화면 구현
-		
+
 		ImageIcon btnStart = new ImageIcon("ButtonImageFolder/StartButton.png");
 		startBtn = new JButton();
 		startBtn.setBounds(1020, 500, 100, 50);
 		startBtn.setContentAreaFilled(false);
 		startBtn.setIcon(btnStart);
 		startBtn.setBorderPainted(false);
-	
-		
 
 		ImageIcon startImg = new ImageIcon("Start/StartView.png");
 		JPanel startView = new JPanel() {
@@ -72,92 +73,92 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new LoginView(startView).mainLogin();
-		//		startView.setVisible(false);
+				// startView.setVisible(false);
 				startBtn.setVisible(false);
 			}
 		});
 		ImageIcon capybara = new ImageIcon("CapyBara/CapyBara.png");
 		capybaraLabel = new JLabel();
 		capybaraLabel.setIcon(capybara);
-		capybaraLabel.setBounds(200,20,400,400);
+		capybaraLabel.setBounds(200, 20, 400, 400);
 		capybaraLabel.setVisible(true);
-		
+
 		ImageIcon capybaraWithQ = new ImageIcon("CapyBara/CapyBaraWithQuestion.png");
 		capybaraLabelWithQ = new JLabel();
 		capybaraLabelWithQ.setIcon(capybaraWithQ);
-		capybaraLabelWithQ.setBounds(200,20,400,400);
+		capybaraLabelWithQ.setBounds(200, 20, 400, 400);
 		capybaraLabelWithQ.setVisible(false);
-		
+
 		ImageIcon capybaraWithN = new ImageIcon("CapyBara/CapyBaraWithNotice.png");
 		capybaraLabelWithN = new JLabel();
 		capybaraLabelWithN.setIcon(capybaraWithN);
-		capybaraLabelWithN.setBounds(200,20,400,400);
+		capybaraLabelWithN.setBounds(200, 20, 400, 400);
 		capybaraLabelWithN.setVisible(false);
-		
+
 		ImageIcon capybaraWithD = new ImageIcon("CapyBara/CapyBaraWithDot.png");
 		capybaraLabelWithD = new JLabel();
 		capybaraLabelWithD.setIcon(capybaraWithD);
-		capybaraLabelWithD.setBounds(200,20,400,400);
+		capybaraLabelWithD.setBounds(200, 20, 400, 400);
 		capybaraLabelWithD.setVisible(false);
-		
+
 		ImageIcon capybaraWithS = new ImageIcon("CapyBara/CapyBaraWithSweat.png");
 		capybaraLabelWithS = new JLabel();
 		capybaraLabelWithS.setIcon(capybaraWithS);
-		capybaraLabelWithS.setBounds(200,20,400,400);
+		capybaraLabelWithS.setBounds(200, 20, 400, 400);
 		capybaraLabelWithS.setVisible(false);
-		
+
 		ImageIcon bubblerhythm = new ImageIcon("SpeechBubble/SpeechBubbleRhythm.png");
 		bubbleLabel1 = new JLabel();
 		bubbleLabel1.setIcon(bubblerhythm);
-		bubbleLabel1.setBounds(600,20,400,400);
+		bubbleLabel1.setBounds(600, 20, 400, 400);
 		bubbleLabel1.setVisible(false);
-		
+
 		ImageIcon bubblecording = new ImageIcon("SpeechBubble/SpeechBubbleCording.png");
 		bubbleLabel2 = new JLabel();
 		bubbleLabel2.setIcon(bubblecording);
-		bubbleLabel2.setBounds(600,20,400,400);
+		bubbleLabel2.setBounds(600, 20, 400, 400);
 		bubbleLabel2.setVisible(false);
-		
+
 		ImageIcon bubbleTextq = new ImageIcon("SpeechBubble/SpeechBubbleTextQuiz.png");
 		bubbleLabel3 = new JLabel();
 		bubbleLabel3.setIcon(bubbleTextq);
-		bubbleLabel3.setBounds(600,20,400,400);
+		bubbleLabel3.setBounds(600, 20, 400, 400);
 		bubbleLabel3.setVisible(false);
-		
+
 		ImageIcon bubblechange = new ImageIcon("SpeechBubble/SpeechBubbleChange.png");
 		bubbleLabel4 = new JLabel();
 		bubbleLabel4.setIcon(bubblechange);
-		bubbleLabel4.setBounds(600,20,400,400);
+		bubbleLabel4.setBounds(600, 20, 400, 400);
 		bubbleLabel4.setVisible(false);
-		
+
 		ImageIcon student1 = new ImageIcon("AnimalFolder/Horse.png");
 		student1Label = new JLabel();
 		student1Label.setIcon(student1);
-		student1Label.setBounds(20,450,50,50);
+		student1Label.setBounds(20, 450, 50, 50);
 		student1Label.setVisible(true);
-		
+
 		ImageIcon student2 = new ImageIcon("AnimalFolder/Panda.png");
 		student2Label = new JLabel();
 		student2Label.setIcon(student2);
-		student2Label.setBounds(260,450,50,50);
+		student2Label.setBounds(260, 450, 50, 50);
 		student2Label.setVisible(true);
-		
+
 		ImageIcon student3 = new ImageIcon("AnimalFolder/Penguin.png");
 		student3Label = new JLabel();
 		student3Label.setIcon(student3);
-		student3Label.setBounds(500,450,50,50);
+		student3Label.setBounds(500, 450, 50, 50);
 		student3Label.setVisible(true);
-		
+
 		ImageIcon student4 = new ImageIcon("AnimalFolder/PolarBear.png");
 		student4Label = new JLabel();
 		student4Label.setIcon(student4);
-		student4Label.setBounds(740,450,50,50);
+		student4Label.setBounds(740, 450, 50, 50);
 		student4Label.setVisible(true);
-		
+
 		ImageIcon student5 = new ImageIcon("AnimalFolder/Racoons.png");
 		student5Label = new JLabel();
 		student5Label.setIcon(student5);
-		student5Label.setBounds(980,450,50,50);
+		student5Label.setBounds(980, 450, 50, 50);
 		student5Label.setVisible(true);
 
 		// ImageIcon img = new ImageIcon("startBackground.png");
@@ -167,7 +168,7 @@ public class StartView {
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
 
 		ImageIcon img = new ImageIcon("Start/startBackground.png");
-		
+
 		// 이름없는생성자로 배경화면삽입
 		JPanel background = new JPanel() {
 			public void paintComponent(Graphics g) {
@@ -176,10 +177,10 @@ public class StartView {
 				super.paintComponent(g);
 			}
 		};
-		background.setBackground(new Color(233,221,198));
+		background.setBackground(new Color(233, 221, 198));
 		background.setLayout(null);
 		background.setBounds(0, 0, 1200, 700);
-		
+
 		rythmBtn = new JButton();
 		cordingBtn = new JButton();
 		textqBtn = new JButton();
@@ -209,24 +210,20 @@ public class StartView {
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
-		
-		
+
 		// Vo 데이타를 배경패널에 입력
-				StudentVo sv = new StudentVo();
-				background.add(sv.setConcentrationStu1());
-				background.add(sv.setConcentrationStu2());
-				background.add(sv.setConcentrationStu3());
-				background.add(sv.setConcentrationStu4());
-				background.add(sv.setConcentrationStu5());
-				background.add(sv.setStress());
-				background.add(sv.setAchievementLabel());
-				background.add(sv.setAchivementCount());
-			//	sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
-			//	sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
-			//	sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
-				
-		
-		
+		StudentVo sv = new StudentVo();
+		background.add(sv.getConcentrationStu1());
+		background.add(sv.getConcentrationStu2());
+		background.add(sv.getConcentrationStu3());
+		background.add(sv.getConcentrationStu4());
+		background.add(sv.getConcentrationStu5());
+		background.add(sv.setStress());
+		background.add(sv.setAchievementLabel());
+		background.add(sv.setAchivementCount());
+		// sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
+		// sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
+		// sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
 
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
@@ -234,13 +231,14 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Ex2(3, 0, 1, 20).gameRun();
+				new Ex2(3, 0, 1, 20, 0).gameRun();
 				count++;
+				sv.addValueAll(setValue());
 				endGame();
 			}
 		});
-		
-		//리듬게임 설명 말풍선
+
+		// 리듬게임 설명 말풍선
 		rythmBtn.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -249,7 +247,7 @@ public class StartView {
 				capybaraLabelWithN.setVisible(false);
 				bubbleLabel1.setVisible(false);
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -270,18 +268,17 @@ public class StartView {
 				endGame();
 			}
 		});
-		
-		//코딩게임  설명 말풍선
+
+		// 코딩게임 설명 말풍선
 		cordingBtn.addMouseListener(new MouseAdapter() {
 
-			
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				capybaraLabelWithQ.setVisible(false);
 				bubbleLabel2.setVisible(false);
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -302,17 +299,17 @@ public class StartView {
 				endGame();
 			}
 		});
-		
-		//이론게임  설명 말풍선
+
+		// 이론게임 설명 말풍선
 		textqBtn.addMouseListener(new MouseAdapter() {
-		
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				capybaraLabelWithD.setVisible(false);
 				bubbleLabel3.setVisible(false);
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -331,25 +328,25 @@ public class StartView {
 				Change c = new Change();
 				int[] location = new int[5];
 				location = c.changeLocationX();
-				student1Label.setBounds(location[0], 450,50,50);
-				student2Label.setBounds(location[1], 450,50,50);
-				student3Label.setBounds(location[2], 450,50,50);
-				student4Label.setBounds(location[3], 450,50,50);
-				student5Label.setBounds(location[4], 450,50,50);
+				student1Label.setBounds(location[0], 450, 50, 50);
+				student2Label.setBounds(location[1], 450, 50, 50);
+				student3Label.setBounds(location[2], 450, 50, 50);
+				student4Label.setBounds(location[3], 450, 50, 50);
+				student5Label.setBounds(location[4], 450, 50, 50);
 				count++;
 				endGame();
-				
-//				sv.stressV(100);
-				
-				//피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
-//				if(sv.getStress()==100||overCnt>=3) {
-//					
-//					JOptionPane.showMessageDialog(null, "GameOver!");
-//					background.setVisible(false);
-//				}
+
+				// sv.stressV(100);
+
+				// 피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
+				// if(sv.getStress()==100||overCnt>=3) {
+				//
+				// JOptionPane.showMessageDialog(null, "GameOver!");
+				// background.setVisible(false);
+				// }
 			}
 		});
-		
+
 		// 자리바꾸기 설명 말풍선
 		changeBtn.addMouseListener(new MouseAdapter() {
 
@@ -359,7 +356,7 @@ public class StartView {
 				capybaraLabelWithS.setVisible(false);
 				bubbleLabel4.setVisible(false);
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -381,20 +378,20 @@ public class StartView {
 		background.add(capybaraLabelWithN);
 		background.add(capybaraLabelWithD);
 		background.add(capybaraLabelWithS);
-		
-		//말풍선
+
+		// 말풍선
 		background.add(bubbleLabel1);
 		background.add(bubbleLabel2);
 		background.add(bubbleLabel3);
 		background.add(bubbleLabel4);
-		
-		//학생
+
+		// 학생
 		background.add(student1Label);
 		background.add(student2Label);
 		background.add(student3Label);
 		background.add(student4Label);
 		background.add(student5Label);
-		
+
 		JPanel gameOver = new JPanel() {
 			public void paintComponent(Graphics g) {
 				g.drawImage(img.getImage(), 0, 0, null);
@@ -405,35 +402,33 @@ public class StartView {
 		gameOver.setBackground(new Color(233, 221, 198));
 		gameOver.setLayout(null);
 		gameOver.setBounds(0, 0, 1200, 700);
-		
+
 		ImageIcon gameoverImg = new ImageIcon("gameover.png");
 		JLabel overIcon = new JLabel();
 		overIcon.setBounds(400, 400, 500, 300);
 		overIcon.setIcon(gameoverImg);
 
-		//집중도가 100일때 over학생 수 카운트 ++
-		if(sv.setConcentrationStu1().getValue()>=100) {
+		// 집중도가 100일때 over학생 수 카운트 ++
+		if (sv.getConcentrationStu1().getValue() >= 100) {
 			overCnt++;
 		}
-		if(sv.setConcentrationStu2().getValue()>=100) {
+		if (sv.getConcentrationStu2().getValue() >= 100) {
 			overCnt++;
 		}
-		if(sv.setConcentrationStu3().getValue()>=100) {
+		if (sv.getConcentrationStu3().getValue() >= 100) {
 			overCnt++;
 		}
-		if(sv.setConcentrationStu4().getValue()>=100) {
+		if (sv.getConcentrationStu4().getValue() >= 100) {
 			overCnt++;
 		}
-		if(sv.setConcentrationStu5().getValue()>=100) {
+		if (sv.getConcentrationStu5().getValue() >= 100) {
 			overCnt++;
 		}
-	
+
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
 		frame.add(gameOver);
-		
-	
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -441,25 +436,38 @@ public class StartView {
 		if (startIdx == 1) {
 			new GlobalEventThread().start();
 		}
-		
-
-					
-		
-			
-		
 	}
-	
-	public void endGame(){
-		if(count==6){
-			count=0;
+	//값전달
+	public int[] setValue() {
+		int[] value = new int[7];
+		try(BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))){
+			String[] tempStr = new String[7];
+			String line = "";
+			int count = 0;
+			while((line = br.readLine())!=null) {
+				tempStr[count] = line;
+				value[count] = Integer.parseInt(tempStr[count]);
+				count++;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return value;
+	}
+
+	public void endGame() {
+		if (count == 6) {
+			count = 0;
 			new DataIo().saveAchievement(new StudentVo().getAchievement());
 			JOptionPane.showMessageDialog(null, "하루가 무사히 끝났습니다!");
-			//여기다가 점수판 실행시킬 것
+			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
 	}
-
-	
 
 	class GlobalEventThread extends Thread {
 		@Override
