@@ -1,5 +1,7 @@
 package com.game.cording;
 
+import javax.swing.JOptionPane;
+
 public class QuizManager {
 	public void QuizManager() {
 		if (Main.count < 5) {
@@ -45,6 +47,9 @@ public class QuizManager {
 					q10.quiz10();
 					break;
 			}
+		}
+		else if(Main.count==5) {
+			JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 		}
 	}
 }

@@ -1,13 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>score</comment>
+<<<<<<< HEAD
 <entry key="안보람">2000</entry>
+=======
+<entry key="윤상원">1000</entry>
+<entry key="유큰별">1000</entry>
+<entry key="sd">0</entry>
+<entry key="ningGen">25555000</entry>
+>>>>>>> refs/remotes/origin/master
 <entry key="하성미">3500</entry>
 <entry key="ningGen">25555000</entry>
 <entry key="이세준">3000</entry>
 <entry key="최승원">3500</entry>
+<<<<<<< HEAD
 <entry key="asdfaew">0</entry>
 <entry key="윤상원">1000</entry>
 <entry key="유큰별">1000</entry>
+=======
+<entry key="안보람">2000</entry>
+>>>>>>> refs/remotes/origin/master
 </properties>
