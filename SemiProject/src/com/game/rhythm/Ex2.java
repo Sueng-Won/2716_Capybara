@@ -161,7 +161,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							value[2] = 20;
 							value[3] = 20;
 							value[4] = 20;
-							value[5] = -30;
+							value[5] = 30;
 							value[6] = 0;
 							for(int num : value) {
 								bw.write(String.valueOf(num));
@@ -230,7 +230,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							value[2] = 20;
 							value[3] = 20;
 							value[4] = 20;
-							value[5] = -30;
+							value[5] = 30;
 							value[6] = 0;
 							for(int num : value) {
 								bw.write(String.valueOf(num));
@@ -299,7 +299,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							value[2] = 20;
 							value[3] = 20;
 							value[4] = 20;
-							value[5] = -30;
+							value[5] = 30;
 							value[6] = 0;
 							for(int num : value) {
 								bw.write(String.valueOf(num));
@@ -367,7 +367,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							value[2] = 20;
 							value[3] = 20;
 							value[4] = 20;
-							value[5] = -30;
+							value[5] = 30;
 							value[6] = 0;
 							for(int num : value) {
 								bw.write(String.valueOf(num));

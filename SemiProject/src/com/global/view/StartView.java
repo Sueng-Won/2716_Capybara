@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -36,6 +38,19 @@ public class StartView {
 			capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS, student1Label, student2Label, student3Label,
 			student4Label, student5Label;
 	int overCnt = 0;// 집중력 0인 학생 수
+
+	ImageIcon img = new ImageIcon("Start/startBackground.png");
+
+	// 이름없는생성자로 배경화면삽입
+	JPanel background = new JPanel() {
+		public void paintComponent(Graphics g) {
+			g.drawImage(img.getImage(), 0, 0, null);
+			setOpaque(false);
+			super.paintComponent(g);
+		}
+	};
+
+	StudentVo sv = new StudentVo();
 
 	public void gameView(int startIdx) {
 
@@ -167,16 +182,6 @@ public class StartView {
 		ImageIcon btnTextQuiz = new ImageIcon("ButtonImageFolder/TextQuizButton.png");
 		ImageIcon btnChange = new ImageIcon("ButtonImageFolder/ChangeButton.png");
 
-		ImageIcon img = new ImageIcon("Start/startBackground.png");
-
-		// 이름없는생성자로 배경화면삽입
-		JPanel background = new JPanel() {
-			public void paintComponent(Graphics g) {
-				g.drawImage(img.getImage(), 0, 0, null);
-				setOpaque(false);
-				super.paintComponent(g);
-			}
-		};
 		background.setBackground(new Color(233, 221, 198));
 		background.setLayout(null);
 		background.setBounds(0, 0, 1200, 700);
@@ -212,7 +217,6 @@ public class StartView {
 		startBtn.setBorderPainted(false);
 
 		// Vo 데이타를 배경패널에 입력
-		StudentVo sv = new StudentVo();
 		background.add(sv.getConcentrationStu1());
 		background.add(sv.getConcentrationStu2());
 		background.add(sv.getConcentrationStu3());
@@ -224,7 +228,7 @@ public class StartView {
 		// sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
-		
+
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
 
@@ -233,7 +237,6 @@ public class StartView {
 				// TODO Auto-generated method stub
 				new Ex2(3, 0, 1, 20, 0).gameRun();
 				count++;
-				sv.addValueAll(setValue());
 				endGame();
 			}
 		});
@@ -365,6 +368,44 @@ public class StartView {
 			}
 
 		});
+		//편법 ^오^
+		background.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				try(BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+					String[] tempStr = new String[7];
+					String temp;
+					int check = 0;
+					int checkSum = 0;
+					int[] valueArr = new int[7];
+					while((temp = br.readLine())!=null) {
+						tempStr[check++] = temp;
+					}
+					for(int i = 0; i<7;i++) {
+						valueArr[i] = Integer.parseInt(tempStr[i]);
+						checkSum+=valueArr[i];
+					}
+					if(checkSum != 0) {
+						sv.addValueAll(valueArr);
+						background.validate();
+						background.revalidate();
+						background.repaint();
+						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
+							for(int i = 0 ; i<7;i++) {
+								bw.write("0");
+								bw.newLine();
+							}
+						}
+					}
+				} catch (FileNotFoundException fnfe) {
+					// TODO Auto-generated catch block
+					System.out.println("프로그래스바 초기화 완료");
+				} catch (IOException ioe) {
+					// TODO Auto-generated catch block
+					System.out.println("프로그래스바 초기화 완료");
+				}
+			}
+		});
 
 		// 백그라운드 배경패널에 버튼삽입
 		background.add(rythmBtn);
@@ -424,7 +465,7 @@ public class StartView {
 		if (sv.getConcentrationStu5().getValue() >= 100) {
 			overCnt++;
 		}
-		
+
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
@@ -436,40 +477,9 @@ public class StartView {
 		if (startIdx == 1) {
 			new GlobalEventThread().start();
 		}
-		new Thread() {
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(true) {
-					background.validate();
-					background.revalidate();
-					background.repaint();
-				}
-			}
-		}.start();
-	}
-	//값전달
-	public int[] setValue() {
-		int[] value = new int[7];
-		try(BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))){
-			String[] tempStr = new String[7];
-			String line = "";
-			int count = 0;
-			while((line = br.readLine())!=null) {
-				tempStr[count] = line;
-				value[count] = Integer.parseInt(tempStr[count]);
-				count++;
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return value;
-	}
 
+		
+	}
 	public void endGame() {
 		if (count == 6) {
 			count = 0;
@@ -479,7 +489,7 @@ public class StartView {
 			new DataIo().scoreboard();
 		}
 	}
-
+	
 	class GlobalEventThread extends Thread {
 		@Override
 		public void run() {
