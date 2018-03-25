@@ -31,9 +31,9 @@ public class Quiz01 extends JPanel{
 
 	public Quiz01(QuizPanel p){
 		
-		MainFrame m = MainFrame(); // time 변수를 받아오기 위해 선언
+		MainFrame m = MainFrame(); 
 		P = p;
-		
+		m.time =20;
 	setLayout(null);
 	qLabel = new JLabel();
 	qLabel.setText("다음 중 기본형(primitive type)이 아닌 것은?");
@@ -87,14 +87,14 @@ public class Quiz01 extends JPanel{
             	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 						JOptionPane.INFORMATION_MESSAGE);
             	
-            	m.time =20;
+            	
 				
             	P.changePanel();
 			}else if(check1.isSelected()||check3.isSelected()||check4.isSelected()){
 					
 				JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 				
-				m.time =20;
+				
 				P.changePanel();
 			}
 			

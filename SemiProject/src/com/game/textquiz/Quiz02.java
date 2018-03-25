@@ -31,7 +31,7 @@ public class Quiz02 extends JPanel{
 		
 		MainFrame m = MainFrame();
 		P = p;
-		
+		m.time =20;
 		setLayout(null);
 		qLabel = new JLabel();
 		qLabel.setText("다음 중 메소드 오버로딩에 대한 설명으로 틀린 것은?");
@@ -86,14 +86,14 @@ public class Quiz02 extends JPanel{
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
 		            	stop = true;
-		            	m.time =20;
+		            	
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check2.isSelected()||check4.isSelected()){
 							
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 						stop = true;
-						m.time =20;
+						
 						P.changePanel();
 						
 					}

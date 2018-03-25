@@ -2,8 +2,10 @@ package com.game.textquiz;
 
 import java.awt.CardLayout;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 
 
 
@@ -52,7 +54,6 @@ public class QuizPanel  extends JPanel {
 		
 		
 	public void changePanel(){
-		
 		
 		if(count==5){
 			F.dispose();

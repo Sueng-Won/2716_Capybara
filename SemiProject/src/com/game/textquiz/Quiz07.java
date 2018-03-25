@@ -31,7 +31,7 @@ public class Quiz07 extends JPanel{
 		
 		MainFrame m = MainFrame();
 		P = p;
-		
+		m.time =20;
 		setLayout(null);
 		qLabel = new JLabel();
 		JLabel qLabel = new JLabel();
@@ -85,14 +85,14 @@ public class Quiz07 extends JPanel{
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
 		            	stop = true;
-		            	m.time =20;
+		            	
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check3.isSelected()||check2.isSelected()){
 							
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 						stop = true;
-						m.time =20;
+						
 						P.changePanel();
 						
 					}

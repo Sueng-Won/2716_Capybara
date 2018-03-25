@@ -31,7 +31,7 @@ public class Quiz08 extends JPanel{
 		
 		MainFrame m = MainFrame();
 		P = p;
-		
+		m.time =20;
 		setLayout(null);
 		qLabel = new JLabel();
 		qLabel.setText("자바의 상속 특징 중에서 틀린 것은?");
@@ -84,14 +84,14 @@ public class Quiz08 extends JPanel{
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
 		            	stop = true;
-		            	m.time =20;
+		            	
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check2.isSelected()||check4.isSelected()){
 							
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 						stop = true;
-						m.time =20;
+						
 						P.changePanel();
 						
 					}
