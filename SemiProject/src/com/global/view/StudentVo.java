@@ -50,6 +50,10 @@ public class StudentVo{
 		concentrationStu[4].setBackground(new Color(255,0,0,0));
 		concentrationStu[4].setForeground(new Color(251,174,23));
 		
+		for(int i =0; i<concentrationStu.length; i++){
+			concentrationStu[i].setValue(100);
+		}
+		
 		//프로그레스바 설정 스트레스
 		UIManager.put("ProgressBar.border", BorderFactory.createLineBorder(new Color(232,74,95), 3));
 		stress = new JProgressBar(0,100); 
