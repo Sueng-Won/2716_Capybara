@@ -368,35 +368,35 @@ public class StartView {
 			}
 
 		});
-		//편법 ^오^
-		background.addMouseListener(new MouseAdapter() {
+		// 편법 ^오^
+		frame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				try(BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
 					int check = 0;
 					int checkSum = 0;
 					int[] valueArr = new int[7];
-					while((temp = br.readLine())!=null) {
+					while ((temp = br.readLine()) != null) {
 						tempStr[check++] = temp;
 					}
-					for(int i = 0; i<7;i++) {
+					for (int i = 0; i < 7; i++) {
 						valueArr[i] = Integer.parseInt(tempStr[i]);
-						checkSum+=valueArr[i];
+						checkSum += valueArr[i];
 					}
-					if(checkSum != 0) {
+					if (checkSum != 0) {
 						sv.addValueAll(valueArr);
 						background.validate();
 						background.revalidate();
 						background.repaint();
-						try(BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))){
-							for(int i = 0 ; i<7;i++) {
+						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+							for (int i = 0; i < 7; i++) {
 								bw.write("0");
 								bw.newLine();
 							}
 						}
-						
+
 					}
 					// 집중도가 100일때 over학생 수 카운트 ++
 					if (sv.getConcentrationStu1().getValue() <= 0) {
@@ -451,10 +451,6 @@ public class StartView {
 		background.add(student4Label);
 		background.add(student5Label);
 
-		
-
-		
-
 		System.out.println("성취도:" + sv.setAchivementCount().getText());
 
 		frame.add(background);
@@ -466,8 +462,8 @@ public class StartView {
 			new GlobalEventThread().start();
 		}
 
-		
 	}
+
 	public void endGame() {
 		if (count == 6) {
 			count = 0;
@@ -476,7 +472,7 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
-		if(overCnt>= 3) {
+		if (overCnt >= 3) {
 			overCnt = 0;
 			JPanel gameOver = new JPanel() {
 				public void paintComponent(Graphics g) {
@@ -496,13 +492,9 @@ public class StartView {
 			gameOver.add(overIcon);
 			frame.add(gameOver);
 			background.setVisible(false);
-			frame.validate();
-			frame.revalidate();
-			frame.repaint();
-			
 		}
 	}
-	
+
 	class GlobalEventThread extends Thread {
 		@Override
 		public void run() {
