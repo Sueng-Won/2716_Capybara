@@ -6,6 +6,8 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.global.view.StudentVo;
+
 
 
 
@@ -13,6 +15,8 @@ public class QuizPanel  extends JPanel {
 	
 	int count =0;
 	int[] numArr = new int[5];
+	int[] value = new int[7];
+	boolean pointBo = false;
 	
 //  카드레이아웃 패널
 	private CardLayout card = new CardLayout();
@@ -55,11 +59,35 @@ public class QuizPanel  extends JPanel {
 		
 	public void changePanel(){
 		
+		StudentVo vo = new StudentVo();
+		
+		
+		if(count>0){
+		if(pointBo == true){
+			value[count-1] = 100;
+			System.out.println("count : " +count );
+			System.out.println("value : " +value[count-1] );
+		}
+		if(pointBo == false){
+			value[count-1] = 0;
+			System.out.println("count : " +count );
+			System.out.println("value : " +value[count-1] );
+		}
+		}
+		
 		if(count==5){
+			
 			F.dispose();
+			value[5] = 100;
+			System.out.println("스트레스 : " +value[5]);
+			value[6] = 100;
+			System.out.println("성취도 : " +value[6]);
+			vo.addValueAll(value);
 			}
+		
+		
 		else{
-			switch (numArr[count++]) {
+			switch (numArr[count]) {
 			
 			case 1:
 				add(new Quiz01(this));
@@ -95,7 +123,7 @@ public class QuizPanel  extends JPanel {
 			}
 		}
 		
-		
+		count++;
 		
 		card.next(this);   //다음 패널로 이동
 	}

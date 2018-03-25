@@ -87,14 +87,14 @@ public class Quiz01 extends JPanel{
             	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 						JOptionPane.INFORMATION_MESSAGE);
             	
-            	
+            	P.pointBo = true;
 				
             	P.changePanel();
 			}else if(check1.isSelected()||check3.isSelected()||check4.isSelected()){
 					
 				JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 				
-				
+				P.pointBo = false;
 				P.changePanel();
 			}
 			
