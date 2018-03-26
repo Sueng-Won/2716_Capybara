@@ -156,10 +156,10 @@ public class Ex2 extends JFrame implements KeyListener {
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 							value[0] = -100;
-							value[1] = -100;
-							value[2] = -100;
-							value[3] = -100;
-							value[4] = -100;
+							value[1] = -50;
+							value[2] = -40;
+							value[3] = -0;
+							value[4] = -0;
 							value[5] = -30;
 							value[6] = 0;
 
@@ -226,10 +226,10 @@ public class Ex2 extends JFrame implements KeyListener {
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 							value[0] = -100;
-							value[1] = -100;
-							value[2] = -100;
-							value[3] = -100;
-							value[4] = -100;
+							value[1] = -50;
+							value[2] = -40;
+							value[3] = -0;
+							value[4] = -0;
 							value[5] = -30;
 							value[6] = 0;
 							for (int num : value) {
@@ -295,10 +295,10 @@ public class Ex2 extends JFrame implements KeyListener {
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 							value[0] = -100;
-							value[1] = -100;
-							value[2] = -100;
-							value[3] = -100;
-							value[4] = -100;
+							value[1] = -50;
+							value[2] = -40;
+							value[3] = -0;
+							value[4] = -0;
 							value[5] = -30;
 							value[6] = 0;
 							for (int num : value) {
@@ -363,10 +363,10 @@ public class Ex2 extends JFrame implements KeyListener {
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 							value[0] = -100;
-							value[1] = -100;
-							value[2] = -100;
-							value[3] = -100;
-							value[4] = -100;
+							value[1] = -50;
+							value[2] = -40;
+							value[3] = -0;
+							value[4] = -0;
 							value[5] = -30;
 							value[6] = 0;
 							for (int num : value) {

@@ -371,6 +371,12 @@ public class StartView {
 
 		});
 		
+		//flag
+		boolean[] flag = new boolean[5];
+		for(int i=0; i<flag.length; i++){
+			flag[i] = true;
+		}
+		
 		frame.addWindowFocusListener(new WindowFocusListener() {
 			
 			@Override
@@ -409,20 +415,25 @@ public class StartView {
 
 					}
 					// 집중도가 100일때 over학생 수 카운트 ++
-					if (sv.getConcentrationStu1().getValue() <= 0) {
+					if (sv.getConcentrationStu1().getValue() <= 0 && flag[0]) {
 						overCnt++;
+						flag[0] = false;
 					}
-					if (sv.getConcentrationStu2().getValue() <= 0) {
+					if (sv.getConcentrationStu2().getValue() <= 0 && flag[1]) {
 						overCnt++;
+						flag[1] = false;
 					}
-					if (sv.getConcentrationStu3().getValue() <= 0) {
+					if (sv.getConcentrationStu3().getValue() <= 0 && flag[2]) {
 						overCnt++;
+						flag[2] = false;
 					}
-					if (sv.getConcentrationStu4().getValue() <= 0) {
+					if (sv.getConcentrationStu4().getValue() <= 0 && flag[3]) {
 						overCnt++;
+						flag[3] = false;
 					}
-					if (sv.getConcentrationStu5().getValue() <= 0) {
+					if (sv.getConcentrationStu5().getValue() <= 0 && flag[4]) {
 						overCnt++;
+						flag[4] = false;
 					}
 					endGame();
 				} catch (FileNotFoundException fnfe) {
