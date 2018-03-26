@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -21,6 +23,7 @@ public class Quiz1 {
 	Timer timer;
 	JTextArea answerArea;
 	int stopidx=0;
+	int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
 
 	public void quiz1() {
 		//문제 기본 프레임
@@ -120,6 +123,26 @@ public class Quiz1 {
 				if (answerArea.getText().trim().equals("frame")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					//
+					try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"));
+							BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+				int result=-1;
+				int index=0;
+						while((result=br.read())!=-1){
+							value[index++]=result;
+						}
+						
+						value[6]+=100;
+
+						for (int num : value) {
+							bw.write(String.valueOf(num));
+							bw.newLine();
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 

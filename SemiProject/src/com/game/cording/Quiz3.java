@@ -154,7 +154,7 @@ public class Quiz3 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("frame") && time == 0) {
+				if (answerArea.getText().trim().equals("sum += arr[i];")||answerArea.getText().trim().equals("sum = sum + arr[i];") && time == 0) {
 					break;
 				}
 

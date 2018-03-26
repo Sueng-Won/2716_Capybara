@@ -155,7 +155,7 @@ public class Quiz5 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("frame") && time == 0) {
+				if (answerArea.getText().trim().equals("break outer;") && time == 0) {
 					break;
 				}
 
