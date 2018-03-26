@@ -237,7 +237,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if(count!=6){
+				if (count != 6) {
 					new Ex2(3, 0, 1, 20, 0).gameRun();
 				}
 				endGame();
@@ -270,10 +270,10 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if(count!=6){
+				if (count != 6) {
 					new Main().main(null);
 				}
-				
+
 				endGame();
 			}
 		});
@@ -304,10 +304,10 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if(count!=6){
+				if (count != 6) {
 					new MainFrame();
 				}
-				
+
 				endGame();
 			}
 		});
@@ -338,7 +338,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if(count!=6){
+				if (count != 6) {
 					Change c = new Change();
 					int[] location = new int[5];
 					location = c.changeLocationX();
@@ -348,7 +348,7 @@ public class StartView {
 					student4Label.setBounds(location[3], 450, 50, 50);
 					student5Label.setBounds(location[4], 450, 50, 50);
 					sv.randomLocation(location);
-					
+
 				}
 				endGame();
 
@@ -381,21 +381,21 @@ public class StartView {
 			}
 
 		});
-		
-		//flag
+
+		// flag
 		boolean[] flag = new boolean[5];
-		for(int i=0; i<flag.length; i++){
+		for (int i = 0; i < flag.length; i++) {
 			flag[i] = true;
 		}
-		
+
 		frame.addWindowFocusListener(new WindowFocusListener() {
-			
+
 			@Override
 			public void windowLostFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
@@ -433,25 +433,25 @@ public class StartView {
 						flag[0] = false;
 					}
 					if (sv.getConcentrationStu2().getValue() <= 0 && flag[1]) {
-//						overCnt++;
+						// overCnt++;
 						background.remove(sv.getConcentrationStu2());
 						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[1] = false;
 					}
 					if (sv.getConcentrationStu3().getValue() <= 0 && flag[2]) {
-//						overCnt++;
+						// overCnt++;
 						background.remove(sv.getConcentrationStu3());
 						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[2] = false;
 					}
 					if (sv.getConcentrationStu4().getValue() <= 0 && flag[3]) {
-//						overCnt++;
+						// overCnt++;
 						background.remove(sv.getConcentrationStu4());
 						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[3] = false;
 					}
 					if (sv.getConcentrationStu5().getValue() <= 0 && flag[4]) {
-//						overCnt++;
+						// overCnt++;
 						background.remove(sv.getConcentrationStu5());
 						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[4] = false;
@@ -465,7 +465,7 @@ public class StartView {
 					ioe.printStackTrace();
 				}
 			}
-			
+
 		});
 
 		// 백그라운드 배경패널에 버튼삽입
@@ -515,7 +515,7 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
-		if (overCnt >= 3 || sv.getAchievement()==100) {
+		if (overCnt >= 3 || sv.getStress() == 100) {
 			overCnt = 0;
 			JPanel gameOver = new JPanel() {
 				public void paintComponent(Graphics g) {
