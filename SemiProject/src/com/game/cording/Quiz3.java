@@ -145,7 +145,7 @@ public class Quiz3 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[2]+=-10;
+						valueArr[Main.count-1]+=-10;
 						valueArr[5] += 5;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
@@ -175,7 +175,7 @@ public class Quiz3 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[2]+=-20;
+						valueArr[Main.count-1]+=-20;
 						valueArr[5] += 10;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
