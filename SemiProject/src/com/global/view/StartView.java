@@ -31,7 +31,7 @@ import com.global.login.DataIo;
 import com.global.login.LoginView;
 
 public class StartView {
-	int turnCount=1;
+	int turnCount = 1;
 	int time = 20;
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
@@ -217,9 +217,9 @@ public class StartView {
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
-		
-		turnLabel = new JLabel(turnCount+"교시");
-		turnLabel.setBounds(5,5,120,50);
+
+		turnLabel = new JLabel(turnCount + "교시");
+		turnLabel.setBounds(5, 5, 120, 50);
 		Font font = new Font("arian", Font.BOLD, 45);
 		turnLabel.setFont(font);
 		background.add(turnLabel);
@@ -236,19 +236,20 @@ public class StartView {
 		// sv.setConcentrationStu1().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu3().setValue(100); // 테스트 벨류셋
 		// sv.setConcentrationStu4().setValue(100); // 테스트 벨류셋
-		
-	
 
 		// 리듬게임 실행
 		rythmBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new Ex2(3, 0, 1, 20, 0).gameRun(); 
+				new Ex2(3, 0, 1, 20, 0).gameRun();
+
 				count++;
+				if (count != 6) {
+					new Ex2(3, 0, 1, 20, 0).gameRun();
+				}
 				endGame();
-				turnLabel.setText((count+1)+"교시");
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -277,10 +278,13 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Main().main(null);
 				count++;
+				if (count != 6) {
+					new Main().main(null);
+				}
+
 				endGame();
-				turnLabel.setText((count+1)+"교시");
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -309,10 +313,13 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new MainFrame();
 				count++;
+				if (count != 6) {
+					new MainFrame();
+				}
+
 				endGame();
-				turnLabel.setText((count+1)+"교시");
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -341,18 +348,21 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Change c = new Change();
-				int[] location = new int[5];
-				location = c.changeLocationX();
-				student1Label.setBounds(location[0], 450, 50, 50);
-				student2Label.setBounds(location[1], 450, 50, 50);
-				student3Label.setBounds(location[2], 450, 50, 50);
-				student4Label.setBounds(location[3], 450, 50, 50);
-				student5Label.setBounds(location[4], 450, 50, 50);
-				sv.randomLocation(location);
 				count++;
+				if (count != 6) {
+					Change c = new Change();
+					int[] location = new int[5];
+					location = c.changeLocationX();
+					student1Label.setBounds(location[0], 450, 50, 50);
+					student2Label.setBounds(location[1], 450, 50, 50);
+					student3Label.setBounds(location[2], 450, 50, 50);
+					student4Label.setBounds(location[3], 450, 50, 50);
+					student5Label.setBounds(location[4], 450, 50, 50);
+					sv.randomLocation(location);
+
+				}
 				endGame();
-				turnLabel.setText((count+1)+"교시");
+				turnLabel.setText((count + 1) + "교시");
 				// sv.stressV(100);
 
 				// 피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
@@ -382,24 +392,24 @@ public class StartView {
 			}
 
 		});
-		
-		//flag
+
+		// flag
 		boolean[] flag = new boolean[5];
-		for(int i=0; i<flag.length; i++){
+		for (int i = 0; i < flag.length; i++) {
 			flag[i] = true;
 		}
-		
+
 		frame.addWindowFocusListener(new WindowFocusListener() {
-			
+
 			@Override
 			public void windowLostFocus(WindowEvent e) {
-				// TODO Auto-generated method stub 
+
 			}
-			
+
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
@@ -429,22 +439,32 @@ public class StartView {
 					// 집중도가 100일때 over학생 수 카운트 ++
 					if (sv.getConcentrationStu1().getValue() <= 0 && flag[0]) {
 						overCnt++;
+						background.remove(sv.getConcentrationStu1());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[0] = false;
 					}
 					if (sv.getConcentrationStu2().getValue() <= 0 && flag[1]) {
-						overCnt++;
+						// overCnt++;
+						background.remove(sv.getConcentrationStu2());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[1] = false;
 					}
 					if (sv.getConcentrationStu3().getValue() <= 0 && flag[2]) {
-						overCnt++;
+						// overCnt++;
+						background.remove(sv.getConcentrationStu3());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[2] = false;
 					}
 					if (sv.getConcentrationStu4().getValue() <= 0 && flag[3]) {
-						overCnt++;
+						// overCnt++;
+						background.remove(sv.getConcentrationStu4());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[3] = false;
 					}
 					if (sv.getConcentrationStu5().getValue() <= 0 && flag[4]) {
-						overCnt++;
+						// overCnt++;
+						background.remove(sv.getConcentrationStu5());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[4] = false;
 					}
 					endGame();
@@ -456,7 +476,7 @@ public class StartView {
 					ioe.printStackTrace();
 				}
 			}
-			
+
 		});
 
 		// 백그라운드 배경패널에 버튼삽입
@@ -506,30 +526,33 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
-		
-		if (overCnt >= 3) {
-			overCnt = 0;
-			JPanel gameOver = new JPanel() {
-				public void paintComponent(Graphics g) {
-					g.drawImage(img.getImage(), 0, 0, null);
-					setOpaque(false);
-					super.paintComponent(g);
-				}
-			};
-			gameOver.setBackground(new Color(233, 221, 198));
-			gameOver.setLayout(null);
-			gameOver.setBounds(0, 0, 1220, 700);
 
-			ImageIcon gameoverImg = new ImageIcon("Start/GameOver.png");
-			JLabel overIcon = new JLabel();
-			overIcon.setBounds(0, 0, 1220, 700);
-			overIcon.setIcon(gameoverImg);
-			gameOver.add(overIcon);
-			frame.add(gameOver);
-			background.setVisible(false);
+		if (overCnt >= 3) {
+
+			if (overCnt >= 3 || sv.getStress() == 100) {
+
+				overCnt = 0;
+				JPanel gameOver = new JPanel() {
+					public void paintComponent(Graphics g) {
+						g.drawImage(img.getImage(), 0, 0, null);
+						setOpaque(false);
+						super.paintComponent(g);
+					}
+				};
+				gameOver.setBackground(new Color(233, 221, 198));
+				gameOver.setLayout(null);
+				gameOver.setBounds(0, 0, 1220, 700);
+
+				ImageIcon gameoverImg = new ImageIcon("Start/GameOver.png");
+				JLabel overIcon = new JLabel();
+				overIcon.setBounds(0, 0, 1220, 700);
+				overIcon.setIcon(gameoverImg);
+				gameOver.add(overIcon);
+				frame.add(gameOver);
+				background.setVisible(false);
+			}
 		}
 	}
-
 
 	class GlobalEventThread extends Thread {
 		@Override

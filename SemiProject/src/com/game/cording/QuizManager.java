@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 public class QuizManager {
-	public int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
+	//public int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
 	public void QuizManager() {
 		if (Main.count < 5) {
 			switch (Main.rArr[Main.count++]) {
@@ -70,13 +70,13 @@ public class QuizManager {
 				for (int i = 0; i < 7; i++) {
 					valueArr[i] = Integer.parseInt(tempStr[i]);
 				}
-				valueArr[0] += -10;
-				valueArr[1] += -10;
-				valueArr[2] += -10;
-				valueArr[3] += -10;
-				valueArr[4] += -10;
-				valueArr[5] += +30;
-				valueArr[6] += 0;
+//				valueArr[0] += -10;
+//				valueArr[1] += -10;
+//				valueArr[2] += -10;
+//				valueArr[3] += -10;
+//				valueArr[4] += -10;
+//			valueArr[5] += +30;
+//				valueArr[6] += 0;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
 						bw.write(String.valueOf(valueArr[i]));

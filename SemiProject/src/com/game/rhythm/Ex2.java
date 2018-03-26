@@ -156,13 +156,13 @@ public class Ex2 extends JFrame implements KeyListener {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							value[0] = -100;
-							value[1] = -50;
-							value[2] = -40;
-							value[3] = -0;
-							value[4] = -0;
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
 							value[5] = -30;
-							value[6] = 50;
+							value[6] = 0;
 
 							for (int num : value) {
 								bw.write(String.valueOf(num));
@@ -226,13 +226,13 @@ public class Ex2 extends JFrame implements KeyListener {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							value[0] = -100;
-							value[1] = -50;
-							value[2] = -40;
-							value[3] = -0;
-							value[4] = -0;
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
 							value[5] = -30;
-							value[6] = 50;
+							value[6] = 0;
 							for (int num : value) {
 								bw.write(String.valueOf(num));
 								bw.newLine();
@@ -295,13 +295,13 @@ public class Ex2 extends JFrame implements KeyListener {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							value[0] = -100;
-							value[1] = -50;
-							value[2] = -40;
-							value[3] = -0;
-							value[4] = -0;
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
 							value[5] = -30;
-							value[6] = 50;
+							value[6] = 0;
 							for (int num : value) {
 								bw.write(String.valueOf(num));
 								bw.newLine();
@@ -363,13 +363,13 @@ public class Ex2 extends JFrame implements KeyListener {
 						JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
 						// System.exit(0);
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							value[0] = -100;
-							value[1] = -50;
-							value[2] = -40;
-							value[3] = -0;
-							value[4] = -0;
+							value[0] = 20;
+							value[1] = 20;
+							value[2] = 20;
+							value[3] = 20;
+							value[4] = 20;
 							value[5] = -30;
-							value[6] = 50;
+							value[6] = 0;
 							for (int num : value) {
 								bw.write(String.valueOf(num));
 								bw.newLine();

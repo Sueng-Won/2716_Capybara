@@ -87,7 +87,7 @@ public class MainFrame extends JFrame{
 			while (true) {
 				try {
 					Thread.sleep(1000);
-					System.out.println(time);
+//					System.out.println(time);
 					
 					if (stop == true) {      //  true시 스레드 종료
 						break;

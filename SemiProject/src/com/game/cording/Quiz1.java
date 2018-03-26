@@ -75,8 +75,8 @@ public class Quiz1 {
 		// 문제 읽어오는 경로
 		File file = new File("CordingQuiz/Quiz1.txt");
 
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
 			String ls = System.getProperty("line.separator");
@@ -121,9 +121,8 @@ public class Quiz1 {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					//
-					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
-					{
-	
+					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+
 						String[] tempStr = new String[7];
 						String temp;
 						int check = 0;
@@ -134,6 +133,8 @@ public class Quiz1 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
+						valueArr[0]+=-10;
+						valueArr[5] += 5;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 							for (int i = 0; i < 7; i++) {
@@ -145,12 +146,37 @@ public class Quiz1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			
+
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
+					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+
+						String[] tempStr = new String[7];
+						String temp;
+						int check = 0;
+						int[] valueArr = new int[7];
+						while ((temp = br.readLine()) != null) {
+							tempStr[check++] = temp;
+						}
+						for (int i = 0; i < 7; i++) {
+							valueArr[i] = Integer.parseInt(tempStr[i]);
+						}
+						valueArr[0]+=-20;
+						valueArr[5] += 10;
+						valueArr[6] += 100;
+						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+							for (int i = 0; i < 7; i++) {
+								bw.write(String.valueOf(valueArr[i]));
+								bw.newLine();
+							}
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 
 			}
