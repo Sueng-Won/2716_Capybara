@@ -133,6 +133,7 @@ public class StudentVo{
 		this.concentrationStu[4].setValue(this.concentrationStu[4].getValue()+value[4]);
 		this.stress.setValue(this.stress.getValue()+value[5]);
 		this.achievement += value[6];
+		this.achivementCount.setText(String.valueOf(this.achievement));
 	}
 	
 	public void randomLocation(int[] location) {
