@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -368,10 +370,18 @@ public class StartView {
 			}
 
 		});
-		// 편법 ^오^
-		frame.addMouseListener(new MouseAdapter() {
+		
+		frame.addWindowFocusListener(new WindowFocusListener() {
+			
 			@Override
-			public void mouseEntered(MouseEvent e) {
+			public void windowLostFocus(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowGainedFocus(WindowEvent e) {
+				// TODO Auto-generated method stub
 				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
@@ -423,6 +433,7 @@ public class StartView {
 					ioe.printStackTrace();
 				}
 			}
+			
 		});
 
 		// 백그라운드 배경패널에 버튼삽입
