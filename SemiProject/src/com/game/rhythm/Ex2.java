@@ -289,6 +289,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					synchronized (timer) {
 						timer.notify();
 					}
+					
 					count = 0;
 					count2++;
 					if (count2 >= 4) {
