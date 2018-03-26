@@ -1,7 +1,11 @@
 package com.game.textquiz;
 
 import java.awt.CardLayout;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,30 +63,55 @@ public class QuizPanel  extends JPanel {
 		
 	public void changePanel(){
 		
-		StudentVo vo = new StudentVo();
-		
 		
 		if(count>0){
 		if(pointBo == true){
-			value[count-1] = 100;
-			System.out.println("count : " +count );
-			System.out.println("value : " +value[count-1] );
+////			value[count-1] = 100;
+//			System.out.println("count : " +count );
+//			System.out.println("value : " +value[count-1] );
+			
+			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
+			{
+
+				String[] tempStr = new String[7];
+				String temp;
+				int check = 0;
+				
+				while ((temp = br.readLine()) != null) {
+					tempStr[check++] = temp;
+				}
+				for (int i = 0; i < 7; i++) {
+					value[i] = Integer.parseInt(tempStr[i]);
+				}
+				value[6] += 100;
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+					for (int i = 0; i < 7; i++) {
+						bw.write(String.valueOf(value[i]));
+						bw.newLine();
+					}
+				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 		}
 		if(pointBo == false){
-			value[count-1] = 0;
-			System.out.println("count : " +count );
-			System.out.println("value : " +value[count-1] );
+//			value[count-1] = 0;
+//			System.out.println("count : " +count );
+//			System.out.println("value : " +value[count-1] );
 		}
 		}
 		
 		if(count==5){
 			
 			F.dispose();
-			value[5] = 100;
-			System.out.println("스트레스 : " +value[5]);
-			value[6] = 100;
-			System.out.println("성취도 : " +value[6]);
-			vo.addValueAll(value);
+//			value[5] = 100;
+//			System.out.println("스트레스 : " +value[5]);
+//			value[6] = 100;
+//			System.out.println("성취도 : " +value[6]);
+			
 			}
 		
 		
