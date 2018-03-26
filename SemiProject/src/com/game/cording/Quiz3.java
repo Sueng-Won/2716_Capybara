@@ -2,9 +2,7 @@ package com.game.cording;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -24,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
 public class Quiz3 {
@@ -145,7 +142,7 @@ public class Quiz3 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[Main.count-1]+=-10;
+						valueArr[Main.count-1]+=-20;
 						valueArr[5] += 5;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
@@ -175,7 +172,7 @@ public class Quiz3 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[Main.count-1]+=-20;
+						valueArr[Main.count-1]+=-40;
 						valueArr[5] += 10;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {

@@ -1,6 +1,8 @@
 package com.game.cording;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -12,7 +14,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 public class Quiz1 {
@@ -133,7 +142,7 @@ public class Quiz1 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[Main.count-1]+=-10;
+						valueArr[Main.count-1]+=-20;
 						valueArr[5] += 5;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
@@ -164,7 +173,7 @@ public class Quiz1 {
 						for (int i = 0; i < 7; i++) {
 							valueArr[i] = Integer.parseInt(tempStr[i]);
 						}
-						valueArr[Main.count-1]+=-20;
+						valueArr[Main.count-1]+=-40;
 						valueArr[5] += 10;
 						valueArr[6] += 100;
 						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
