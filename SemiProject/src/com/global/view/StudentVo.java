@@ -124,6 +124,10 @@ public class StudentVo{
 	public int getAchievement(){
 		return achievement;
 	}
+	public void setAchivementCountValue(int value){
+		this.achievement +=value;
+		this.achivementCount.setText(String.valueOf(this.achievement));
+	}
 	
 	public void addValueAll(int[] value) {
 		this.concentrationStu[0].setValue(this.concentrationStu[0].getValue()+value[0]);
