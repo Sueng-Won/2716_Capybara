@@ -515,7 +515,7 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
-		if (overCnt >= 3) {
+		if (overCnt >= 3 || sv.getAchievement()==100) {
 			overCnt = 0;
 			JPanel gameOver = new JPanel() {
 				public void paintComponent(Graphics g) {

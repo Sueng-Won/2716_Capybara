@@ -7,10 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import com.global.view.StudentVo;
 
 
 
@@ -33,7 +30,6 @@ public class QuizPanel  extends JPanel {
 		F=f;  // 메인프레임에 패널 불러옴
 		
 		setVisible(true);
-		
 		if(count==0){   
 			// 처음 randomOutput() 실행시 랜덤 번호 5개 저장
 			
@@ -83,6 +79,12 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
+				value[0] = -10;
+				value[1] = -10;
+				value[2] = -10;
+				value[3] = -10;
+				value[4] = -10;
+				value[5] = 30;
 				value[6] += 100;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
