@@ -10,8 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
@@ -29,13 +31,13 @@ public class Quiz10 {
 	static int time = 60;
 	JProgressBar timeP; // 타이머 바
 	JFrame frame;
-	JPanel bar, quiz10; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
+	JPanel bar, quiz10; // 타이머 넣을 패널, 퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
-	int stopidx=0;
+	int stopidx = 0;
 
 	public void quiz10() {
-		//문제 기본 프레임
+		// 문제 기본 프레임
 		frame = new JFrame("Quiz10");
 		frame.setBounds(200, 200, 700, 700);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -47,30 +49,29 @@ public class Quiz10 {
 			public void windowClosing(WindowEvent e) {
 				stopidx = -1;
 			}
-			
+
 			@Override
 			public void windowClosed(WindowEvent e) {
-				
+
 			}
 		});
 
-		//문제 10번 패널
+		// 문제 10번 패널
 		quiz10 = new JPanel();
 		quiz10.setBackground(new Color(233, 221, 198));
 		quiz10.setLayout(null);
 
 		JTextArea textArea = new JTextArea();
-		//문제에 스크롤 추가
+		// 문제에 스크롤 추가
 		JScrollPane scrollQ = new JScrollPane(textArea);
 		scrollQ.setBounds(0, 30, 700, 370);
-		
+
 		textArea.setBounds(0, 30, 700, 370);
 		textArea.setEditable(false);
 		textArea.setBackground(new Color(233, 221, 198));
-	
+
 		quiz10.add(scrollQ);
-	
-		
+
 		// 타이머 바 넣을 공간 생성
 		bar = new JPanel();
 		bar.setLayout(null);
@@ -84,14 +85,14 @@ public class Quiz10 {
 		timeP.setForeground(Color.DARK_GRAY);
 		timeP.setBorderPainted(false);
 		timeP.setBounds(0, 0, 700, 30);
-		
+
 		quiz10.add(bar);
 
-		//문제 읽어오는 경로
+		// 문제 읽어오는 경로
 		File file = new File("CordingQuiz/Quiz10.txt");
 
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
 			String ls = System.getProperty("line.separator");
@@ -123,7 +124,7 @@ public class Quiz10 {
 		answerBtn.setIcon(btnImg);
 		answerBtn.setBounds(290, 605, 100, 50);
 		quiz10.add(answerBtn);
-		
+
 		frame.add(quiz10);
 
 		answerBtn.addActionListener(new ActionListener() {
@@ -134,9 +135,32 @@ public class Quiz10 {
 				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+
+						String[] tempStr = new String[7];
+						String temp;
+						int check = 0;
+						int[] valueArr = new int[7];
+						while ((temp = br.readLine()) != null) {
+							tempStr[check++] = temp;
+						}
+						for (int i = 0; i < 7; i++) {
+							valueArr[i] = Integer.parseInt(tempStr[i]);
+						}
+						valueArr[6] += 100;
+						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+							for (int i = 0; i < 7; i++) {
+								bw.write(String.valueOf(valueArr[i]));
+								bw.newLine();
+							}
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
-
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
@@ -160,19 +184,19 @@ public class Quiz10 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]")&& time == 0) {
+				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]") && time == 0) {
 					break;
 				}
 
 				if (time == 0) {
 					timeP.setValue(time);
-//					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-//					System.exit(0);
+					// JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+					// System.exit(0);
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 					frame.setVisible(false);
 					break;
-				}else if(stopidx==-1) {
+				} else if (stopidx == -1) {
 					break;
 				}
 

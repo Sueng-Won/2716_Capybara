@@ -75,8 +75,8 @@ public class Quiz1 {
 		// 문제 읽어오는 경로
 		File file = new File("CordingQuiz/Quiz1.txt");
 
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+
 			String line = null;
 			StringBuilder stringBuilder = new StringBuilder();
 			String ls = System.getProperty("line.separator");
@@ -121,9 +121,8 @@ public class Quiz1 {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					//
-					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
-					{
-	
+					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
+
 						String[] tempStr = new String[7];
 						String temp;
 						int check = 0;
@@ -145,7 +144,7 @@ public class Quiz1 {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-			
+
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 

@@ -1,22 +1,13 @@
-  *
- ***
-*****
- ***
-  *
-  홀수를 입력 하였을때 위의 그림과 같이
-  출력이 되도록 코드를 만드시오.
-  public class Main {
-      public static void main(String[] args) {
-         System.out.println("홀수를 입력해주세요");
-            _______________________
-            _______________________
-            _______________________
-            _______________________
-            _______________________
-            _______________________
-            _______________________
-            _______________________
-            _______________________
+다음 프로그램의 실행 결과를 쓰시오.
+정답 예시(1,2,3,4)
 
-    }
-  }
+public class MultiArrayTest1{
+	public static void main(String[]args){
+		int[]no = {100,97,89};
+		int[][]count={{3,4,6},{7,4,5}};
+
+		System.out.println(no.length);	
+		System.out.println(count.length);
+		System.out.println(count[1].length);
+		System.out.println(no[2]+count[1][2]);
+}
