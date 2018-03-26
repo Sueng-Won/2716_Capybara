@@ -1,5 +1,6 @@
 package com.game.textquiz;
 
+
 import java.awt.CardLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +11,6 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.global.view.StudentVo;
 
 
 
@@ -83,6 +83,7 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
+				value[count-1] =-5;
 				value[6] += 100;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
@@ -101,6 +102,32 @@ public class QuizPanel  extends JPanel {
 //			value[count-1] = 0;
 //			System.out.println("count : " +count );
 //			System.out.println("value : " +value[count-1] );
+			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
+			{
+
+				String[] tempStr = new String[7];
+				String temp;
+				int check = 0;
+				
+				while ((temp = br.readLine()) != null) {
+					tempStr[check++] = temp;
+				}
+				for (int i = 0; i < 7; i++) {
+					value[i] = Integer.parseInt(tempStr[i]);
+				}
+				value[count-1] =-10;
+				value[6] += 0;
+				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+					for (int i = 0; i < 7; i++) {
+						bw.write(String.valueOf(value[i]));
+						bw.newLine();
+					}
+				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 		}
 		
