@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -83,7 +82,7 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-5;
+				value[count-1] =-20;
 				value[6] += 100;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
@@ -115,7 +114,7 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-10;
+				value[count-1] =-40;
 				value[6] += 0;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
