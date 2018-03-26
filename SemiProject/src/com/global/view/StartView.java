@@ -349,16 +349,23 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if (count != 6) {
+				if(count!=6){
 					Change c = new Change();
 					int[] location = new int[5];
 					location = c.changeLocationX();
+					sv.randomLocation(location);
 					student1Label.setBounds(location[0], 450, 50, 50);
 					student2Label.setBounds(location[1], 450, 50, 50);
 					student3Label.setBounds(location[2], 450, 50, 50);
 					student4Label.setBounds(location[3], 450, 50, 50);
 					student5Label.setBounds(location[4], 450, 50, 50);
-					sv.randomLocation(location);
+					sv.getConcentrationStu1().setValue(50);
+					sv.getConcentrationStu2().setValue(50);
+					sv.getConcentrationStu3().setValue(50);
+					sv.getConcentrationStu4().setValue(50);
+					sv.getConcentrationStu5().setValue(50);
+					sv.setAchivementCountValue(-500);
+					sv.setStress().setValue(50);
 
 				}
 				endGame();
