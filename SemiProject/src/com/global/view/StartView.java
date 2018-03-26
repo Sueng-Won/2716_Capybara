@@ -1,6 +1,7 @@
 package com.global.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +39,7 @@ public class StartView {
 	int count = 0;
 	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, capybaraLabel, capybaraLabelWithQ,
 			capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS, student1Label, student2Label, student3Label,
-			student4Label, student5Label;
+			student4Label, student5Label, turnLabel;
 	int overCnt = 0;// 집중력 0인 학생 수
 	JFrame frame = new JFrame("카피바라 강사의 하루");
 	ImageIcon img = new ImageIcon("Start/startBackground.png");
@@ -216,6 +217,13 @@ public class StartView {
 		textqBtn.setBorderPainted(false);
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
+		
+		turnLabel = new JLabel();
+		turnLabel.setText((count+1)+"교시");
+		turnLabel.setBounds(5,5,120,50);
+		Font font = new Font("arian", Font.BOLD, 45);
+		turnLabel.setFont(font);
+		background.add(turnLabel);
 
 		// Vo 데이타를 배경패널에 입력
 		background.add(sv.getConcentrationStu1());
@@ -406,6 +414,7 @@ public class StartView {
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
+				
 				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
@@ -526,6 +535,7 @@ public class StartView {
 	}
 
 	public void endGame() {
+		
 		if (count == 6) {
 			count = 0;
 			new DataIo().saveAchievement(new StudentVo().getAchievement());
@@ -533,6 +543,7 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
+		turnLabel.setText((count+1)+"교시");
 		if (overCnt >= 3 || sv.getStress() == 100) {
 			overCnt = 0;
 			JPanel gameOver = new JPanel() {
