@@ -19,14 +19,13 @@ public class Quiz1 {
 	static int time = 60;
 	JProgressBar timeP; // 타이머 바
 	JFrame frame;
-	JPanel bar, quiz1; // 타이머 넣을 패널,   퀴즈,답안,버튼 넣을 패널
+	JPanel bar, quiz1; // 타이머 넣을 패널, 퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
-	int stopidx=0;
-	int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
+	int stopidx = 0;
 
 	public void quiz1() {
-		//문제 기본 프레임
+		// 문제 기본 프레임
 		frame = new JFrame("Quiz1");
 		frame.setBounds(200, 200, 700, 700);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -38,16 +37,14 @@ public class Quiz1 {
 			public void windowClosing(WindowEvent e) {
 				stopidx = -1;
 			}
-			
+
 			@Override
 			public void windowClosed(WindowEvent e) {
-				
+
 			}
 		});
-		
-		
 
-		//문제 1번 패널
+		// 문제 1번 패널
 		quiz1 = new JPanel();
 		quiz1.setBackground(new Color(233, 221, 198));
 		quiz1.setLayout(null);
@@ -56,9 +53,9 @@ public class Quiz1 {
 		textArea.setBounds(0, 30, 700, 370);
 		textArea.setEditable(false);
 		textArea.setBackground(new Color(233, 221, 198));
-		
+
 		quiz1.add(textArea);
-		
+
 		// 타이머 바 넣을 공간 생성
 		bar = new JPanel();
 		bar.setLayout(null);
@@ -72,10 +69,10 @@ public class Quiz1 {
 		timeP.setForeground(Color.DARK_GRAY);
 		timeP.setBorderPainted(false);
 		timeP.setBounds(0, 0, 700, 30);
-		
+
 		quiz1.add(bar);
 
-		//문제 읽어오는 경로
+		// 문제 읽어오는 경로
 		File file = new File("CordingQuiz/Quiz1.txt");
 
 		try {
@@ -112,7 +109,7 @@ public class Quiz1 {
 		answerBtn.setIcon(btnImg);
 		answerBtn.setBounds(290, 605, 100, 50);
 		quiz1.add(answerBtn);
-		
+
 		frame.add(quiz1);
 
 		answerBtn.addActionListener(new ActionListener() {
@@ -124,32 +121,38 @@ public class Quiz1 {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					//
-					try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"));
-							BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
-				int result=-1;
-				int index=0;
-						while((result=br.read())!=-1){
-							value[index++]=result;
+					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
+					{
+	
+						String[] tempStr = new String[7];
+						String temp;
+						int check = 0;
+						int[] valueArr = new int[7];
+						while ((temp = br.readLine()) != null) {
+							tempStr[check++] = temp;
 						}
-						
-						value[6]+=100;
-
-						for (int num : value) {
-							bw.write(String.valueOf(num));
-							bw.newLine();
+						for (int i = 0; i < 7; i++) {
+							valueArr[i] = Integer.parseInt(tempStr[i]);
+						}
+						valueArr[6] += 100;
+						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+							for (int i = 0; i < 7; i++) {
+								bw.write(String.valueOf(valueArr[i]));
+								bw.newLine();
+							}
 						}
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
+			
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 
 				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 				}
-				
+
 			}
 		});
 
@@ -175,13 +178,13 @@ public class Quiz1 {
 
 				if (time == 0) {
 					timeP.setValue(time);
-//					JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-//					System.exit(0);
+					// JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+					// System.exit(0);
 					QuizManager quizManager = new QuizManager();
 					quizManager.QuizManager();
 					frame.setVisible(false);
 					break;
-				}else if(stopidx==-1) {
+				} else if (stopidx == -1) {
 					break;
 				}
 
