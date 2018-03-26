@@ -7,7 +7,7 @@ public class Run {
 	public static void main(String[] args) {
 		//끝?
 		StartView sv = new StartView();
-		sv.gameView(0);
+		sv.gameView(1);
 	}
 
 }
