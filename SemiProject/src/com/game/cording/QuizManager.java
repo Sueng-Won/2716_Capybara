@@ -1,8 +1,13 @@
 package com.game.cording;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 public class QuizManager {
+	int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
 	public void QuizManager() {
 		if (Main.count < 5) {
 			switch (Main.rArr[Main.count++]) {
@@ -49,7 +54,24 @@ public class QuizManager {
 			}
 		}
 		else if(Main.count==5) {
-			JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
+			JOptionPane.showMessageDialog(null, "게임이 종료되었습니다!");
+			Main.count=0;
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
+				value[0] = -10;
+				value[1] = -10;
+				value[2] = -10;
+				value[3] = -10;
+				value[4] = -10;
+				value[5] = +30;
+				value[6] = 0;
+				for (int num : value) {
+					bw.write(String.valueOf(num));
+					bw.newLine();
+				}
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

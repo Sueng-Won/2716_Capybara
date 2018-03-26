@@ -154,7 +154,7 @@ public class Quiz2 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("frame") && time == 0) {
+				if (answerArea.getText().trim().equals("intArr[i].length;") && time == 0) {
 					break;
 				}
 

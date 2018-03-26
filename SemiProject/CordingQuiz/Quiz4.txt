@@ -1,4 +1,4 @@
 **다음 문장을 import선언하지 않고 사용할 수 있는 구문으로 변경하시오.**
-	import javja.util.Scanner;
+	import java.util.Scanner;
 	Scanner sc = new Scanner(System.in);
 	_________________________________________
