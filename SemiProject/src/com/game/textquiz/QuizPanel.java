@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -19,7 +20,7 @@ public class QuizPanel  extends JPanel {
 	int count =0;
 	int[] numArr = new int[5];
 	int[] value = new int[7];
-	boolean pointBo = false;
+	boolean pointBo = false;  // 정답체크 논리값
 	
 //  카드레이아웃 패널
 	private CardLayout card = new CardLayout();
@@ -64,10 +65,9 @@ public class QuizPanel  extends JPanel {
 		
 		
 		if(count>0){
-		if(pointBo == true){
-////			value[count-1] = 100;
-//			System.out.println("count : " +count );
-//			System.out.println("value : " +value[count-1] );
+			
+		if(pointBo == true){     // true = 정답 일시
+
 			
 			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
 			{
@@ -82,7 +82,8 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-20;
+				value[count-1] =20;
+				value[5] = -5;
 				value[6] += 100;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
@@ -97,10 +98,8 @@ public class QuizPanel  extends JPanel {
 			
 			
 		}
-		if(pointBo == false){
-//			value[count-1] = 0;
-//			System.out.println("count : " +count );
-//			System.out.println("value : " +value[count-1] );
+		if(pointBo == false){    // false = 오답 일시
+
 			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
 			{
 
@@ -114,7 +113,8 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-40;
+				value[count-1] =-10;
+				value[5] = -10;
 				value[6] += 0;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
@@ -133,10 +133,6 @@ public class QuizPanel  extends JPanel {
 		if(count==5){
 			
 			F.dispose();
-//			value[5] = 100;
-//			System.out.println("스트레스 : " +value[5]);
-//			value[6] = 100;
-//			System.out.println("성취도 : " +value[6]);
 			
 			}
 		

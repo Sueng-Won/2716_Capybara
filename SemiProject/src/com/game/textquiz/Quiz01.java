@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -70,8 +71,11 @@ public class Quiz01 extends JPanel{
 	btnGroup.add(check4);
 	
 	
-	Btn = new JButton("정답 확인");
-	Btn.setBounds(100,300,100,30);
+	Btn = new JButton();
+	ImageIcon btnImg = new ImageIcon("CordingQuiz/OkayButton.png");
+	Btn.setIcon(btnImg);
+	
+	Btn.setBounds(100,300,100,50);
 	
 	Btn.addActionListener(new ActionListener() {
 		
