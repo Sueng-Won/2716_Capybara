@@ -10,4 +10,5 @@ public class MultiArrayTest1{
 		System.out.println(count.length);
 		System.out.println(count[1].length);
 		System.out.println(no[2]+count[1][2]);
+		}
 }
