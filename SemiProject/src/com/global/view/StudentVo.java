@@ -76,7 +76,7 @@ public class StudentVo{
 		achievementLabel.setFont(new Font("맑은고딕", Font.BOLD, 30));
 		
 		//라벨 설정 성취도 값
-		achievement+=qm.value[6];
+//		achievement+=qm.value[6];
 		
 		achivementCount = new JLabel(String.valueOf(achievement));
 		achivementCount.setBounds(600, 610, 400, 50);
