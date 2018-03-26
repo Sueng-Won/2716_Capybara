@@ -1,6 +1,7 @@
 package com.global.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +31,7 @@ import com.global.login.DataIo;
 import com.global.login.LoginView;
 
 public class StartView {
-
+	int turnCount = 1;
 	int time = 20;
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
@@ -38,7 +39,7 @@ public class StartView {
 	int count = 0;
 	JLabel bubbleLabel1, bubbleLabel2, bubbleLabel3, bubbleLabel4, capybaraLabel, capybaraLabelWithQ,
 			capybaraLabelWithN, capybaraLabelWithD, capybaraLabelWithS, student1Label, student2Label, student3Label,
-			student4Label, student5Label;
+			student4Label, student5Label, turnLabel;
 	int overCnt = 0;// 집중력 0인 학생 수
 	JFrame frame = new JFrame("카피바라 강사의 하루");
 	ImageIcon img = new ImageIcon("Start/startBackground.png");
@@ -217,6 +218,12 @@ public class StartView {
 		changeBtn.setBorderPainted(false);
 		startBtn.setBorderPainted(false);
 
+		turnLabel = new JLabel(turnCount + "교시");
+		turnLabel.setBounds(5, 5, 120, 50);
+		Font font = new Font("arian", Font.BOLD, 45);
+		turnLabel.setFont(font);
+		background.add(turnLabel);
+
 		// Vo 데이타를 배경패널에 입력
 		background.add(sv.getConcentrationStu1());
 		background.add(sv.getConcentrationStu2());
@@ -235,12 +242,14 @@ public class StartView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				new Ex2(3, 0, 1, 20, 0).gameRun();
+
 				count++;
 				if (count != 6) {
 					new Ex2(3, 0, 1, 20, 0).gameRun();
 				}
 				endGame();
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -275,6 +284,7 @@ public class StartView {
 				}
 
 				endGame();
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -309,6 +319,7 @@ public class StartView {
 				}
 
 				endGame();
+				turnLabel.setText((count + 1) + "교시");
 			}
 		});
 
@@ -351,7 +362,7 @@ public class StartView {
 
 				}
 				endGame();
-
+				turnLabel.setText((count + 1) + "교시");
 				// sv.stressV(100);
 
 				// 피로도가 100이거나 집중도 0인 학생이 3명 이상일시 게임오버팝업창 띄움
@@ -392,13 +403,13 @@ public class StartView {
 
 			@Override
 			public void windowLostFocus(WindowEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void windowGainedFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
+
 				try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
 					String[] tempStr = new String[7];
 					String temp;
@@ -515,26 +526,31 @@ public class StartView {
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
 		}
-		if (overCnt >= 3 || sv.getStress() == 100) {
-			overCnt = 0;
-			JPanel gameOver = new JPanel() {
-				public void paintComponent(Graphics g) {
-					g.drawImage(img.getImage(), 0, 0, null);
-					setOpaque(false);
-					super.paintComponent(g);
-				}
-			};
-			gameOver.setBackground(new Color(233, 221, 198));
-			gameOver.setLayout(null);
-			gameOver.setBounds(0, 0, 1220, 700);
 
-			ImageIcon gameoverImg = new ImageIcon("Start/GameOver.png");
-			JLabel overIcon = new JLabel();
-			overIcon.setBounds(0, 0, 1220, 700);
-			overIcon.setIcon(gameoverImg);
-			gameOver.add(overIcon);
-			frame.add(gameOver);
-			background.setVisible(false);
+		if (overCnt >= 3) {
+
+			if (overCnt >= 3 || sv.getStress() == 100) {
+
+				overCnt = 0;
+				JPanel gameOver = new JPanel() {
+					public void paintComponent(Graphics g) {
+						g.drawImage(img.getImage(), 0, 0, null);
+						setOpaque(false);
+						super.paintComponent(g);
+					}
+				};
+				gameOver.setBackground(new Color(233, 221, 198));
+				gameOver.setLayout(null);
+				gameOver.setBounds(0, 0, 1220, 700);
+
+				ImageIcon gameoverImg = new ImageIcon("Start/GameOver.png");
+				JLabel overIcon = new JLabel();
+				overIcon.setBounds(0, 0, 1220, 700);
+				overIcon.setIcon(gameoverImg);
+				gameOver.add(overIcon);
+				frame.add(gameOver);
+				background.setVisible(false);
+			}
 		}
 	}
 

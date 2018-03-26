@@ -20,8 +20,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-//
+import com.global.view.StartView;
+
 public class Ex2 extends JFrame implements KeyListener {
+
 	String sol = null; // 문제의 랜덤 값을 스트링으로 처리
 	String[] images = { "ArrowImageFolder/up.png", "ArrowImageFolder/left.png", "ArrowImageFolder/down.png",
 			"ArrowImageFolder/right.png" }; // 방향키 이미지 경로
@@ -122,7 +124,6 @@ public class Ex2 extends JFrame implements KeyListener {
 
 			@Override
 			public void windowClosed(WindowEvent e) {
-
 			}
 
 		});
