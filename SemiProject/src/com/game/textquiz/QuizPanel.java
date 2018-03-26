@@ -83,7 +83,7 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-10;
+				value[count-1] =-5;
 				value[6] += 100;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
@@ -115,7 +115,7 @@ public class QuizPanel  extends JPanel {
 				for (int i = 0; i < 7; i++) {
 					value[i] = Integer.parseInt(tempStr[i]);
 				}
-				value[count-1] =-30;
+				value[count-1] =-10;
 				value[6] += 0;
 				try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
 					for (int i = 0; i < 7; i++) {
