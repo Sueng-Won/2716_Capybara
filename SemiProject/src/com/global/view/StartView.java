@@ -338,7 +338,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if(count!=6){
+				if (count != 6) {
 					Change c = new Change();
 					int[] location = new int[5];
 					location = c.changeLocationX();
@@ -420,16 +420,16 @@ public class StartView {
 						checkSum += valueArr[i];
 					}
 					if (checkSum != 0) {
-						if(flagGlobal){
-							valueArr[0] *= 2;
-							valueArr[1] *= 2;
-							valueArr[2] *= 2;
-							valueArr[3] *= 2;
-							valueArr[4] *= 2;
-							valueArr[5] /=2;
-							valueArr[6] *= 2;
-							flagGlobal= false;
-							
+						if (flagGlobal) {
+							valueArr[0] = (int) ((double) valueArr[0] * 0.9);
+							valueArr[1] = (int) ((double) valueArr[1] * 0.9);
+							valueArr[2] = (int) ((double) valueArr[2] * 0.9);
+							valueArr[3] = (int) ((double) valueArr[3] * 0.9);
+							valueArr[4] = (int) ((double) valueArr[4] * 0.9);
+							valueArr[5] = (int) ((double) valueArr[5] * 0.9);
+							valueArr[6] = (int) ((double) valueArr[6] * 1.1);
+							flagGlobal = false;
+
 						}
 						sv.addValueAll(valueArr);
 						background.validate();
@@ -562,13 +562,11 @@ public class StartView {
 			// 랜덤으로 숫자 받기
 			int num = (int) (Math.random() * 10) + 1;
 			// 7일때 팝업창 띄우기
-			if (true) {
-				int ratio = (int) (Math.random() * 40) + 10; // 10초에서 50초 사이 중
-																// 하나
+			if (/* num==7 */true) {
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(4500);
 					JOptionPane.showMessageDialog(null, "훈련보상비 지급일!");
-
+					flagGlobal = true;
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
