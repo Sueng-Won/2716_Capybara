@@ -236,8 +236,10 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Ex2(3, 0, 1, 20, 0).gameRun();
 				count++;
+				if(count!=6){
+					new Ex2(3, 0, 1, 20, 0).gameRun();
+				}
 				endGame();
 			}
 		});
@@ -267,8 +269,11 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new Main().main(null);
 				count++;
+				if(count!=6){
+					new Main().main(null);
+				}
+				
 				endGame();
 			}
 		});
@@ -298,8 +303,11 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new MainFrame();
 				count++;
+				if(count!=6){
+					new MainFrame();
+				}
+				
 				endGame();
 			}
 		});
@@ -329,16 +337,19 @@ public class StartView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Change c = new Change();
-				int[] location = new int[5];
-				location = c.changeLocationX();
-				student1Label.setBounds(location[0], 450, 50, 50);
-				student2Label.setBounds(location[1], 450, 50, 50);
-				student3Label.setBounds(location[2], 450, 50, 50);
-				student4Label.setBounds(location[3], 450, 50, 50);
-				student5Label.setBounds(location[4], 450, 50, 50);
-				sv.randomLocation(location);
 				count++;
+				if(count!=6){
+					Change c = new Change();
+					int[] location = new int[5];
+					location = c.changeLocationX();
+					student1Label.setBounds(location[0], 450, 50, 50);
+					student2Label.setBounds(location[1], 450, 50, 50);
+					student3Label.setBounds(location[2], 450, 50, 50);
+					student4Label.setBounds(location[3], 450, 50, 50);
+					student5Label.setBounds(location[4], 450, 50, 50);
+					sv.randomLocation(location);
+					
+				}
 				endGame();
 
 				// sv.stressV(100);
@@ -417,22 +428,32 @@ public class StartView {
 					// 집중도가 100일때 over학생 수 카운트 ++
 					if (sv.getConcentrationStu1().getValue() <= 0 && flag[0]) {
 						overCnt++;
+						background.remove(sv.getConcentrationStu1());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[0] = false;
 					}
 					if (sv.getConcentrationStu2().getValue() <= 0 && flag[1]) {
-						overCnt++;
+//						overCnt++;
+						background.remove(sv.getConcentrationStu2());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[1] = false;
 					}
 					if (sv.getConcentrationStu3().getValue() <= 0 && flag[2]) {
-						overCnt++;
+//						overCnt++;
+						background.remove(sv.getConcentrationStu3());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[2] = false;
 					}
 					if (sv.getConcentrationStu4().getValue() <= 0 && flag[3]) {
-						overCnt++;
+//						overCnt++;
+						background.remove(sv.getConcentrationStu4());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[3] = false;
 					}
 					if (sv.getConcentrationStu5().getValue() <= 0 && flag[4]) {
-						overCnt++;
+//						overCnt++;
+						background.remove(sv.getConcentrationStu5());
+						student1Label.setIcon(new ImageIcon("AnimalFolder/LetterX.png"));
 						flag[4] = false;
 					}
 					endGame();
