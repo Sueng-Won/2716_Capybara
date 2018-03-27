@@ -346,6 +346,9 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
+				if(count==6){
+					count++;
+				}
 
 				if (count != 7) {
 					Change c = new Change();
