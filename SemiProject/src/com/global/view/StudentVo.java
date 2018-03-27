@@ -138,7 +138,7 @@ public class StudentVo{
 		this.stress.setValue(this.stress.getValue()+value[5]);
 		this.achievement += value[6];
 		//성취도가 0보다 작을경우 0으로 고정
-		if(this.achievement<0){
+		if(this.achievement<=0){
 			this.achievement = 0;
 		}
 		this.achivementCount.setText(String.valueOf(this.achievement));
