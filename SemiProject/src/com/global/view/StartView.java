@@ -31,7 +31,7 @@ import com.global.login.DataIo;
 import com.global.login.LoginView;
 
 public class StartView {
-	boolean flagGlobal = true;
+	boolean flagGlobal = false;
 	int time = 20;
 	int part = 1;
 	JButton rythmBtn, cordingBtn, textqBtn, changeBtn, startBtn;
@@ -573,7 +573,7 @@ public class StartView {
 			// 랜덤으로 숫자 받기
 			int num = (int) (Math.random() * 10) + 1;
 			// 7일때 팝업창 띄우기
-			if (/* num==7 */true) {
+			if (num==7) {
 				try {
 					Thread.sleep(4500);
 					JOptionPane.showMessageDialog(null, "훈련보상비 지급일!");
@@ -581,6 +581,9 @@ public class StartView {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+			}
+			else{
+				flagGlobal = false;
 			}
 		}
 	}
