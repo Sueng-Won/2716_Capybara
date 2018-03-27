@@ -24,10 +24,7 @@ public class Quiz04 extends JPanel{
 	private JButton Btn;
 	private QuizPanel P;
 	
-	
-	boolean stop = false;
-	
-	
+
 
 	public Quiz04(QuizPanel p){
 		
@@ -89,21 +86,17 @@ public class Quiz04 extends JPanel{
 					JLabel messageLabel2 = new JLabel("틀렸습니다.");
 					messageLabel1.setFont(f1);
 					messageLabel2.setFont(f1);
-					
+					m.wait = true;
 					
 		            
 		            if(check4.isSelected()){
-					
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-		            	stop = true;
 		            	P.pointBo = true;
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check3.isSelected()||check2.isSelected()){
-							
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						stop = true;
 						P.pointBo = false;
 						P.changePanel();
 						
