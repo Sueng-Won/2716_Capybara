@@ -16,7 +16,6 @@ public class StudentVo{
 	private JLabel achievementLabel;
 	private JLabel achivementCount;
 	private int achievement=0;
-	QuizManager qm = new QuizManager();
 	
 	public StudentVo(){
 		//테두리디자인
@@ -74,10 +73,7 @@ public class StudentVo{
 		achievementLabel = new JLabel("성취도: "); 
 		achievementLabel.setBounds(400, 610, 400, 50);
 		achievementLabel.setFont(new Font("맑은고딕", Font.BOLD, 30));
-		
-		//라벨 설정 성취도 값
-//		achievement+=qm.value[6];
-		
+
 		achivementCount = new JLabel(String.valueOf(achievement));
 		achivementCount.setBounds(600, 610, 400, 50);
 		achivementCount.setFont(new Font("맑은고딕", Font.BOLD, 30));

@@ -37,13 +37,11 @@ public class Ex2 extends JFrame implements KeyListener {
 	static int count = 0; // 입력 횟수
 	static int count2 = 1; // 게임 반복 횟수
 	static int time = 20; // 게임 제한 초
-	JLabel timeLabel;
-	JLabel lifeLabel1, lifeLabel2, lifeLabel3;// 생명 하트 1,2,3
-	JProgressBar timeP;
-	Image dieImage;
-	JLabel[] lifeLabel = new JLabel[3];
-	Timer timer = new Timer();
-	int stopidx = 0;
+	JProgressBar timeP; //타이머를 나타낼 프로그레스바
+	Image dieImage; //생명을 잃을 경우 배경색 이미지로 대체하여 없어진 것처럼 보이게 함
+	JLabel[] lifeLabel = new JLabel[3]; //생명이미지 넣을 라벨
+	Timer timer = new Timer(); //시간제한 스레드
+	int stopidx = 0; //다음 턴으로 넘어갈 때 시간 일시정지
 	int[] value = { 0, 0, 0, 0, 0, 0, 0 }; // 값을 반환하는 정수배열 5번째는 피로도, 6번째는 성취도
 	static int count3 = 0; // 배열 인덱스 접근용 변수
 
@@ -105,10 +103,16 @@ public class Ex2 extends JFrame implements KeyListener {
 
 		add(base);
 
+		
+		
 		setVisible(true);
 		for (int i = 0; i < l_name.length; i++) {
 			l_name[i].requestFocus();
 		}
+		
+		
+		
+		
 		if (time == 20) {
 			timer.start();
 		}
@@ -175,11 +179,11 @@ public class Ex2 extends JFrame implements KeyListener {
 						dispose();
 					} else {
 						gameRun();
-						setTitle("리듬게임/ [남은 라이프 : " + life + "개] [게임횟수 : " + count2 + "번]");
 					} // 게임횟수 초기화를 위한 구문
 
 				}
 			} else { // 틀릴경우
+				
 				life--;
 
 				if (life == 2) {
@@ -191,7 +195,6 @@ public class Ex2 extends JFrame implements KeyListener {
 				if (life == 0) { // 라이프가 0일 경우
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
-					// System.exit(0); // 시스템 종료 -> ***이 부분은 상위 뷰와 연결될 때 수정해야함***
 					for (int i = count3; i < 5; i++) {
 						value[i] = 0;
 					}
@@ -330,7 +333,7 @@ public class Ex2 extends JFrame implements KeyListener {
 					lifeLabel[life].setIcon(new ImageIcon(dieImage));
 					JOptionPane.showMessageDialog(null, "라이프를 모두 소진하셨습니다.");
 					// System.exit(0);
-					for (int i = count3; i < 5; i++) {
+					for (int i = 0; i < 5; i++) {
 						value[i] = 0;
 					}
 					try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
@@ -448,7 +451,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							timer.wait();// 시간 멈춤=>JOption확인 누르는 시간동안
 						}
 					}
-					Thread.sleep(250);
+					Thread.sleep(1000);
 
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
