@@ -32,6 +32,9 @@ public class Quiz1 {
 	Timer timer;
 	JTextArea answerArea;
 	int stopidx = 0;
+	TimeOut to = new TimeOut();
+	IfCorrect ic = new IfCorrect();
+	QuizManager quizManager = new QuizManager();
 
 	public void quiz1() {
 		// 문제 기본 프레임
@@ -129,63 +132,12 @@ public class Quiz1 {
 				if (answerArea.getText().trim().equals("frame")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
-					//
-					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
-
-						String[] tempStr = new String[7];
-						String temp;
-						int check = 0;
-						int[] valueArr = new int[7];
-						while ((temp = br.readLine()) != null) {
-							tempStr[check++] = temp;
-						}
-						for (int i = 0; i < 7; i++) {
-							valueArr[i] = Integer.parseInt(tempStr[i]);
-						}
-						valueArr[Main.count-1]+=-20;
-						valueArr[5] += 5;
-						valueArr[6] += 100;
-						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							for (int i = 0; i < 7; i++) {
-								bw.write(String.valueOf(valueArr[i]));
-								bw.newLine();
-							}
-						}
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
-					QuizManager quizManager = new QuizManager();
+					ic.IfCorrect();
 					quizManager.QuizManager();
 
-				} else {
+				} else{
 					JOptionPane.showMessageDialog(frame, "Wrong!");
-					try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat"))) {
-
-						String[] tempStr = new String[7];
-						String temp;
-						int check = 0;
-						int[] valueArr = new int[7];
-						while ((temp = br.readLine()) != null) {
-							tempStr[check++] = temp;
-						}
-						for (int i = 0; i < 7; i++) {
-							valueArr[i] = Integer.parseInt(tempStr[i]);
-						}
-						valueArr[Main.count-1]+=-40;
-						valueArr[5] += 10;
-						valueArr[6] += 100;
-						try (BufferedWriter bw = new BufferedWriter(new FileWriter("Sender.dat"))) {
-							for (int i = 0; i < 7; i++) {
-								bw.write(String.valueOf(valueArr[i]));
-								bw.newLine();
-							}
-						}
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					to.TimeOut();
 				}
 
 			}
@@ -208,14 +160,14 @@ public class Quiz1 {
 				time--;
 				// 0초일때 게임 종료
 				if (answerArea.getText().trim().equals("frame") && time == 0) {
+					
 					break;
 				}
 
 				if (time == 0) {
 					timeP.setValue(time);
-					// JOptionPane.showMessageDialog(null, "게임이 종료되었습니다.");
-					// System.exit(0);
-					QuizManager quizManager = new QuizManager();
+					JOptionPane.showMessageDialog(frame, "시간 초과!");
+					to.TimeOut();
 					quizManager.QuizManager();
 					frame.setVisible(false);
 					break;
