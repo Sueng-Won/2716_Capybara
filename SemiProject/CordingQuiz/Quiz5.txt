@@ -1,6 +1,7 @@
 **다음은 2단을 출력하는 코드이다
 이 코드에서 2 * 5 = 10 이 나왔을때
 코드를 종료하게끔 빈칸을 완성하시오.**
+(꼭 필요한 곳에서만 띄어쓰기를 하세요.)
 
 public class Dan{
     public static void main(String[] args){

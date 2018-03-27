@@ -161,7 +161,7 @@ public class Quiz9 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("(i+1)%N == 1") && time == 0) {
+				if (answerArea.getText().trim().equals("(i+1)%N==1") && time == 0) {
 					break;
 				}
 

@@ -1,4 +1,5 @@
 **Enter the Correct code in the Blank**
+(꼭 필요한 곳에서만 띄어쓰기를 하세요.)
         public class Main {
 	public static void main(String[] args) {
 	    JFrame frame = new JFrame("Test");
