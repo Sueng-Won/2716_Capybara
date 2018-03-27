@@ -1,24 +1,19 @@
 package com.game.textquiz;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
+
+import com.game.textquiz.MainFrame.Timer;
 
 
 
@@ -90,19 +85,18 @@ public class Quiz01 extends JPanel{
 			messageLabel2.setFont(f1);
 			
 			
-            
             if(check2.isSelected()){
-			
+            	
+            	m.wait = true; // 타임 감소 멈춤
             	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 						JOptionPane.INFORMATION_MESSAGE);
-            	
             	P.pointBo = true;
-            	
             	P.changePanel();
+            	
 			}else if(check1.isSelected()||check3.isSelected()||check4.isSelected()){
-					
-				JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 				
+				m.wait = true;
+				JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 				P.pointBo = false;
 				P.changePanel();
 			}

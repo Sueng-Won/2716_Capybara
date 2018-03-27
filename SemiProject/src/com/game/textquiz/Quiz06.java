@@ -24,9 +24,6 @@ public class Quiz06 extends JPanel{
 	private QuizPanel P;
 	
 	
-	boolean stop = false;
-	
-	
 
 	public Quiz06(QuizPanel p){
 		
@@ -81,20 +78,18 @@ public class Quiz06 extends JPanel{
 					messageLabel1.setFont(f1);
 					messageLabel2.setFont(f1);
 					
-					
 		            
 		            if(check1.isSelected()){
-					
+		            	
+		            	m.wait = true;
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-		            	stop = true;
 		            	P.pointBo = true;
 		            	P.changePanel();
 		            	
 					}else if(check2.isSelected()||check3.isSelected()||check4.isSelected()){
-							
+						m.wait = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						stop = true;
 						P.pointBo = false;
 						P.changePanel();
 						

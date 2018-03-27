@@ -1,6 +1,7 @@
 package com.game.textquiz;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,11 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
@@ -23,9 +22,6 @@ public class Quiz10 extends JPanel{
 	private JLabel qLabel;
 	private JButton Btn;
 	private QuizPanel P;
-	
-	
-	boolean stop = false;
 	
 	
 
@@ -89,21 +85,21 @@ public class Quiz10 extends JPanel{
 					JLabel messageLabel2 = new JLabel("틀렸습니다.");
 					messageLabel1.setFont(f1);
 					messageLabel2.setFont(f1);
-					
-					
+
+
 		            
 		            if(check2.isSelected()){
-					
+		            	
+		            	m.wait = true;
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
-		            	stop = true;
 		            	P.pointBo = true;
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check3.isSelected()||check4.isSelected()){
-							
+						
+						m.wait = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
-						stop = true;
 						P.pointBo = false;
 						P.changePanel();
 						

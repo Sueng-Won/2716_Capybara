@@ -25,9 +25,10 @@ public class MainFrame extends JFrame{
 	JPanel bar;
 	JPanel barbase;
 	JPanel base;
-	private boolean stop = false; // 타이머 스위치
+	public static boolean stop = false; // 타이머 스위치
+	public static boolean wait = false;  // 타이머 일시정지
 	QuizPanel qp = new QuizPanel(this);
-	
+	Timer tm = new Timer();
 	
 	
 	public MainFrame() {
@@ -45,12 +46,12 @@ public class MainFrame extends JFrame{
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
-				stop = true;
+				stop=true;
 			}
 			
 			@Override
 			public void windowClosed(WindowEvent e) {
-				stop = true;
+				stop=true;
 			}
 		
 		});
@@ -75,8 +76,9 @@ public class MainFrame extends JFrame{
 
         
        
-        
-        new Timer().start();
+        wait=false;
+        stop=false;
+        tm.start();
         
         setVisible(true);
     }
@@ -96,8 +98,9 @@ public class MainFrame extends JFrame{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				time--;
-				
+				if(wait == false){     //정답 확인 클릭시 타임감소 멈춤
+				time--;				 // 다음패널로 넘어갈 때 다시 타임 감소
+				}
 				
 				if (time == 0) {
 					JLabel messageLabel = new JLabel("시간초과!!");
@@ -115,9 +118,14 @@ public class MainFrame extends JFrame{
 	
 		}
 	}
+
+	
+	
 	public void nextPanel(){
 		qp.pointBo = false;
 		qp.changePanel();
 		
 	}
+
+	
 	}
