@@ -161,7 +161,7 @@ public class Quiz10 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]") && time == 0) {
+				if (answerArea.getText().trim().equals("loNum[nextCount]==loNum[j]") && time == 0) {
 					break;
 				}
 

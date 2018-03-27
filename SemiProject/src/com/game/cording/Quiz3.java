@@ -129,8 +129,8 @@ public class Quiz3 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (answerArea.getText().trim().equals("sum += arr[i];")
-						|| answerArea.getText().trim().equals("sum = sum + arr[i];")) {
+				if (answerArea.getText().trim().equals("sum+=arr[i];")
+						|| answerArea.getText().trim().equals("sum=sum+arr[i];")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
 					ic.IfCorrect();
