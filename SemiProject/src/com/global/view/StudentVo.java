@@ -126,6 +126,10 @@ public class StudentVo{
 	}
 	public void setAchivementCountValue(int value){
 		this.achievement +=value;
+		//성취도 0이하일 경우 0 고정
+		if(this.achievement<=0){
+			this.achievement = 0;
+		}
 		this.achivementCount.setText(String.valueOf(this.achievement));
 	}
 	
