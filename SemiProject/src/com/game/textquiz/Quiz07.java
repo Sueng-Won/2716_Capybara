@@ -79,16 +79,19 @@ public class Quiz07 extends JPanel{
 					messageLabel1.setFont(f1);
 					messageLabel2.setFont(f1);
 
-					m.wait = true;
 
 		            
 		            if(check4.isSelected()){
+		            	
+		            	m.wait = true;
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
 		            	P.pointBo = true;
 		            	P.changePanel();
 		            	
 					}else if(check1.isSelected()||check3.isSelected()||check2.isSelected()){
+						
+						m.wait = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 						P.pointBo = false;
 						P.changePanel();

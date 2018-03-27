@@ -76,7 +76,8 @@ public class MainFrame extends JFrame{
 
         
        
-        
+        wait=false;
+        stop=false;
         tm.start();
         
         setVisible(true);
@@ -121,7 +122,6 @@ public class MainFrame extends JFrame{
 	
 	
 	public void nextPanel(){
-
 		qp.pointBo = false;
 		qp.changePanel();
 		

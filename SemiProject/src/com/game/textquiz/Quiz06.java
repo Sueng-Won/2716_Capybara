@@ -77,16 +77,18 @@ public class Quiz06 extends JPanel{
 					JLabel messageLabel2 = new JLabel("틀렸습니다.");
 					messageLabel1.setFont(f1);
 					messageLabel2.setFont(f1);
-					m.wait = true;
 					
 		            
 		            if(check1.isSelected()){
+		            	
+		            	m.wait = true;
 		            	JOptionPane.showMessageDialog(null, messageLabel1, "AnswerMessage",
 								JOptionPane.INFORMATION_MESSAGE);
 		            	P.pointBo = true;
 		            	P.changePanel();
 		            	
 					}else if(check2.isSelected()||check3.isSelected()||check4.isSelected()){
+						m.wait = true;
 						JOptionPane.showMessageDialog(null, messageLabel2, "AnswerMessage", JOptionPane.ERROR_MESSAGE);
 						P.pointBo = false;
 						P.changePanel();
