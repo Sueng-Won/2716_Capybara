@@ -158,7 +158,7 @@ public class Quiz4 {
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("java.util.Scanner sc = new java.util.Scanner(System.in);")
+				if (answerArea.getText().trim().equals("java.util.Scanner sc=new java.util.Scanner(System.in);")
 						&& time == 0) {
 					break;
 				}

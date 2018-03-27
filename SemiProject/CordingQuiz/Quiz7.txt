@@ -1,5 +1,6 @@
 다음 프로그램의 실행 결과를 쓰시오.
 정답 예시(1,2,3,4)
+(꼭 필요한 곳에서만 띄어쓰기를 하세요.)
 
 public class MultiArrayTest1{
 	public static void main(String[]args){

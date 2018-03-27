@@ -1,5 +1,7 @@
 **Enter the Correct code in the Blank**
 배열 array에 담긴 모든 값을 더하는 프로그램을 완성하시오.
+(꼭 필요한 곳에서만 띄어쓰기를 하세요.)
+
 		public static void main(String[]args){
 				int[] arr = {10,20,30,40,50};
 				int sum=0;
