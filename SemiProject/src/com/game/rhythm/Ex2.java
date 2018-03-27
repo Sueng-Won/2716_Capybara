@@ -451,7 +451,7 @@ public class Ex2 extends JFrame implements KeyListener {
 							timer.wait();// 시간 멈춤=>JOption확인 누르는 시간동안
 						}
 					}
-					Thread.sleep(1000);
+					Thread.sleep(250);
 
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
