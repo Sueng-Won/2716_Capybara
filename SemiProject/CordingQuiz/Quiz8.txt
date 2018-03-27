@@ -1,7 +1,5 @@
 아래 소스 코드의 컴파일 및 실행 결과는?
-(띄어쓰기 하지마세요)
-정답 예시(true,true)
-
+정답 예시 -> true,true
 public class Test{
 	private int val;
 	public Test(int val){

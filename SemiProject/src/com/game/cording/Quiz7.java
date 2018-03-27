@@ -33,7 +33,7 @@ public class Quiz7 {
 	JTextArea answerArea;
 	JTextArea quizArea;
 	String finalAnswer;
-	int stopidx = 0;
+	boolean stopidx = false;
 	TimeOut to = new TimeOut();
 	IfCorrect ic = new IfCorrect();
 	QuizManager quizManager = new QuizManager();
@@ -49,12 +49,12 @@ public class Quiz7 {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				stopidx = -1;
+				stopidx = true;
 			}
 
 			@Override
 			public void windowClosed(WindowEvent e) {
-
+				stopidx = true;
 			}
 		});
 
@@ -159,6 +159,7 @@ public class Quiz7 {
 				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					stopidx=true;
 					ic.IfCorrect();
 					quizManager.QuizManager();
 
@@ -180,6 +181,9 @@ public class Quiz7 {
 			while (true) {
 				try {
 					Thread.sleep(1000); // 1초
+					if (stopidx == true) {
+						break;
+					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -188,14 +192,12 @@ public class Quiz7 {
 				if (answerArea.getText().trim().equals(finalAnswer.trim())) {
 					break;
 				}
-				if (time == 0) {
-					timeP.setValue(time);
+				else	if (time == 0) {
+//					timeP.setValue(time);
 					JOptionPane.showMessageDialog(frame, "시간 초과!");
 					to.TimeOut();
 					quizManager.QuizManager();
 					frame.setVisible(false);
-					break;
-				} else if (stopidx == -1) {
 					break;
 				}
 

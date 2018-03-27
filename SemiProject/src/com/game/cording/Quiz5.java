@@ -31,7 +31,7 @@ public class Quiz5 {
 	JPanel bar, quiz5; // 타이머 넣을 패널, 퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
-	int stopidx = 0;
+	boolean stopidx = false;
 	TimeOut to = new TimeOut();
 	IfCorrect ic = new IfCorrect();
 	QuizManager quizManager = new QuizManager();
@@ -47,12 +47,12 @@ public class Quiz5 {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				stopidx = -1;
+				stopidx = true;
 			}
 
 			@Override
 			public void windowClosed(WindowEvent e) {
-
+				stopidx = true;
 			}
 		});
 
@@ -132,6 +132,7 @@ public class Quiz5 {
 				if (answerArea.getText().trim().equals("break outer;")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					stopidx=true;
 					ic.IfCorrect();
 					quizManager.QuizManager();
 
@@ -153,6 +154,10 @@ public class Quiz5 {
 			while (true) {
 				try {
 					Thread.sleep(1000); // 1초
+					if (stopidx ==true) {
+						break;
+					}
+					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -162,8 +167,8 @@ public class Quiz5 {
 					break;
 				}
 
-				if (time == 0) {
-					timeP.setValue(time);
+				else	if (time == 0) {
+//					timeP.setValue(time);
 					JOptionPane.showMessageDialog(frame, "시간 초과!");
 					to.TimeOut();
 
@@ -171,9 +176,8 @@ public class Quiz5 {
 
 					frame.setVisible(false);
 					break;
-				} else if (stopidx == -1) {
-					break;
-				}
+				} 
+			
 
 				timeP.setValue(time);
 			}

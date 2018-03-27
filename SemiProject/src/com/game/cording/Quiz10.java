@@ -31,7 +31,7 @@ public class Quiz10 {
 	JPanel bar, quiz10; // 타이머 넣을 패널, 퀴즈,답안,버튼 넣을 패널
 	Timer timer;
 	JTextArea answerArea;
-	int stopidx = 0;
+	boolean stopidx = false;
 	TimeOut to = new TimeOut();
 	IfCorrect ic = new IfCorrect();
 	QuizManager quizManager = new QuizManager();
@@ -47,12 +47,12 @@ public class Quiz10 {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				stopidx = -1;
+				stopidx = true;
 			}
 
 			@Override
 			public void windowClosed(WindowEvent e) {
-
+				stopidx = true;
 			}
 		});
 
@@ -132,13 +132,15 @@ public class Quiz10 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (answerArea.getText().trim().equals("loNum[nextCount] == loNum[j]")) {
+				if (answerArea.getText().trim().equals("210")) {
 					JOptionPane.showMessageDialog(frame, "Correct!");
 					frame.setVisible(false);
+					stopidx=true;
 					ic.IfCorrect();
 					quizManager.QuizManager();
+		
 
-				} else{
+				} else {
 					JOptionPane.showMessageDialog(frame, "Wrong!");
 					to.TimeOut();
 				}
@@ -156,23 +158,24 @@ public class Quiz10 {
 			while (true) {
 				try {
 					Thread.sleep(1000); // 1초
+					if (stopidx == true) {
+						break;
+					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				time--;
 				// 0초일때 게임 종료
-				if (answerArea.getText().trim().equals("loNum[nextCount]==loNum[j]") && time == 0) {
+				if (answerArea.getText().trim().equals("210") && time == 0) {
 					break;
 				}
 
-				if (time == 0) {
-					timeP.setValue(time);
+				else if (time == 0) {
+//					timeP.setValue(time);
 					JOptionPane.showMessageDialog(frame, "시간 초과!");
 					to.TimeOut();
 					quizManager.QuizManager();
 					frame.setVisible(false);
-					break;
-				} else if (stopidx == -1) {
 					break;
 				}
 
