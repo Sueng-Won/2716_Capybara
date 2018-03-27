@@ -116,6 +116,7 @@ public class MainFrame extends JFrame{
 		}
 	}
 	public void nextPanel(){
+		qp.pointBo = false;
 		qp.changePanel();
 		
 	}
