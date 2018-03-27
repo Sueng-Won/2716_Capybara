@@ -245,7 +245,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if (count != 6) {
+				if (count != 7) {
 					new Ex2(3, 0, 1, 20, 0).gameRun();
 				}
 				endGame();
@@ -278,7 +278,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if (count != 6) {
+				if (count != 7) {
 					new Main().main(null);
 				}
 
@@ -312,7 +312,7 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if (count != 6) {
+				if (count != 7) {
 					new MainFrame();
 				}
 
@@ -346,7 +346,11 @@ public class StartView {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				count++;
-				if (count != 6) {
+				if(count==6){
+					count++;
+				}
+
+				if (count != 7) {
 					Change c = new Change();
 					int[] location = new int[5];
 					location = c.changeLocationX();
@@ -409,6 +413,9 @@ public class StartView {
 			public void windowLostFocus(WindowEvent e) {
 				// TODO Auto-generated method stub
 
+				if(count==6){
+					count++;
+				}
 			}
 
 			@Override
@@ -536,14 +543,15 @@ public class StartView {
 
 	public void endGame() {
 		
-		if (count == 6) {
+		if (count == 7) {
 			count = 0;
 			new DataIo().saveAchievement(new StudentVo().getAchievement());
 			JOptionPane.showMessageDialog(null, "하루가 무사히 끝났습니다!");
 			// 여기다가 점수판 실행시킬 것
 			new DataIo().scoreboard();
+		}else if(count!=6){
+			turnLabel.setText((count+1)+"교시");
 		}
-		turnLabel.setText((count+1)+"교시");
 		if (overCnt >= 3 || sv.getStress() == 100) {
 			overCnt = 0;
 			JPanel gameOver = new JPanel() {
@@ -567,6 +575,7 @@ public class StartView {
 		}
 	}
 
+	
 	class GlobalEventThread extends Thread {
 		@Override
 		public void run() {
