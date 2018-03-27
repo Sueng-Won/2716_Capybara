@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -32,7 +31,6 @@ public class QuizPanel  extends JPanel {
 		
 		F=f;  // 메인프레임에 패널 불러옴
 		
-		setVisible(true);
 		
 		if(count==0){   
 			// 처음 randomOutput() 실행시 랜덤 번호 5개 저장
@@ -63,11 +61,14 @@ public class QuizPanel  extends JPanel {
 		
 	public void changePanel(){
 		
+
+		
 		
 		if(count>0){
 			
 		if(pointBo == true){     // true = 정답 일시
 
+			F.wait=false;  // 타임 감소 시작
 			
 			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
 			{
@@ -99,7 +100,7 @@ public class QuizPanel  extends JPanel {
 			
 		}
 		if(pointBo == false){    // false = 오답 일시
-
+			F.wait=false;
 			try (BufferedReader br = new BufferedReader(new FileReader("Sender.dat")))
 			{
 

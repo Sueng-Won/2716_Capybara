@@ -63,7 +63,7 @@ public class LoginView {
 					if (name ==null || name.trim().length() == 0) {
 						//이름 공백일 시 뜨는 팝업창
 						//trim() : 문자 양 옆의 공백 제거 
-						JOptionPane.showMessageDialog(null, "이름을 입력해주세요.");
+						JOptionPane.showMessageDialog(null, "이름을 입력해주세요.(영어만 입력가능)");
 					} else if(idx == -1){
 						JOptionPane.showMessageDialog(null, "중복된 아이디 입니다. 새로 입력해주세요.");
 						
